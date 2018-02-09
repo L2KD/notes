@@ -1,4 +1,4 @@
-###### This will assign some users to a POS, prevent others from accessing/creating session.
+###### This will assign some users to a POS, prevent others from accessing/creating session (Odoo 11)
 
 1. Create field `x_user_ids`
 
