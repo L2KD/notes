@@ -1,4 +1,4 @@
-######  (Testest on Odoo 11)
+###### Observe onchange events on model (Testest on Odoo 11)
 
 1. Install base_automation module
 
