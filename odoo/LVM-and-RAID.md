@@ -4,6 +4,8 @@ fdisk
 
     fdisk -l
 
+----
+
 lsblk
 
     lsblk
@@ -23,3 +25,11 @@ Volume Group Display
 Logical Volume Display
 
     lvdisplay
+
+View which RAID controller the system uses:
+
+    lspci -vv | grep -i raid
+
+View list drives
+
+    lsscsi
