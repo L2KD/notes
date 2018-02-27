@@ -231,3 +231,22 @@ Result in
 
 
 ---
+
+## LSI RAID Card (Hardware)
+
+LSI Logic / Symbios Logic SAS1064ET PCI-Express Fusion-MPT SAS Card
+
+lspci -knn
+
+    40:00.0 SCSI storage controller [0100]: LSI Logic / Symbios Logic SAS1064ET PCI-Express Fusion-MPT SAS [1000:0056] (rev 08)
+
+Or LSI 3041E. According to the [HP's official support](http://h10032.www1.hp.com/ctg/Manual/c01232490), the XW6600 uses LSI 3041E card and it's a **Hardware-assisted** RAID (a.k.a. BIOS RAID). So no linux utilities to communicate with the RAID card (TBD), and instead, BIOS is where all RAID-related works be done.
+
+### Some notations invented by LSI
+
+- IM - or Integrated Mirroring, is also known as RAID-1.
+- IME - or Integrated Mirroring Enhanced,
+is RAID-10.
+- IS - or Integrated Striping, is RAID-0.
+
+So they use their own notations instead of RAID-1-0-10...
