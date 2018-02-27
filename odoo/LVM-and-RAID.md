@@ -1,10 +1,10 @@
-###### Môi trường: Centos 7
+## Centos 7 - Some useful commands
 
 fdisk
 
     fdisk -l
 
-KQ
+Result in
 
     Disk /dev/sda: 2000.0 GB, 1999999336448 bytes, 3906248704 sectors
     Units = sectors of 1 * 512 = 512 bytes
@@ -46,7 +46,7 @@ lsblk
 
     lsblk
 
-KQ
+Result in
 
     NAME              MAJ:MIN RM   SIZE RO TYPE MOUNTPOINT
     sda                 8:0    0   1.8T  0 disk
@@ -64,7 +64,7 @@ Volume Group Summary?
 
     vgs
 
-KQ
+Result in
 
     VG     #PV #LV #SN Attr   VSize VFree
     centos   1   4   0 wz--n- 1.82t 4.00m
@@ -75,7 +75,7 @@ Logical Volumes Summary?
 
     lvs
 
-KQ
+Result in
 
     LV     VG     Attr       LSize   Pool Origin Data%  Meta%  Move Log Cpy%Sync Convert
     backup centos -wi-ao---- 500.07g
@@ -88,7 +88,7 @@ KQ
 Volume Group Display
 
     vgdisplay
-KQ
+Result in
 
     --- Volume group ---
     VG Name               centos
@@ -117,7 +117,7 @@ Logical Volume Display
 
     lvdisplay
 
-KQ
+Result in
 
     --- Logical volume ---
     LV Path                /dev/centos/root
@@ -193,7 +193,7 @@ Physical Volume Display
 
     pvdisplay
 
-KQ
+Result in
 
     --- Physical volume ---
     PV Name               /dev/sda2
@@ -212,7 +212,7 @@ View which RAID controller the system uses:
 
     lspci -vv | grep -i raid
 
-KQ
+Result in
 
     00:1f.2 RAID bus controller: Intel Corporation 631xESB/632xESB SATA RAID Controller (rev 09)
 
@@ -222,9 +222,12 @@ View list drives
 
     lsscsi
 
-KQ
+Result in
 
     [2:0:0:0]    cd/dvd  TSSTcorp DVD-ROM TS-H353B BC05  /dev/sr0
     [8:0:0:0]    disk    ATA      WDC WD20EURS-73T 0A80  -
     [8:0:1:0]    disk    ATA      WDC WD20EURS-63S AB51  -
     [8:1:1:0]    disk    LSILOGIC Logical Volume   3000  /dev/sda
+
+
+---
