@@ -13,7 +13,7 @@ Result in
     Disk label type: dos
     Disk identifier: 0x000d3c5b
 
-    Device Boot      Start         End      Blocks   Id  System
+    Device     Boot    Start       End      Blocks      Id  System
     /dev/sda1   *        2048     1026047      512000   83  Linux
     /dev/sda2         1026048  3906248703  1952611328   8e  Linux LVM
 
