@@ -18,7 +18,7 @@ Sau đó mount thằng `/boot` vào, vì `grub-install` nó mặc định sẽ b
 
 Thằng sda3 này là `/boot` với flags `bios_partition` khi disk dạng GPT, hoặc flag boot khi disk dạng MBR.
 
-Khỏi mount thằng `swap`, `home`, hoặc `/var/` vì k liên quan.
+Khỏi mount thằng `swap`, `home`, hoặc `/var` vì k liên quan.
 
 Sau đó `chroot`
 
@@ -37,3 +37,7 @@ hoặc trên centos 7
 Nó báo successful là ok.
 
 Reboot hệ thống.
+
+---
+
+Nếu máy BIOS, mà disk dạng GPT, thì cần 1 cái `/boot` có flag `bios_partition`. Nếu máy BIOS hoặc UEFI, disk dạng MBR, thì `/boot` flag `boot`. Nếu máy UEFI, disk dạng GPT, thì `/boot` flag `boot, eps`
