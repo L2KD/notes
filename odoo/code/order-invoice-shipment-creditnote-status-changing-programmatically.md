@@ -39,10 +39,9 @@ Don't ask me why
 
     lines = []
     if adj_fee_obj:
-        lines.append((0, 0, {'product_id': int(adj_fee_obj.id), 'name': adj_fee_obj.name,
+        lines.append((0, 0, {'product_id': int(adj_fee_obj.id),
+                             'name': adj_fee_obj.name,
                              'product_uom_qty': 1,
-                             # used to be quote_item_id
-                             'tax_id': False,
                              'price_unit': 34.9,
                              'account_id': account_id.id}))
 
