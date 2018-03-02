@@ -29,6 +29,30 @@ After confirming `sale_order`, there will automatically be a new delivery (calle
         journal_id = self.env['account.journal'].search([('type','=', 'bank')], limit=1)
         account_invoice.pay_and_reconcile(journal_id, date=magento_updated_date)
 
+### Add line (`invoice_line_ids`) to `account.invoice` instance
+
+Don't ask me why
+
+    cm = self.env['account.invoice'].search(.......)
+    adj_fee_obj = self.env['product.product'].search([('name', '=', 'Adjustment Fee')], limit=1)
+    account_id = self.env['account.account'].search([('name', '=', 'Bank')], limit=1)
+
+    lines = []
+    if adj_fee_obj:
+        lines.append((0, 0, {'product_id': int(adj_fee_obj.id), 'name': adj_fee_obj.name,
+                             'product_uom_qty': 1,
+                             # used to be quote_item_id
+                             'tax_id': False,
+                             'price_unit': 34.9,
+                             'account_id': account_id.id}))
+
+    n_lines = [(5,)]
+    n_lines.extend(lines)
+
+    cm.write({
+       'invoice_line_ids': n_lines
+    })
+
 ## `account.invoice` (Credit notes)
 
 1. To create credit note, an account_invoice is required
