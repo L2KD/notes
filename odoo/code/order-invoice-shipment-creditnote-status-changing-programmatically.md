@@ -2,7 +2,11 @@
 
 ## sale_order
 
-Confirm `sale_order`
+### Create order
+
+[ ] *TODO this need to be filled*
+
+### Confirm `sale_order`
 
     sale_order.action_confirm()
 
