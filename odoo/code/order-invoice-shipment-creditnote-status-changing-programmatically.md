@@ -1,4 +1,4 @@
-# Odoo 11
+# Odoo 11 - Programmatically order (invoice, shipment, credit note) processing, status changing
 
 ## sale_order
 
@@ -24,3 +24,11 @@ After confirming `sale_order`, there will automatically be a new delivery (calle
 
         journal_id = self.env['account.journal'].search([('type','=', 'bank')], limit=1)
         account_invoice.pay_and_reconcile(journal_id, date=magento_updated_date)
+
+## Credit notes
+
+1. To create credit note, an account_invoice is required
+
+        account_invoice.refund()
+
+2. Til this, the credit note is in `draft`. We can change it to open by `action_invoice_open()` or to paid by `pay_and_reconcile(journal_id, date=magento_updated_date)` like the account.invoice
