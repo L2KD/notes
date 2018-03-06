@@ -46,6 +46,12 @@ And you can also customize these credentials in the said yml file.
 
 ## Instructions
 
+Before starting
+
+- Edit your src location in data/volumes
+- You can also indicate or not the sql file to be import by mariadb on the first start of containers.
+
+
 1. Clone the repo.
 
   ```
