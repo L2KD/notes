@@ -3,12 +3,12 @@
 1. Looking in this location: `.config/` you will find an executable `auto-commit.sh`
 2. If you can't find it. Create one.
 
-    #!/bin/zsh
+        #!/bin/zsh
 
-    cd ~/Projects/notes
+        cd ~/Projects/notes
 
-    git add .
-    git commit -m "Auto update"
+        git add .
+        git commit -m "Auto update"
 
   If it's not, chmod it to make it executable
 
