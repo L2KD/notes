@@ -41,6 +41,8 @@
 
 https://wiki.gentoo.org/wiki/SELinux/Tutorials/Creating_a_user_domain
 
+http://www.billauer.co.il/selinux-policy-module-howto.html
+
 1. .te file
 
         policy_module(mkdprivate, 1.0)
@@ -52,6 +54,7 @@ https://wiki.gentoo.org/wiki/SELinux/Tutorials/Creating_a_user_domain
 
         type mkd_private_t;
         role mkd_private_r;
+        role mkd_private_r types mkd_private_t;
         userdom_login_user_template(mkdprivate)
 
         fs_associate(mkd_private_t)
@@ -142,6 +145,6 @@ https://wiki.gentoo.org/wiki/SELinux/Tutorials/Creating_a_user_domain
 
         sesearch -ACS -t user_home_t -c file -p read
 
-7. Xem chi tiết một role 
+7. Xem chi tiết một role
 
         seinfo -rmkd_private_r -x
