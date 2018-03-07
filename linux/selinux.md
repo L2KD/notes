@@ -141,3 +141,7 @@ https://wiki.gentoo.org/wiki/SELinux/Tutorials/Creating_a_user_domain
 6. Xem một cái type đang được allow những gì
 
         sesearch -ACS -t user_home_t -c file -p read
+
+7. Xem chi tiết một role 
+
+        seinfo -rmkd_private_r -x
