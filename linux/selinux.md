@@ -2,7 +2,7 @@
 
 ## Tạo selinux type
 
-1. Tạo một cái selinux type
+1. Cài các yêu cầu
 
         yum install policycoreutils-devel
 
@@ -28,6 +28,14 @@
         /usr/bin/checkmodule:  writing binary representation (version 17) to tmp/myprivate.mod
         Creating targeted myprivate.pp policy package
         rm tmp/myprivate.mod.fc tmp/myprivate.mod
+
+4. Install nó
+
+        semodule -i myprivate.pp
+
+5. Uninstall nó
+
+        semodule -r myprivate
 
 ## List context
 
