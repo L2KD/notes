@@ -37,6 +37,12 @@
 
         semodule -r myprivate
 
+## Add user role
+
+https://wiki.gentoo.org/wiki/SELinux/Tutorials/Creating_a_user_domain
+
+
+
 ## List context
 
 1. List directory/file
