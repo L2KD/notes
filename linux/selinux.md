@@ -62,7 +62,30 @@ https://wiki.gentoo.org/wiki/SELinux/Tutorials/Creating_a_user_domain
 2. compile nó (xem bên trên)
 3. Edit file `/etc/selinux/{policy_name}/contexts/default_type`, trong đó policy_name tìm trong `sestatus`
 
-## List context
+        auditadm_r:auditadm_t
+        secadm_r:secadm_t
+        sysadm_r:sysadm_t
+        guest_r:guest_t
+        xguest_r:xguest_t
+        staff_r:staff_t
+        unconfined_r:unconfined_t
+        user_r:user_t
+        mkd_private_r:mkd_private_t # Thêm dòng này vào
+4. Thêm một user trong `/etc/selinux/{policy_name}/contexts/users`
+
+        sed -e 's|user|mkdprivate|g' user_u > mkdprivate_u
+
+5. Tạo selinux user
+
+        semanage user -a -R "staff_r sysadm_r system_r unconfined_r" mkd_private_u
+
+    Trong đó có 1 vài role để ssh được....
+
+6. Map user này vào linux login user
+
+        semanage login -a -s mkd_private_u user1234
+
+## List context related commands
 
 1. List directory/file
 
