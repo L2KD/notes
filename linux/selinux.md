@@ -138,3 +138,6 @@ https://wiki.gentoo.org/wiki/SELinux/Tutorials/Creating_a_user_domain
         __default__          unconfined_u         s0-s0:c0.c1023       *
         root                 unconfined_u         s0-s0:c0.c1023       *
         system_u             system_u             s0-s0:c0.c1023       *
+6. Xem một cái type đang được allow những gì
+
+        sesearch -ACS -t user_home_t -c file -p read
