@@ -41,7 +41,26 @@
 
 https://wiki.gentoo.org/wiki/SELinux/Tutorials/Creating_a_user_domain
 
+1. .te file
 
+        policy_module(mkdprivate, 1.0)
+
+        require {
+          type unconfined_t;
+          type user_home_t;
+        };
+
+        type mkd_private_t;
+        role mkd_private_r;
+        userdom_login_user_template(mkdprivate)
+
+        fs_associate(mkd_private_t)
+        allow unconfined_t mkd_private_t:{dir file} relabelto;
+        allow mkd_private_t user_home_t:{dir file} relabelto;
+        allow unconfined_t user_home_t:{dir file} relabelto;
+
+2. compile nó (xem bên trên)
+3. Edit file `/etc/selinux/{policy_name}/contexts/default_type`, trong đó policy_name tìm trong `sestatus`
 
 ## List context
 
