@@ -77,7 +77,7 @@ https://wiki.gentoo.org/wiki/SELinux/Tutorials/Creating_a_user_domain
 
 5. Tạo selinux user
 
-        semanage user -a -R "staff_r sysadm_r system_r unconfined_r mkd_private_t" mkd_private_u
+        semanage user -a -R "staff_r sysadm_r system_r unconfined_r mkd_private_r" mkd_private_u
 
     Trong đó có 1 vài role để ssh được....
 
