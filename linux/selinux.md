@@ -148,3 +148,8 @@ http://www.billauer.co.il/selinux-policy-module-howto.html
 7. Xem chi tiết một role
 
         seinfo -rmkd_private_r -x
+
+8. Đếm tất cả file type (label là type áp cho file/device) có trong system, và process type (domain)
+
+        seinfo -afile_type -x | wc -l
+        seinfo -adomain -x | wc -l
