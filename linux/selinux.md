@@ -39,10 +39,6 @@
 
 ## Add user role
 
-https://wiki.gentoo.org/wiki/SELinux/Tutorials/Creating_a_user_domain
-
-http://www.billauer.co.il/selinux-policy-module-howto.html
-
 1. .te file
 
         policy_module(mkdprivate, 1.0)
@@ -153,3 +149,11 @@ http://www.billauer.co.il/selinux-policy-module-howto.html
 
         seinfo -afile_type -x | wc -l
         seinfo -adomain -x | wc -l
+
+### Some useful links
+
+https://wiki.gentoo.org/wiki/SELinux/Tutorials/Creating_a_user_domain
+
+http://www.billauer.co.il/selinux-policy-module-howto.html
+
+https://selinuxproject.org/page/Guide/Contexts
