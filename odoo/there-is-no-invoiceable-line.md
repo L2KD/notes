@@ -36,3 +36,5 @@ Xem `sale/models/sale.py:730`
                 line.qty_to_invoice = 0
 
 Như vậy nếu order ở state không ở `sale` hoặc `done` thì `qty_to_invoice` lúc nào cũng = 0
+
+Cần confirm sale.order trước.
