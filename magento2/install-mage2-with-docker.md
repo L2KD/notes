@@ -1,3 +1,5 @@
+## Installation
+
 1. Clone https://github.com/alexcheng1982/docker-magento2
 
 2. Change `mysql` to `mariadb:latest`
@@ -15,4 +17,8 @@
         $ install-magento
         $ install-sampledata
 
-If your `env` file has some mistakes, then docker-compose down, and up again to get new env, need to find better way than this.
+## Notes
+
+- If your `env` file has some mistakes, then docker-compose down, and up again to get new env, need to find better way than this.
+
+- You may want to adapt your /etc/hosts file.
