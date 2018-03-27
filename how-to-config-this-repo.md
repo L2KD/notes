@@ -10,7 +10,7 @@
         git add .
         git commit -m "Auto update"
 
-  If it's not, chmod it to make it executable
+    If it's not, chmod it to make it executable
 
         chmod u+x .config/auto-commit.sh
 
