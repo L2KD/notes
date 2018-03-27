@@ -1,4 +1,4 @@
-This is written for MacOS, on Linux, things should be the same.
+This is written for MacOS, on Linux, things should be the same. This is not applicable on Windows and won't recommend using Windows for any docker works.
 
 // Some explanation why docker, and this is gonna use docker-compose to make things simpler
 
@@ -18,6 +18,8 @@ Inside this, structure your directory like
                   │          └── odoo.conf
                   ├── docker-compose.yml
                   └── odoo
+
+Well, there are eventually some other kind of file like: .eslintrc (look for Odoo JS works recommendation) or your git things.
 
 I will explain a bit for this
 
