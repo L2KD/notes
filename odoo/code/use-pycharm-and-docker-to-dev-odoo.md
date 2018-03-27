@@ -2,6 +2,9 @@ This is written for MacOS, on Linux, things should be the same.
 
 // Some explanation why docker, and this is gonna use docker-compose to make things simpler
 
+Pycharm used 2017.3 Pro
+Docker used 18.03 ce
+
 First of all, create a directory in which your works will be located.
 
     mkdir ~/Projects/docker-odoo
@@ -79,3 +82,41 @@ I will explain a bit for this
           odoo.cli.main()
 
 Half way was done. Now change to pycharm configuration.
+
+Project interpreter
+
+--> Add remote (cliked on gear), choose Docker Compose
+
+- confiruation file ./docker-compose.xml
+- serviec odoo
+
+This should show Remote Python 3.5.3 Docker Compose at ....
+
+May mapping required
+
+- /addons -> /mnt/extra/addons
+- /odoo   -> /usr/bin/odoo
+
+Run/debug configuration
+
+Create new profile
+
+- Name `odoo`
+- script path `~/Projects/docker-odoo/odoo`
+- parameters, e.g: if you want to update your module: `-u module_name`
+- Python interpreter: Project default
+- Working directory: ~/Projects/docker-odoo
+- Path mapping: ~/Projects/docker-odoo/addons=/mnt/extra-addons
+- Check on Add content roots to PYTHONPATH # not sure about 3 of this
+- Check on Add source roots to PYTHONPATH
+- Uncheck on Show command line afterwards
+
+Open terminal and cd to ~/Projects/docker-compose
+
+    docker-compose up -d db
+
+Start the server. This should run your odoo container.
+
+Access to Odoo backend on http://localhost:8069
+
+GL HF
