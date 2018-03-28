@@ -1,3 +1,5 @@
+### Tạo 1 menu print trực tiếp & đơn giản
+
 Trong module, tạo folder `report`
 
 Tạo file `product_report.xml`.
@@ -47,3 +49,35 @@ Tạo file `product_product_template.xml`
     </odoo>
 
 Add 2 files xml vào `__manifest__.py`
+
+### Thay vì menu print trực tiếp, nhúng wizard vào (1 dạng act_window) để xác nhận hoặc thêm vài thông số trước khi in
+
+Trong folder module, tạo `wizard/product_barcode_labels_views.xml`
+
+    <?xml version="1.0" encoding="UTF-8" ?>
+    <odoo>
+        <!--  Wizard for Number of Print Product Barcode Labels -->
+        <record id="view_product_barcode_label" model="ir.ui.view">
+            <field name="name">Quantity Labels to Print</field>
+            <field name="model"><module_name>.print_qty</field>
+            <field name="arch" type="xml">
+                <form string="Quantity Labels to Print">
+                    <label for="barcode_print_qty"/>
+                    <field name="barcode_print_qty" required="1"/>
+                    <footer>
+                        <button name="print_report" string="Print" type="object" class="btn-primary"/>
+                        <button string="Cancel" class="btn-default" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <act_window id="action_product_label"
+                    key2="client_print_multi"
+                    name="Product Barcode Labels"
+                    res_model="<module_name>.print_qty"
+                    src_model="product.product"
+                    view_mode="form" target="new" view_type="form"/>
+    </odoo>
+
+Trong đó tag `act_window` sẽ chịu trách nhiệm tạo 1 opt trong menu print của model `product.product`.
