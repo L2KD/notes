@@ -1,6 +1,6 @@
 Trong module, tạo folder `report`
 
-Tạo file `product_report.xml`
+Tạo file `product_report.xml`.
 
     <odoo>
         <data>
@@ -13,6 +13,8 @@ Tạo file `product_report.xml`
                     print_report_name="'Product Barcode Labels - %s' % (object.name)"/>
         </data>
     </odoo>
+
+File này sẽ tạo ra một option print nữa có text `Product Barcode Labels` vào các form của model `product.product`, có thể xem thêm tại Settings > Reports
 
 Tạo file `product_product_template.xml`
 
