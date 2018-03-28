@@ -10,7 +10,8 @@ Tạo file `product_report.xml`.
                     report_type="qweb-html"
                     name="<module_name>.report_productlabel"
                     file="<module_name>.report_productlabel" <!-- this will look for that `report_productlabel` inside the module_name (1)-->
-                    print_report_name="'Product Barcode Labels - %s' % (object.name)"/>
+                    print_report_name="'Product Barcode Labels - %s' % (object.name)"
+                    menu="True" <!-- True will bring this to the Print button, and vice versa --> />
         </data>
     </odoo>
 
