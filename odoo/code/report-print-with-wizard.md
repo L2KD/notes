@@ -52,7 +52,35 @@ Add 2 files xml vào `__manifest__.py`
 
 ### Thay vì menu print trực tiếp, nhúng wizard vào (1 dạng act_window) để xác nhận hoặc thêm vài thông số trước khi in
 
-Trong folder module, tạo `wizard/product_barcode_labels_views.xml`
+Trong folder module, tạo python `models/print_qty.py`
+
+    from odoo import models, fields, api, exceptions
+
+
+    class ProductBarcodePrintQty(models.Model):
+        _name = 'mekongoo_barcode.print_qty'
+
+        barcode_print_qty = fields.Integer("Quantity to print", default=1, required=True)
+
+        @api.multi
+        def print_report(self):
+            print_qty_ids = self.env[self._name].search([('id', '!=', self.id)])
+            for print_qty_id in print_qty_ids:
+                print_qty_id.unlink()
+
+            res = self.read(['barcode_print_qty'])
+            res = res and res[0] or {}
+            res['barcode_print_qty'] = res['barcode_print_qty']
+
+            if not res['barcode_print_qty'] or res['barcode_print_qty'] <= 0:
+                raise exceptions.UserError('Please select a valid quantity')
+
+            docids = self.env.context.get('active_ids', [])
+            return self.env.ref('mekongoo_barcode.report_product_barcode_label').report_action([docids], config=False)
+
+Trong file này khai báo 1 prop là barcode_print_qty kiểu Int, 1 method print_report. Methodo này đơn giản chỉ là nhận active_ids và truyền vào report chính.
+
+tạo `wizard/product_barcode_labels_views.xml`
 
     <?xml version="1.0" encoding="UTF-8" ?>
     <odoo>
@@ -80,4 +108,4 @@ Trong folder module, tạo `wizard/product_barcode_labels_views.xml`
                     view_mode="form" target="new" view_type="form"/>
     </odoo>
 
-Trong đó tag `act_window` sẽ chịu trách nhiệm tạo 1 opt trong menu print của model `product.product`.
+Trong đó tag `act_window` sẽ chịu trách nhiệm tạo 1 opt trong menu print của model `product.product`, khi click vào sẽ tạo 1 record mới của model ở res_model (`module_name.print_qty`), kiểu là form, target new nghĩa là ở dạng modal
