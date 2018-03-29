@@ -108,7 +108,7 @@ tạo `wizard/product_barcode_labels_views.xml`
                     view_mode="form" target="new" view_type="form"/>
     </odoo>
 
-Trong đó tag `act_window` sẽ chịu trách nhiệm tạo 1 opt trong menu print của model `product.product`, khi click vào sẽ tạo 1 record mới của model ở res_model (`module_name.print_qty`), kiểu là form, target new nghĩa là ở dạng modal. Form này gồm những gì thì ở record id=view_product_barcode_label định nghĩa. Đơn giản chỉ là 1 cái field đã khai báo trong file python phía trên, và 1 nút trỏ về method print_report.
+Trong đó tag `act_window` sẽ chịu trách nhiệm tạo 1 opt trong menu print của model `product.product`, khi click vào sẽ tạo 1 record mới của model ở res_model (`module_name.print_qty`), kiểu là form, target new nghĩa là ở dạng modal. Form này gồm những gì thì ở record id=view_product_barcode_label định nghĩa. Đơn giản chỉ là 1 cái field đã khai báo trong file python phía trên, và 1 nút trỏ về method print_report. Key2 (client_print_multi) cho biết cái act_window này nó nằm trong chỗ client, menu print, khi multi select model.
 
 Trong method print đó, dòng return sẽ gọi `mekongoo_barcode.report_product_barcode_label` --> trong file report/product_report.xml đã khai báo. Chỗ này cần set menu=False để nó k hiện ra 1 lần nữa trong menu print.
 
