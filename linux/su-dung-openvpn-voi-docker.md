@@ -2,6 +2,26 @@ openvpn docker
 
 Image được sử dụng: [kylemanna/docker-openvpn](https://github.com/kylemanna/docker-openvpn)
 
+## Sử dụng docker-compose
+
+    version: '2'
+    services:
+      openvpn:
+        cap_add:
+         - NET_ADMIN
+        image: kylemanna/openvpn
+        container_name: openvpn
+        ports:
+         - "1194:1194/udp"
+        restart: always
+        volumes:
+         - ./openvpn-data/conf:/etc/openvpn
+
+Init các thứ
+
+     docker-compose run --rm openvpn ovpn_genconfig -u udp://VPN.SERVERNAME.COM
+     docker-compose run --rm openvpn ovpn_initpki
+
 ## Truy cập vào container
 
     docker run --rm -it --rm kylemanna/openvpn bash
@@ -15,6 +35,20 @@ hoặc
     docker-compose --rm openvpn ovpn_genconfig
 
 Thông thường container sẽ nhớ cấu hình cũ và thay đổi dựa trên các option cung cấp, nên không cần phải cung cấp tất cả option cùng một command.
+
+## Tạo clients
+
+Tạo clients cert
+
+    export CLIENTNAME="your_client_name"
+    # with a passphrase (recommended)
+    docker-compose run --rm openvpn easyrsa build-client-full $CLIENTNAME
+    # without a passphrase (not recommended)
+    docker-compose run --rm openvpn easyrsa build-client-full $CLIENTNAME nopass
+
+Lấy file client
+
+    docker-compose run --rm openvpn ovpn_getclient $CLIENTNAME > $CLIENTNAME.ovpn
 
 ## Cấu hình bỏ Redirect all traffic to VPN gateway
 
