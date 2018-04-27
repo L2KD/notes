@@ -13,3 +13,8 @@ route sẽ điều hết traffic vào ip 192.168.1.9/32 về cái gateway mặc 
 
 
 AES-256-CBC
+
+
+Cấu hình sử dụng OTP cho người dùng
+
+cấu hình
