@@ -81,3 +81,15 @@ Cấu hình này sẽ push cái cấu hình đó vào client mỗi khi client co
 
     -2 để xác định sử dụng OTP   
     -C để xác định ciphers sẽ sử dụng là "AES-256-CBC"
+
+    Restart server (restart container)
+
+3. Tạo client
+
+    docker-compose run --rm openvpn easyrsa build-client-full <user> nopass
+
+4. Tạo config OTP của google
+
+    docker-compose run --rm openvpn ovpn_otp_user <user>
+
+5. Xuất cấu hình user (.ovpn)
