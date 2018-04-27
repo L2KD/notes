@@ -10,3 +10,6 @@ trên conf, thêm vào
 lịnh này sẽ push cái cấu hình đó vào client mỗi khi connected
 
 route sẽ điều hết traffic vào ip 192.168.1.9/32 về cái gateway mặc định, tbd
+
+
+AES-256-CBC
