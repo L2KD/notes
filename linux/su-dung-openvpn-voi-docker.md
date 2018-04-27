@@ -94,7 +94,7 @@ Cấu hình này sẽ push cái cấu hình đó vào client mỗi khi client co
 
     Khi này container trả về link tới mã QR code, gởi cho user. User dùng app **Google Authenticator** (có thể tải về trên App Store hoặc Play Store) để scan mã QR này.
 
-    *Lưu ý, mỗi người dùng nên có một mã QR riêng.*
+    *Lưu ý về bảo mật, mỗi người dùng có một mã QR riêng.*
 
 5. Xuất cấu hình user (.ovpn), gởi cho user và user add cấu hình vào VPN client.
 
