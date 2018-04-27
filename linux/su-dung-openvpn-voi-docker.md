@@ -84,12 +84,18 @@ Cấu hình này sẽ push cái cấu hình đó vào client mỗi khi client co
 
     Restart server (restart container)
 
-3. Tạo client
+3. Tạo client cert
 
-    docker-compose run --rm openvpn easyrsa build-client-full <user> nopass
+        docker-compose run --rm openvpn easyrsa build-client-full <user> nopass
 
 4. Tạo config OTP của google
 
-    docker-compose run --rm openvpn ovpn_otp_user <user>
+        docker-compose run --rm openvpn ovpn_otp_user <user>
 
-5. Xuất cấu hình user (.ovpn)
+    Khi này container trả về link tới mã QR code, gởi cho user. User dùng app **Google Authenticator** (có thể tải về trên App Store hoặc Play Store) để scan mã QR này.
+
+    *Lưu ý, mỗi người dùng nên có một mã QR riêng.*
+
+5. Xuất cấu hình user (.ovpn), gởi cho user và user add cấu hình vào VPN client.
+
+6. Khi đăng nhập, client sẽ hỏi Username & PWD, nhập user là <user> (xem bước 3&4). Password nhận được trong ứng dụng Google Authenticator.
