@@ -99,3 +99,10 @@ Cấu hình này sẽ push cái cấu hình đó vào client mỗi khi client co
 5. Xuất cấu hình user (.ovpn), gởi cho user và user add cấu hình vào VPN client.
 
 6. Khi đăng nhập, client sẽ hỏi Username & PWD, nhập user là <user> (xem bước 3&4). Password nhận được trong ứng dụng Google Authenticator.
+
+
+---
+
+Hiện tại chưa sử dụng được một lúc cả 2 loại user:
+
+password và otp.
