@@ -110,3 +110,7 @@ password và otp.
 ---
 
 Sử dụng OpenVPN client trên Windows 10
+
+1. Tải OpenVPN GUI từ trang chủ của OpenVPN và cài đặt.
+2. Sau khi cài đặt xong, dưới màn hình sẽ có icon, chuột phải, chọn Import... Chọn file .ovpn
+3. Chọn Connect... nhập Password nếu có.
