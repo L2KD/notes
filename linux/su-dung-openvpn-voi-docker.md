@@ -106,3 +106,7 @@ Cấu hình này sẽ push cái cấu hình đó vào client mỗi khi client co
 Hiện tại chưa sử dụng được một lúc cả 2 loại user:
 
 password và otp.
+
+---
+
+Sử dụng OpenVPN client trên Windows 10
