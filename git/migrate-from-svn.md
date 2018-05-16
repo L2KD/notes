@@ -4,4 +4,4 @@ by this
 
 1. git svn clone
 by this
-    
+    git svn clone http://svn.repo --no-metadata -A /path/to/authors-transform.txt /destination/git/repo/path/
