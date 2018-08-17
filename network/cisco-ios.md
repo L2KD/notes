@@ -14,9 +14,16 @@ Go to config terminal mode
 
 Monitoring port:
 
-    en
-    config
-    term(inal) mon(nitor)
+From configuration mode, type
+
+    logging monitor info
+    end
+
+then from enable mode type
+
+    term[inal] mon[itor]
+    
+this will send console messages to your vty session
 
 turn it off
 
