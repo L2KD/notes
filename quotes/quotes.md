@@ -6,12 +6,11 @@
 
 Saint Francis of Assisi
 
----
-
 > Requirements are like water. They’re easier to build on when they’re frozen.
 
 Anonymous
 
----
+> If you can’t explain something to a six-year-old, you really don’t understand it yourself.
 
+Albert Einstein
 
