@@ -3,3 +3,13 @@
 > He who works with his hands and his head and his heart is an artist.
 
 Saint Francis of Assisi
+
+---
+
+> Requirements are like water. They’re easier to build on when they’re frozen.
+
+Anonymous
+
+---
+
+
