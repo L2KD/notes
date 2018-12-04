@@ -23,3 +23,9 @@
         */5 * * * * ~/Projects/notes/.config/auto-commit.sh
 
 Of course, this uses ~/Projects/notes as this repo location (where you've cloned it to). Your mileage may vary.
+
+---
+
+On Mac, use this crontab
+
+    */5 * * * * /bin/bash -l -c '/Users/thevinh/Projects/dotfiles/git-notes >> /Users/thevinh/log/git-notes.log 2>&1'
