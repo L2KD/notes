@@ -1,7 +1,8 @@
 # How to make this repo auto commit
 
-1. Looking in this location: `.config/` you will find an executable `auto-commit.sh`
-2. If you can't find it. Create one.
+1.  Looking in this location: `.config/` you will find an executable `auto-commit.sh`
+
+2.  If you can't find it. Create one.
 
         #!/bin/zsh
 
@@ -14,18 +15,16 @@
 
         chmod u+x .config/auto-commit.sh
 
-3. Edit your `crontab`
+3.  Edit your `crontab`
 
         crontab -e
 
-4. Enter the following to the end of your existing crontab
+4.  Enter the following to the end of your existing crontab
 
-        */5 * * * * ~/Projects/notes/.config/auto-commit.sh
+        */5 * * * * /bin/bash -l -c "~/Projects/notes/.config/auto-commit.sh >> /tmp/git-notes.log 2>&1"
 
-Of course, this uses ~/Projects/notes as this repo location (where you've cloned it to). Your mileage may vary.
+Of course, change `~/Projects/notes` as this repo location (where you've cloned it to). Your mileage may vary.
 
----
+## Worth mentioning
 
-On Mac, use this crontab
-
-    */5 * * * * /bin/bash -l -c '/Users/thevinh/Projects/dotfiles/git-notes >> /Users/thevinh/log/git-notes.log 2>&1'
+You might need to add a no-password-required ssh key to your github.com account setting to be able to make the automatically pushing works.
