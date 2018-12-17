@@ -1,6 +1,7 @@
 #!/bin/bash
 
-cd /home/thevinh/Projects/notes
+cd ~/Projects/notes
 
 git add .
 git commit -m "Auto update"
+git push
