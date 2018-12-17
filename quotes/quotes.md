@@ -17,3 +17,11 @@ Albert Einstein
 > Classes and routines are first and foremost intellectual tools for reducing complexity. If they’re not making your job simpler, they’re not doing their jobs.
 
 Code complete 2nd edition
+
+> When in doubt, use brute force.
+
+Butler Lampson
+
+> I've never met a human being who would want to read 17,000 pages of docu-mentation, and if there was, I'd kill him to get him out of the gene pool.
+
+Joseph Costello
