@@ -1,5 +1,7 @@
 # How to make this repo auto commit
 
+## Instruction
+
 1.  Looking in this location: `.config/` you will find an executable `auto-commit.sh`
 
 2.  If you can't find it. Create one.
