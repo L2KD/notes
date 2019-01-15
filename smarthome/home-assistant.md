@@ -147,3 +147,5 @@ The component will transfer all things in the HA to your Home app
 - In the log file should be a new line showing that the switch is turned off.
 
 TODO: add some condition to scene: If I head home in the evening (when the sun is set), then turn the lights on, no need to pay extra electric for the idea when returning home in the mid of the day.
+
+CHưa thể control 1 cách từ xa qua Home app được (lúc này k bắt được cái bridge - một component của HA, HomeKit component), ddns có thể xử lý được?
