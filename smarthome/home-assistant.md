@@ -1,6 +1,6 @@
 # Home assistant learning log
 
-1.  Installation
+1.  **Installation**
 
 - Download from the github repo the ready-to-be-burnt image. There are a wide range of available images.
 - Use etcher.io to burn the just downloaded image.
@@ -37,8 +37,24 @@
 - The rpi should boot up and provide an http access from http://the-rpi-ip:8123
 - This will update the hass OS (in about 20min, as the banner says)
 
-2. First-time config
+2. **First-time config**
 
 - Provide some initial user information: Fullname, username, password...
 
-- Enable
+- Enable SSH:
+
+  - Go to addons store (Hamburger > Hass.io > Add-ons store). Then look for SSH server.
+  - Install it and provide your ssh public key to the middle of the config:
+
+        {
+          "authorized_keys": [
+            "ssh-rsa adsad== your-key"
+          ],
+          "password": ""
+        }
+
+  - That would add the public key to the root user on the hassio.
+  - Then start the SSH service.
+  - Test it by `ssh root@ip`
+
+3. **Presence detection**
