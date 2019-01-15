@@ -95,3 +95,12 @@ Enable some `device_tracker` component by adding this to the end (or somewhere e
         hosts: 192.168.1.0/24
 
 Some 'random' devices will appears in the homepage. After the `device_tracker` component is enabled, it will automatically create a `known_devices.yml` file in the same location of the configuration file.
+
+5. Connect to Apple HomeKit
+
+Add the following code to the config file
+
+    # Config for HomeKit component
+    homekit:
+
+Well, there are a lot more option, those are optional though. Save it and restart the pi.
