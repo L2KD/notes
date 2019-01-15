@@ -98,9 +98,17 @@ Some 'random' devices will appears in the homepage. After the `device_tracker` c
 
 5. Connect to Apple HomeKit
 
-Add the following code to the config file
+The component will transfer all things in the HA to your Home app
 
-    # Config for HomeKit component
-    homekit:
+- Add the following code to the config file
 
-Well, there are a lot more option, those are optional though. Save it and restart the pi.
+      # Config for HomeKit component
+
+      homekit:
+
+- Well, there are a lot more option, those are optional though. Check [here](https://www.home-assistant.io/components/homekit/) for more details. Save it and restart the pi.
+
+- In the home page, there should be a HomeKit card displaying 8-digit pin code.
+
+- Open your Home app in the iDevices.
+- Add accessory. Select Home Assistant Bridge. Enter pin code.
