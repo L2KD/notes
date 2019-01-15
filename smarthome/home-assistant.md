@@ -112,3 +112,29 @@ The component will transfer all things in the HA to your Home app
 
 - Open your Home app in the iDevices.
 - Add accessory. Select Home Assistant Bridge. Enter pin code.
+
+- Everytime you add a new component in the HA, that component (or accessory) should be automatically added into the HomeKit app too.
+
+6. Switch
+
+- Add current 'virtual' switch:
+
+      # Switch component
+      switch:
+        - platform: command_line
+          switches:
+            test_sw:
+              command_on: echo `date`on >> /config/test_sw.txt
+              command_off: echo `date`off >> /config/test_sw.txt
+              friendly_name: Test switch
+
+- Restart HA
+- In homepage of HA, there should be a new card of Test switch card.
+- In the Home app, there also should be a new switch.
+- Test the switch by
+
+      tail -f config/test_sw.txt
+
+- Then turn the switch on/off several times.
+
+7. voice cmd
