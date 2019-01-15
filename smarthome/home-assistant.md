@@ -138,3 +138,9 @@ The component will transfer all things in the HA to your Home app
 - Then turn the switch on/off several times.
 
 7. voice cmd
+
+- This is interesting... and I really meant it.
+- In the Home app. Create new Scene and what you name it matters!
+- For french spearkers, I, e.g, named it "Je m'en vais", adding my test switch above with the off position. Save the things.
+- tail -f /config/test_sw.txt
+- Open siri then says: Je m'en vais.
