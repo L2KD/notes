@@ -144,3 +144,6 @@ The component will transfer all things in the HA to your Home app
 - For french spearkers, I, e.g, named it "Je m'en vais", adding my test switch above with the off position. Save the things.
 - tail -f /config/test_sw.txt
 - Open siri then says: Je m'en vais.
+- In the log file should be a new line showing that the switch is turned off.
+
+TODO: add some condition to scene: If I head home in the evening (when the sun is set), then turn the lights on, no need to pay extra electric for the idea when returning home in the mid of the day.
