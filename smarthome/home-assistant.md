@@ -76,6 +76,17 @@ After editing the config, the hass os must be restart for enabling the configura
 
 4. **Presence detection**
 
+Declare some zone:
+
+configuration.yml
+
+    # Declaration of some zones
+    zone:
+      - name: 402
+        latitude: 10.354004
+        longitude: 106.399291
+        icon: mdi:home
+
 Enable some `device_tracker` component by adding this to the end (or somewhere else) of the `configuration.yml`
 
     # Presence detection component
