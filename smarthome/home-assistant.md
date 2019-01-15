@@ -56,5 +56,31 @@
   - That would add the public key to the root user on the hassio.
   - Then start the SSH service.
   - Test it by `ssh root@ip`
+  - After successfully connecting to the hassio, cd to `/config`, this directory contains all the configuration files of the hassos.
 
-3. **Presence detection**
+3. **configuration.yml**
+
+The file is structure like:
+
+    component_type:
+      - some options
+
+Eg
+
+    device_tracker
+      - platform: nmap...
+
+Check the file syntax by Hamburger > Config > Check config
+
+After editing the config, the hass os must be restart for enabling the configuration.
+
+4. **Presence detection**
+
+Enable some `device_tracker` component by adding this to the end (or somewhere else) of the `configuration.yml`
+
+    # Presence detection component
+    device_tracker:
+      - platform: nmap_tracker
+        hosts: 192.168.1.0/24
+
+Some 'random' devices will appears in the homepage. After the `device_tracker` component is enabled, it will automatically create a `known_devices.yml` file in the same location of the configuration file.
