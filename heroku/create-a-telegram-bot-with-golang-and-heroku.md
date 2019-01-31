@@ -166,3 +166,24 @@ _Mọi xử lý sẽ nằm ở phía chúng ta (telegram không hỗ trợ về 
         heroku ps:kill process_id.process_name
 
     Kill process
+
+---
+
+## Trick
+
+Đối với Golang (hiện tại là ver2), một project phải nằm bên trong folder src. Vì khi chạy `go build` hoặc `go install`, go sẽ tìm trong src và (pkg, vendor, ...) để compile. Trick sau đây sẽ không bắt buộc phải add tay các deps (go get ...) mà sử dụng lại phần vendor của Godeps.
+
+Export var GOPATH về chỗ `/home/thevinh/Projects/Golang`
+
+Bố trí theo tree sau
+
+    /home/thevinh/Projects/Golang
+    ├── bin
+    └── src
+        └── gsis-telegram-bot
+            ├── Godeps
+            └── vendor
+                ├── github.com
+                └── gopkg.in
+
+Khi này, bên trong `gsis-telegram-bot`, chạy lệnh go install thì mọi thứ sẽ được compile ra thư mục `bin`
