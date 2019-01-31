@@ -152,9 +152,35 @@ CHưa thể control 1 cách từ xa qua Home app được (lúc này k bắt đ�
 
 ---
 
+Cách dùng shell_command
+
+Không dùng trực tiếp mpv được mà phải dùng thông qua 1 file shell, sau đó `/bin/sh file_shell.sh`
+
+---
+
 ## Hassbian
 
-Khi cài hassbian xong, có thể phải tùy chỉnh 1 số thứ như
+Khi cài hassbian xong, OS sẽ tự install cái home assistant, nhưng có thể phải tùy chỉnh 1 số thứ như
 
 1. Static IP (`/etc/dhcpcd.conf`)
 2. DNS
+
+Vì k có DNS nên phần install lúc đầu sẽ bị fail. Sau đó phải install lại phần này bằng lệnh
+
+    sudo hassbian-config install homêassistant
+
+Xem danh sách bằng cách
+
+    sudo hassbian-config show
+
+Để xài HomeKit phải cài thêm
+
+    sudo journalctl -fu home-assistant@homeassistant.service
+
+Xem log của service tại
+
+    sudo journalctl -fu home-assistant@homeassistant.service
+
+## mpv
+
+Để xài được `mpv`, user phải được add vào group `audio` (raspberry pi 3 & raspbian)
