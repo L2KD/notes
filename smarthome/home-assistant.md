@@ -184,3 +184,13 @@ Xem log của service tại
 ## mpv
 
 Để xài được `mpv`, user phải được add vào group `audio` (raspberry pi 3 & raspbian)
+
+## Radio (streaming), mpd (media player daemon)
+
+Đầu tiên, phải tạo 1 cái select box chứa các đài
+
+File `configuration.yaml`:
+
+Cài mpd vào
+
+Sau đó trong `configuration.xml`, thêm:
