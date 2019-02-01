@@ -1,5 +1,11 @@
 # Home assistant learning log
 
+## Hass.io
+
+Hass.io là image được build cho RPI nhờ vào resin.io, tức là sau khi burn sẽ connect vào một container được chạy qua docker của RPI.
+
+Hassbian là OS raspbian có cài home assistant vào.
+
 1.  **Installation**
 
 - Download from the github repo the ready-to-be-burnt image. There are a wide range of available images.
