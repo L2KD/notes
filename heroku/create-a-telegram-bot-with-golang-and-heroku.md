@@ -187,3 +187,16 @@ Bố trí theo tree sau
                 └── gopkg.in
 
 Khi này, bên trong `gsis-telegram-bot`, chạy lệnh go install thì mọi thứ sẽ được compile ra thư mục `bin`
+
+Nếu muốn chạy nhiều bot 1 lúc thì xài go kiểu
+
+    func a(){
+        // Everything this bot does
+        this1BOt.start()
+    }
+
+
+    func a(){
+        // Everything this bot does
+        this1BOt.start()
+    }
