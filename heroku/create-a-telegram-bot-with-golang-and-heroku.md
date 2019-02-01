@@ -191,12 +191,22 @@ Khi này, bên trong `gsis-telegram-bot`, chạy lệnh go install thì mọi th
 Nếu muốn chạy nhiều bot 1 lúc thì xài go kiểu
 
     func a(){
-        // Everything this bot does
+        // Everything this bot 1 does
         this1BOt.start()
     }
 
-
-    func a(){
-        // Everything this bot does
-        this1BOt.start()
+    func b(){
+        // Everything this bot 2 does
+        this2BOt.start()
     }
+
+    func main() {
+        go a()
+        go b()
+
+        // Everything this bot 3 does
+        this3BOt.start()
+
+    }
+
+Hiện tại phải nhét code của con bot cuối vào `main()`. Nó hơi bần
