@@ -187,10 +187,55 @@ Xem log của service tại
 
 ## Radio (streaming), mpd (media player daemon)
 
-Đầu tiên, phải tạo 1 cái select box chứa các đài
+Cài gói `mpd` vào.
+
+Sau đó, phải tạo 1 cái select box chứa các đài, và khai báo một `media_player`:
 
 File `configuration.yaml`:
 
-Cài mpd vào
+    # Input select
+    input_select:
+      radio_station:
+        name: Radio Station
+        options:
+          - None
+          - VOV1
+          - VOV3
+        initial: None
+        icon: mdi:radio
 
-Sau đó trong `configuration.xml`, thêm:
+    # Media player
+    media_player:
+      - platform: mpd
+        host: localhost
+
+Lúc này sẽ xuất hiện 1 cái select box trong dashboard. Để lấy event (triggered) khi chọn option của select, phải thêm vào 1 automation bắt khi chọn cái state của `input_select` đó:
+
+File `automation.yaml`:
+
+    - id: '3'
+      alias: Stop Streaming Radio
+      trigger:
+        platform: state
+        entity_id: input_select.radio_station
+        to: "None"
+      action:
+        service: media_player.turn_off
+
+    - id: '4'
+      alias: Stream Radio - Template
+      trigger:
+        - platform: state
+          entity_id: input_select.radio_station
+      action:
+        - service: media_player.play_media
+          data_template:
+            media_content_id: >
+                {% if is_state("input_select.radio_station", "VOV1") %}
+                  https://5a6872aace0ce.streamlock.net/nghevov1/vov1.stream_aac/chunklist_w968906280.m3u8
+                {%-elif is_state("input_select.radio_station", "VOV3") %}
+                  https://5a6872aace0ce.streamlock.net/nghevov3/vov3.stream_aac/playlist.m3u8
+                {% else %}
+                  none
+                {% endif %}
+            media_content_type: music
