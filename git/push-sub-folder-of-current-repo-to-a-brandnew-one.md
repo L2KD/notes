@@ -51,4 +51,4 @@ Ngay tại root của working copy
 
 Lệnh trên sẽ push cái subtree `LIS/pwa-his/jasper-service` lên một remote ở chỗ `ssh://git@qlda.vnpttiengiang.vn:7999/vnpthis/jasper-service.git` trong nhánh `master`.
 
-Kiểm tra lại bằng cách vào repo mới và thấy
+Kiểm tra lại bằng cách vào repo mới và thấy chỉ có sub folder được chuyển tới.
