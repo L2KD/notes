@@ -147,6 +147,8 @@ _Mọi xử lý sẽ nằm ở phía chúng ta (telegram không hỗ trợ về 
 
     Ở cái chỗ chạy được go install (`src/main`), chạy `godeps save`. Nó sẽ tự sao chép (hay clone?) từ cái dependencies bên ngoài `main.go` vào một cái folder kêu là `vendor`, và đồng thời tạo một folder `Godeps` cùng với 1 vài config kiếu `config.json`. Lúc này nên exclude hoặc delete luôn đống dependency được tạo ra bởi lệnh `go get`. Thử lại thì k có đống đó vẫn `go install` được (thanks to Godeps).
 
+    Nếu không chạy godep được, zsh báo lỗi command not found thì fix theo https://github.com/tools/godep/issues/373
+
     Lúc này thử push lại lên heroku và boom. Mọi thứ đã được deploy.
 
     Một cái directory của heroku golang là (`GoogleSisBot/src/main`)
@@ -210,9 +212,11 @@ Nếu muốn chạy nhiều bot 1 lúc thì xài go kiểu
         go a()
         go b()
 
-        // Everything this bot 3 does
-        this3BOt.start()
-
+        select {}
     }
 
-Hiện tại phải nhét code của con bot cuối vào `main()`. Nó hơi bần
+Để giữ main process luôn chạy thì thêm
+
+    select { }
+
+vào cuối.
