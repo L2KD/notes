@@ -14,6 +14,12 @@ _Mọi xử lý sẽ nằm ở phía chúng ta (telegram không hỗ trợ về 
 
     Telegram Bot có các thể loại như: keyboards, inline, etc. Chỗ này xem official doc chắc ăn là sẽ rõ ràng hơn nói ra ở đây.
 
+    Set inline cho bot: Từ BotFather, gõ
+
+        /setinline
+
+    và nhập các phần cần thiết để bật chế độ inline cho bot.
+
 2.  Sau đó ta sẽ bắt đầu phần trí não của con bot.
 
     Thật ra thì trí não con bot có thể viết với bất kì ngôn ngữ gì, vì chủ yếu nó liên lạc với nhau qua API (và với cái token được cấp). Ở đây mình chọn Golang, vì đơn giản là 1) nó đang hot (dù được 1 thời gian rồi), 2) heroku nó hỗ trợ golang.
