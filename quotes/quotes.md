@@ -25,3 +25,11 @@ Butler Lampson
 > I've never met a human being who would want to read 17,000 pages of docu-mentation, and if there was, I'd kill him to get him out of the gene pool.
 
 Joseph Costello
+
+> Em như kẹo sewingum, rất ngọt ngào và thơm ngon lúc ban đầu nhưng càng ngày thì càng trở nên cứng trắng bệt và làm người ta chỉ muốn phun ra, gói lại và tống vào thùng rác.
+
+Sheldon Cooper
+
+> Có thể anh xuất sắc trong nhiều việc, nhưng ngừng nhớ về em không nằm trong số đó.
+
+Sheldon Cooper
