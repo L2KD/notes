@@ -33,3 +33,8 @@ Sheldon Cooper
 > Có thể anh xuất sắc trong nhiều việc, nhưng ngừng nhớ về em không nằm trong số đó.
 
 Sheldon Cooper
+
+> Con người anh vốn cứng nhắc còn em là nước sả vải của đời anh.
+
+Sheldon Cooper
+
