@@ -38,3 +38,8 @@ Sheldon Cooper
 
 Sheldon Cooper
 
+> Tôi ko được tổ chức sinh nhật vì tôi sinh ra là thành công của mẹ chứ ko phải tôi.
+
+Leonard Hofstadter
+
+
