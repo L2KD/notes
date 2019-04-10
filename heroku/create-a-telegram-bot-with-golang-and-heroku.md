@@ -220,3 +220,18 @@ Nếu muốn chạy nhiều bot 1 lúc thì xài go kiểu
     select { }
 
 vào cuối.
+
+---
+
+## Để post vào một channel
+
+Dùng `Send`.
+
+	channel, channelGetErr := b.ChatByID("chat_id_here_in_string") // Chỗ này không truyền username vào được, mặc dù Official Doc bảo là được...
+	b.Send(channel, "This test message")
+
+Để lấy được ID của chat (a bit tricky)
+
+Forward một message của chat cần lấy id vào @userinfobot
+
+
