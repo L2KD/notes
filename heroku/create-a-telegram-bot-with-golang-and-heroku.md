@@ -234,4 +234,7 @@ Dùng `Send`.
 
 Forward một message của chat cần lấy id vào @userinfobot
 
+Bot đó phải nhận được tin nhắn mới có thể Send được (tránh spam).
+
+---
 
