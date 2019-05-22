@@ -14,35 +14,35 @@ Khoogn dùng wrapper: `mvn` hoặc `gradle`
 
 ## Build
 
-	gradle -Pprod bootJar 
+gradle -Pprod bootJar
 
 Lệnh trên sẽ đóng gói app vào 1 fat jar (một file jar chứa tất cả deps cần thiết để có thể chạy ngay bằng lệnh `java`), sử dụng profile Prod (profile mặc định khi run). Nếu muốn nhiều profile thì ngăn cách bằng dấu `,`. Vd: `gradle -Pprod,swagger bootJar`.
 
-	mvn package
+      mvn package
 
 Tương tự vậy, lệnh trên sẽ đóng gói lại thành jar hay war thì tùy vào file pom.xml định nghĩa.
 
-	mvn install 
+mvn install
 
 Lệnh trên sẽ package sau đó copy file đã được đóng gói vào thư mục `.m2` của user.
 
 ## Run
 
-Sau khi có được file jar, nếu build bằng gradle thì sẽ nằm trong `build/libs`, còn mvn thì `target`. 
+Sau khi có được file jar, nếu build bằng gradle thì sẽ nằm trong `build/libs`, còn mvn thì `target`.
 
 Chạy bằng lệnh:
 
-	java -jar build/libs/some-app.0.0.1-SNAPSHOT.jar
+      java -jar build/libs/some-app.0.0.1-SNAPSHOT.jar
 
-Lệnh tren sẽ chạy file jar một cách trực tiếp. 
+Lệnh tren sẽ chạy file jar một cách trực tiếp.
 
 Nếu muốn truyền profile vào thì dùng:
 
-	java -Dspring.profiles.active=prod,no-liquibase,swagger -jar some-app.jar
+      java -Dspring.profiles.active=prod,no-liquibase,swagger -jar some-app.jar
 
 Có thể chạy trực tiếp executable jar
 
-	./some-app.jar
+      ./some-app.jar
 
 Lúc này nếu muốn profile phải truyền vào như args.
 
@@ -65,20 +65,20 @@ Có nhiều cách để chứng thực:
 
 Ví dụ hiện tại ta đang có 1 service, cần protect các endpoint trên service này. Khi này service (our app) được xem như là một Resource Server, tạo mọt configuration như sau:
 
-	@Configuration
+    @Configuration
+
 Ví dụ hiện tại ta đang có 1 service, cần protect các endpoint trên service này. Khi này service (our app) được xem như là một Resource Server, tạo mọt configuration như sau:
 
-
-	@Configuration
-  @EnableResourceServer
-		protected static class ResourceServerConfiguration extends ResourceServerConfigurerAdapter {
-			@Override
-			public void configure(HttpSecurity http) throws Exception {
-				http
-					.antMatcher("/me")
-					.authorizeRequests().anyRequest().authenticated();
-			}
-		}
+    @Configuration
+    @EnableResourceServer
+    protected static class ResourceServerConfiguration extends ResourceServerConfigurerAdapter {
+      @Override
+      public void configure(HttpSecurity http) throws Exception {
+        http
+          .antMatcher("/me")
+          .authorizeRequests().anyRequest().authenticated();
+      }
+    }
 
 @EnableAuthorizationServer để cấu hình app hiện tại thành một OAuth2 server (thay vì xài 1 bên khác như FB hay google).
 
@@ -92,11 +92,18 @@ Phân quyền user bằng Spring Sec (ROLE & AUTHORITY)
 
 Flow:
 
-	1. Đầu tiên phải request token (thường là /oauth/token_), sau đó dùng token đó, hoặc là nhét vào url hoặc là nhét vào header của request.
-	2. Token này có expired time.
-	3. Có 2 loại là token & reload token.
-	4. Grant type là `password` hoặc `client___credentials`.
-	5. Nếu grant type password thì lúc request token, truyền vào 
+    1. Authentication Client phải request token (thường là /oauth/token_), sau đó dùng token đó, hoặc là nhét vào url hoặc là nhét vào header của request.
+    2. Token này có expired time.
+    3. Có 2 loại là token & reload token.
+    4. Grant type là `password` hoặc `client___credentials`.
+    5. Nếu grant type password thì lúc request token, truyền vào username/pwd & client id & secret. Nếu là client_credentials thì nhập vào client id và secret.
 
+Để xác định client nào có ROLE gì, custom trong `configure()` của `AuthorizationServerConfigurerAdapter`
 
+Ví dụ:
 
+    clients.inMemory().withClient(x).secret(y).authorities("ROLE_ADMIN");
+
+Trong đó x là client id, y là client secret, 2 cái này khai báo trong file `application.yml`.
+
+Sau đó, auth client mới dùng id & secret này để xin token (từ `/oauth/token`).
