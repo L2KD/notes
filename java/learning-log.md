@@ -18,9 +18,9 @@ Khoogn dùng wrapper: `mvn` hoặc `gradle`
 
 Lệnh trên sẽ đóng gói app vào 1 fat jar (một file jar chứa tất cả deps cần thiết để có thể chạy ngay bằng lệnh `java`), sử dụng profile Prod (profile mặc định khi run). Nếu muốn nhiều profile thì ngăn cách bằng dấu `,`. Vd: `gradle -Pprod,swagger bootJar`.
 
-	mvn clean package
+	mvn package
 
-Tương tự vậy, lệnh trên sẽ clean sau đó đóng gói lại thành jar hay war thì tùy vào file pom.xml định nghĩa.
+Tương tự vậy, lệnh trên sẽ đóng gói lại thành jar hay war thì tùy vào file pom.xml định nghĩa.
 
 	mvn install 
 
