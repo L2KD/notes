@@ -98,7 +98,7 @@ Flow:
     4. Grant type là `password` hoặc `client___credentials`.
     5. Nếu grant type password thì lúc request token, truyền vào username/pwd & client id & secret. Nếu là client_credentials thì nhập vào client id và secret.
 
-Để xác định client nào có ROLE gì, custom trong `configure()` của `AuthorizationServerConfigurerAdapter`
+\* Để xác định client nào có ROLE gì, custom trong `configure()` của `AuthorizationServerConfigurerAdapter`
 
 Ví dụ:
 
@@ -106,4 +106,12 @@ Ví dụ:
 
 Trong đó x là client id, y là client secret, 2 cái này khai báo trong file `application.yml`.
 
-Sau đó, auth client mới dùng id & secret này để xin token (từ `/oauth/token`).
+Sau đó, auth client mới dùng id & secret này để xin token (từ `/oauth/token`). Thường thì nó nằm config trong `oauth2.web-client-configuration`.
+
+\* Về phía service, để protect 1 resource endpoint. Custom lại hàm `configure()` của `ResourceServerConfigurerAdapter`.
+
+Ví dụ:
+
+    http.authorizeRequests().antMatchers("/api/**").hasAuthority(AuthoritiesConstants.ADMIN)
+
+Như vậy tất cả endpoint /api/\*\* đều phải có Authority là ADMIN mới có thể truy cập được.
