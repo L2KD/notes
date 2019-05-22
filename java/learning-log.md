@@ -83,3 +83,20 @@ Ví dụ hiện tại ta đang có 1 service, cần protect các endpoint trên 
 @EnableAuthorizationServer để cấu hình app hiện tại thành một OAuth2 server (thay vì xài 1 bên khác như FB hay google).
 
 @EnableResourceServer để cấu hình app hiện tại như một ResourceServer, bên trong đó có các resource endpoint, có thể được bảo vệ (auth required)
+
+---
+
+Phân quyền user bằng Spring Sec (ROLE & AUTHORITY)
+
+Đầu tiên phải hiểu về Oauth2 (AuthenticationServer, ResourceServer)
+
+Flow:
+
+	1. Đầu tiên phải request token (thường là /oauth/token_), sau đó dùng token đó, hoặc là nhét vào url hoặc là nhét vào header của request.
+	2. Token này có expired time.
+	3. Có 2 loại là token & reload token.
+	4. Grant type là `password` hoặc `client___credentials`.
+	5. Nếu grant type password thì lúc request token, truyền vào 
+
+
+
