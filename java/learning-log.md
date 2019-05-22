@@ -95,7 +95,7 @@ Flow:
     1. Authentication Client phải request token (thường là /oauth/token_), sau đó dùng token đó, hoặc là nhét vào url hoặc là nhét vào header của request.
     2. Token này có expired time.
     3. Có 2 loại là token & reload token.
-    4. Grant type là `password` hoặc `client___credentials`.
+    4. Grant type là `password` hoặc `client_credentials`.
     5. Nếu grant type password thì lúc request token, truyền vào username/pwd & client id & secret. Nếu là client_credentials thì nhập vào client id và secret.
 
 \* Để xác định client nào có ROLE gì, custom trong `configure()` của `AuthorizationServerConfigurerAdapter`
