@@ -1,3 +1,5 @@
+# Dùng gradle hoặc maven để build và run app
+
 Gradle hay Maven là dep management và build tool cho các ngôn ngữ lập trình, trong đó có java.
 
 Maven sử dụng `pom.xml` để cấu hình, còn Gradle thì dùng `build.gradle`
@@ -44,4 +46,11 @@ Có thể chạy trực tiếp executable jar
 
 Lúc này nếu muốn profile phải truyền vào như args.
 
+# war và jar
+
+Jar được sử dụng như một executable standalone binary (chạy với `java` hoặc chạy 1 mình.
+
+War cũng có thể dùng như executable binary, nhưng có thể lựa chọn khác là sử dụng bên trong 1 web container (vd `glassfish`).
+
+Vì vậy khi deploy, có thể chạy `java -jar app.jar` bên trong đó có sẵn web service (nếu đang làm spring boot) (dùng war hoặc jar), hoặc deploy app bên trong tomcat/glassfish (dùng war)
 
