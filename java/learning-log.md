@@ -79,3 +79,7 @@ Ví dụ hiện tại ta đang có 1 service, cần protect các endpoint trên 
 					.authorizeRequests().anyRequest().authenticated();
 			}
 		}
+
+@EnableAuthorizationServer để cấu hình app hiện tại thành một OAuth2 server (thay vì xài 1 bên khác như FB hay google).
+
+@EnableResourceServer để cấu hình app hiện tại như một ResourceServer, bên trong đó có các resource endpoint, có thể được bảo vệ (auth required)
