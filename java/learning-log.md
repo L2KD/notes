@@ -54,3 +54,13 @@ War cũng có thể dùng như executable binary, nhưng có thể lựa chọn 
 
 Vì vậy khi deploy, có thể chạy `java -jar app.jar` bên trong đó có sẵn web service (nếu đang làm spring boot) (dùng war hoặc jar), hoặc deploy app bên trong tomcat/glassfish (dùng war)
 
+# Spring Framework Security OAuth2
+
+Để xử lý đăng nhập (chứng thực) người dùng.
+
+Có nhiều cách để chứng thực:
+
+- `@EnableOAuth2Sso`: Chứng thực nhờ vào 1 Authentication Server của bên khác (VD Facebook, Google).
+- `auth-server`: Tự dùng Auth server, có thể tự cấp token.
+
+
