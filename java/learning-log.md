@@ -63,4 +63,19 @@ Có nhiều cách để chứng thực:
 - `@EnableOAuth2Sso`: Chứng thực nhờ vào 1 Authentication Server của bên khác (VD Facebook, Google).
 - `auth-server`: Tự dùng Auth server, có thể tự cấp token.
 
+Ví dụ hiện tại ta đang có 1 service, cần protect các endpoint trên service này. Khi này service (our app) được xem như là một Resource Server, tạo mọt configuration như sau:
 
+	@Configuration
+Ví dụ hiện tại ta đang có 1 service, cần protect các endpoint trên service này. Khi này service (our app) được xem như là một Resource Server, tạo mọt configuration như sau:
+
+
+	@Configuration
+  @EnableResourceServer
+		protected static class ResourceServerConfiguration extends ResourceServerConfigurerAdapter {
+			@Override
+			public void configure(HttpSecurity http) throws Exception {
+				http
+					.antMatcher("/me")
+					.authorizeRequests().anyRequest().authenticated();
+			}
+		}
