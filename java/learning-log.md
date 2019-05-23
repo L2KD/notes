@@ -114,4 +114,4 @@ Ví dụ:
 
     http.authorizeRequests().antMatchers("/api/**").hasAuthority(AuthoritiesConstants.ADMIN)
 
-Như vậy tất cả endpoint /api/\*\* đều phải có Authority là ADMIN mới có thể truy cập được.
+Như vậy tất cả endpoint `/api/**` đều phải có Authority là ADMIN mới có thể truy cập được.
