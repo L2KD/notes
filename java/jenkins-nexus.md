@@ -144,8 +144,29 @@ File `pom.xml`
 
 Để cấu hình cho gradle có thể build và push vào nexus, làm như sau:
 
-- File `build.gradle`
+File `build.gradle`
 
-      plugins {
-        id 'maven-publish'
-      }
+    plugins {
+      id 'maven-publish'
+    }
+
+    uploadArchives {
+        repositories {
+            mavenDeployer {
+                repository(url: "https://crelease.devops.x.vn/repository/IT.eHEALTH.Maven.MS-Hosted/") {
+                    authentication(userName: "x", password: "x")
+                }
+                pom.version = project.version
+                pom.artifactId = "emr-service"
+                pom.groupId = project.group
+            }
+        }
+    }
+
+Sau đó chạy
+
+    gradle upload
+
+Hoặc để tránh lộ credentials thì nhét nó vào Prop:
+
+    authentication(userName: getProperty('user'), password: getProperty('password'))
