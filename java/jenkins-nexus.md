@@ -1,3 +1,5 @@
+## Jenkins
+
 Jenkins cơ bản là 1 cái tool hỗ trợ CI thôi. Theo flow sau là 1 trong các cách để áp dụng CI vào project.
 
 Tạo 1 cái prjject trong Jenkins kiểu multibranch (cho phép build ở nhiều branch), miễn sau trong đó có file `Jenkinsfile` (cái này cũng có thể cấu hình được). File này thường sẽ nằm ở root-dir của proj.
@@ -42,3 +44,17 @@ Stages là các giai đoạn trong cái pipeline này. Mình có thể custom t�
 Mỗi stage có nhiều step là các bước trong giai đoạn hiện tại. Ds các bước có thể tham khảo ở jenkinsfile syntax hoặc official doc của jenkins.
 
 VD ở trên step `dir` là chuyển vào thư mục con, sau đó chạy command `mvn -Pprod verify`
+
+Vài chú ý:
+
+- Jenkins của cty hiện đang có constraint là đặt tên project phải theo 1 quy tắc mới có thể tạo được, mặc dù phần báo lỗi của công đoạn tạo project về cơ bản mà nói thì không có liên quan gì tới cái constraint... So, lỗi của cty hay lỗi của jenkins?
+- Hiện tại không có phân quyền truy cập vào node. VD User a thuộc nhóm 1 có thể truy cập vào cái node của nhóm 69. Giành queue với nhóm người ta. Chắc chỉ có cách là phân quyền bằng 1 vài tin nhắn hăm dọa và cầm búa theo nếu mấy tin nhắn đó trở nên vô dụng.
+
+---
+
+## Nexus Sonatype
+
+Nexus Sonatype (sau đây gọi vắn tắt là nexus), là 1 công cụ, có thể làm:
+
+1. Proxy cho các repo (vd maven)...
+2. Hosted --> Lưu các artifact nội bộ đã được package nhưng không muốn publish publicly.
