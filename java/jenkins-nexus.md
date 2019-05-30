@@ -213,3 +213,17 @@ File `build.gradle`:
 Sau đó chạy
 
     gradle publish
+
+Để tránh leek credentials:
+
+    def nexusUsername = getProperty('user')
+    def nexusPwd = getProperty('password')
+
+    credentials {
+        username "${nexusUsername}"
+        password "${nexusPwd}"
+    }
+
+Chạy
+
+    gradle publish -Puser=x -Ppassword=x
