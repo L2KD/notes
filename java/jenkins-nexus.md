@@ -174,3 +174,42 @@ Hoặc để tránh lộ credentials thì nhét nó vào Prop:
 Chạy
 
     gradle upload -Puser=x -Ppassword=x
+
+Vấn đề: `upload` bên trên sẽ up file war lên repo nexus (file được uploaded có dạng `package-0.1.1-RELEASE-original.war`), thiệt là không biết cấu hình lại jar như thế nào.
+
+Đổi thành:
+
+File `build.gradle`:
+
+    def repoUrl = "https://repo/"
+
+    publishing {
+        repositories {
+            maven {
+                credentials {
+                    username "x"
+                    password "x"
+                }
+                url "${repoUrl}"
+            }
+        }
+    }
+
+    publishing {
+        publications {
+            maven(MavenPublication) {
+                groupId project.group
+                artifactId 'x'
+                version project.version
+
+                artifact "build/libs/x-${project.version}.jar"
+                pom.withXml {
+                    def dependencies = asNode().appendNode('dependencies')
+                }
+            }
+        }
+    }
+
+Sau đó chạy
+
+    gradle publish
