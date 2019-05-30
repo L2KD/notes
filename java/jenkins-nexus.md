@@ -170,3 +170,7 @@ Sau đó chạy
 Hoặc để tránh lộ credentials thì nhét nó vào Prop:
 
     authentication(userName: getProperty('user'), password: getProperty('password'))
+
+Chạy
+
+    gradle upload -Puser=x -Ppassword=x
