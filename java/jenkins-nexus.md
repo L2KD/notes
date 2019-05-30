@@ -68,6 +68,38 @@ Trong nexus, phải tạo repo theo 1 trong các loại kể trên. Mỗi repo l
 
 ### Cấu hình maven push vào nexus
 
-File pom.xml
+File `pom.xml`
 
-- Đầu tiên là phải set project name và artifactId giống nhau (có thể gây lỗi 400)
+- Đầu tiên là phải set project name và artifactId giống nhau (có thể gây lỗi 400).
+- Nếu repo chỉ chấp nhận `RELEASE`, thì các file jar có `SNAPSHOT` sẽ bị lỗi 401.
+- Cấu hình repo như sau
+
+      <distributionManagement>
+          <snapshotRepository>
+              <id>IT.eHEALTH.Maven.MS-Hosted-snapshots</id>
+              <url>https://crelease.devops.x.vn/repository/IT.eHEALTH.Maven.MS-Hosted/</url>
+          </snapshotRepository>
+          <repository>
+              <id>IT.eHEALTH.Maven.MS-Hosted</id>
+              <url>https://crelease.devops.x.vn/repository/IT.eHEALTH.Maven.MS-Hosted/</url>
+          </repository>
+      </distributionManagement>
+
+- Trong settings.xml (global thì ở chỗ `MAVEN_HOME/conf/settings.xml`, nếu user thì ở `USER_HOME/.m2/settings.xml`) cấu hình credentials để có thể truy cập vào repo được.
+
+      <servers>
+        <server>
+            <id>IT.eHEALTH.Maven.MS-Hosted-snapshots</id>
+            <username>user_name để đăng nhập vào nexus</username>
+            <password>x</password>
+        </server>
+        <server>
+            <id>IT.eHEALTH.Maven.MS-Hosted</id>
+            <username>user_name</username>
+            <password>x</password>
+        </server>
+      </servers>
+
+      // Trong đó id phải giống với khúc khai báo repo bên `pom.xml`
+
+-
