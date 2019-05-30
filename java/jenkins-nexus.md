@@ -124,4 +124,18 @@ chạy
 
 Hoặc có thể upload trực tiếp bằng web GUI của nexus.
 
-Known issue: Khi file fat jar được package, nếu đó là executable file thì nó sẽ được chèn vào 1 cái bash script (có đoạn mào đầu là `#!/bin/bash`, sau đó thực ra là cái script nó sẽ run file jar, cứ mở file jar đó lên bằng 1 cái editor sẽ thấy). File executable jar này nếu đem push hoặc upload manually sẽ bị lỗi 400
+Known issue: Khi file fat jar được package, nếu đó là executable file thì nó sẽ được chèn vào 1 cái bash script (có đoạn mào đầu là `#!/bin/bash`, sau đó thực ra là cái script nó sẽ run file jar, cứ mở file jar đó lên bằng 1 cái editor sẽ thấy). File executable jar này nếu đem push hoặc upload manually sẽ bị lỗi 400, do nexus detect thấy cái content type là `sh` chứ không phải `java archive`.
+
+Như vậy phải tắt cái executable này đi, hay nói cách khác là package non-executable jar.
+
+File `pom.xml`
+
+    <build>
+      <plugins>
+        <plugin>
+          <configuration>
+            <executable>false</executable>
+          </configuration>
+        </plugin>
+      </plugins>
+    </build>
