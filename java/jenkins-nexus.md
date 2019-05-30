@@ -57,4 +57,17 @@ Vài chú ý:
 Nexus Sonatype (sau đây gọi vắn tắt là nexus), là 1 công cụ, có thể làm:
 
 1. Proxy cho các repo (vd maven)...
-2. Hosted --> Lưu các artifact nội bộ đã được package nhưng không muốn publish publicly.
+2. Hosted --> Lưu các artifact nội bộ đã được package nhưng không muốn publish publicly. (Các version có thể là SNAPSHOT hoặc RELEASE).
+3. Ngoài ra còn có docker nữa, nhưng chưa xài nên không biết nói gì.
+
+Trong nexus, phải tạo repo theo 1 trong các loại kể trên. Mỗi repo lại có các config để:
+
+- Chỉ chấp nhận release (nghĩa là không có staging)
+- Cho phép redeploy...
+- Vân vân, mây mây...
+
+### Cấu hình maven push vào nexus
+
+File pom.xml
+
+- Đầu tiên là phải set project name và artifactId giống nhau (có thể gây lỗi 400)
