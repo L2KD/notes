@@ -139,3 +139,13 @@ File `pom.xml`
         </plugin>
       </plugins>
     </build>
+
+## Vậy còn gradle thì sao
+
+Để cấu hình cho gradle có thể build và push vào nexus, làm như sau:
+
+- File `build.gradle`
+
+      plugins {
+        id 'maven-publish'
+      }
