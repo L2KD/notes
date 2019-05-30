@@ -85,6 +85,18 @@ File `pom.xml`
           </repository>
       </distributionManagement>
 
+      <build>
+        <pluginManagement>
+          <plugins>
+            <plugin>
+              <groupId>org.apache.maven.plugins</groupId>
+              <artifactId>maven-deploy-plugin</artifactId>
+              <version>3.0.0-M1</version>
+            </plugin>
+          </plugins>
+        </pluginManagement>
+      </build>
+
 - Trong settings.xml (global thì ở chỗ `MAVEN_HOME/conf/settings.xml`, nếu user thì ở `USER_HOME/.m2/settings.xml`) cấu hình credentials để có thể truy cập vào repo được.
 
       <servers>
@@ -102,4 +114,14 @@ File `pom.xml`
 
       // Trong đó id phải giống với khúc khai báo repo bên `pom.xml`
 
--
+Để push lên nexus, sau khi chạy
+
+    mvn -Pprod verify
+
+chạy
+
+    mvn deploy
+
+Hoặc có thể upload trực tiếp bằng web GUI của nexus.
+
+Known issue: Khi file fat jar được package, nếu đó là executable file thì nó sẽ được chèn vào 1 cái bash script (có đoạn mào đầu là `#!/bin/bash`, sau đó thực ra là cái script nó sẽ run file jar, cứ mở file jar đó lên bằng 1 cái editor sẽ thấy). File executable jar này nếu đem push hoặc upload manually sẽ bị lỗi 400
