@@ -56,7 +56,6 @@ Vài chú ý:
 2.  Dùng pipeline syntax generate `withCredentials`:
 
         withCredentials([usernamePassword(credentialsId: 'NEXUS_PM3', passwordVariable: 'NEXUS_PWD', usernameVariable: 'NEXUS_USER')]) {
-          sh 'set +x'
           sh 'gradle -Pprod bootJar -Puser=$NESUS_USER -Ppassword=$NESUS_PWD'
         }
 
