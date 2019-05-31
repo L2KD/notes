@@ -50,6 +50,16 @@ Vài chú ý:
 - Jenkins của cty hiện đang có constraint là đặt tên project phải theo 1 quy tắc mới có thể tạo được, mặc dù phần báo lỗi của công đoạn tạo project về cơ bản mà nói thì không có liên quan gì tới cái constraint... So, lỗi của cty hay lỗi của jenkins?
 - Hiện tại không có phân quyền truy cập vào node. VD User a thuộc nhóm 1 có thể truy cập vào cái node của nhóm 69. Giành queue với nhóm người ta. Chắc chỉ có cách là phân quyền bằng 1 vài tin nhắn hăm dọa và cầm búa theo nếu mấy tin nhắn đó trở nên vô dụng.
 
+Để chèn credentials vào một build script.
+
+1.  Add credentials kiểu username & password vào project.
+2.  Dùng pipeline syntax generate `withCredentials`:
+
+        withCredentials([usernamePassword(credentialsId: 'NEXUS_PM3', passwordVariable: 'NEXUS_PWD', usernameVariable: 'NEXUS_USER')]) {
+          sh 'set +x'
+          sh 'gradle -Pprod bootJar -Puser=$NESUS_USER -Ppassword=$NESUS_PWD'
+        }
+
 ---
 
 ## Nexus Sonatype
