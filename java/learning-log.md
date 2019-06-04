@@ -115,3 +115,33 @@ Ví dụ:
     http.authorizeRequests().antMatchers("/api/**").hasAuthority(AuthoritiesConstants.ADMIN)
 
 Như vậy tất cả endpoint `/api/**` đều phải có Authority là ADMIN mới có thể truy cập được.
+
+---
+
+## Hibernate + jpa and nativeQuery
+
+VD
+
+    @Query(value = "select distinct k.sovaovien from KhamBenhNoiTru k" +
+            " where trunc(k.ngayLap) BETWEEN trunc(:ngayVao) and trunc(:ngayRa) and k.dvtt = :dvtt")
+    List<Integer> findAllByDvtt(
+            @Param("dvtt") String dvtt,
+            @Param("ngayVao") Date ngayVao,
+            @Param("ngayRa") Date ngayRa,
+            Pageable pageable);
+
+Danh sách trả về là 1 list Integer --> OK
+
+VD2:
+
+    @Query(value = "select distinct k.SOVAOVIEN from HIS_MANAGER.NOITRU_DIEUTRI k" +
+            " where TRUNC(NGAYLAP) BETWEEN TRUNC(:ngayVao) and TRUNC(:ngayRa) and k.DVTT = :dvtt", nativeQuery = true)
+    List<Integer> findAllByDvtt(
+            @Param("dvtt") String dvtt,
+            @Param("ngayVao") Date ngayVao,
+            @Param("ngayRa") Date ngayRa,
+            Pageable pageable);
+
+Danh sách trả về là List\<BigDecimal\>
+
+Có vẻ như HQL nó sẽ parse giá trị của ResultSet về lại đúng type khai báo trong entity có dính liếu, còn nativeQuery nó sẽ tự đánh giá chuyện đó thông qua "hình hài" của resultSet. Trong vd trên, SOVAOVIEN là Number(11).
