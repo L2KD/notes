@@ -171,4 +171,47 @@ Tiếp theo, trong 1 repository, cần annotate:
     @RepositoryRestResource(path = "structureCustom", collectionResourceRel = "structure")
     public interface StructureRepo extends JpaRepository<Structure, Integer> { }
 
-Theo đó, `@RepositoryRestResource` thực ra là optional, xuất hiện để có thể remap endpoint từ cái mặc định là `/structure` (automatically set theo JpaRepo) thành `/structureCustom`
+Theo đó, `@RepositoryRestResource` thực ra là optional, xuất hiện để có thể remap endpoint từ cái mặc định là `/structure` (automatically set theo JpaRepo) thành `/structureCustom`.
+
+Ví dụ cơ bản CRUD: Theo quy ước RESTful thì các mỗi thao tác sẽ có động từ thích hợp. Ví dụ GET là lấy danh sách, hoặc nếu truyền id thì lấy chính xác theo id. POST là create. PUT là update, DELETE là ... uh, delete.
+
+VD cách create new entity:
+
+    POST http://localhost:10001/api/structure
+    Content-Type: application/json;charset=UTF-8
+
+    { "desc": "Lorem ipsum", "level": 1 }
+
+Sau request đó sẽ trả về 201 --> Created.
+
+Kiểm tra lại bằng cách GET tới đó
+
+    GET http://localhost:10001/api/structure
+
+--> Ra 1 cái structure của spring data rest hỗ trợ cả phân trang và các entity có liên quan...
+
+Trường hợp các entity có relationship với nhau thì sau:
+
+    POST http://localhost:10001/api/unit
+    Content-Type: application/json;charset=UTF-8
+
+    { "code": "K2", "desc": "Kệ số 3", "structureInfo": "http://localhost:10001/api/structure/1" }
+
+Response:
+
+    HTTP/1.1 201 Created
+    Expires: 0
+    Cache-Control: no-cache, no-store, max-age=0, must-revalidate
+    X-XSS-Protection: 1; mode=block
+    Pragma: no-cache
+    Location: http://localhost:10001/api/unit/5
+    Date: Fri, 07 Jun 2019 04:21:27 GMT
+    Connection: keep-alive
+    X-Content-Type-Options: nosniff
+    Content-Length: 0
+
+    <Response body is empty>
+
+    Response code: 201 (Created); Time: 61ms; Content length: 0 bytes
+
+Cool, right?
