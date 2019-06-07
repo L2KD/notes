@@ -154,4 +154,21 @@ Spring data rest hỗ trợ export các endpoint theo RESTful, từ các Entity 
 
 Để có thể sử dụng, add dep sau:
 
+    // Gradle
     compile group: 'org.springframework.boot', name: 'spring-boot-starter-data-rest', version: '2.1.5.RELEASE'
+
+Trong file application.xml (hoặc application.properties, tùy dự án), cấu hình base path:
+
+    spring:
+      data:
+        rest:
+          base-path: /api
+
+Như vậy, tất cả sẽ được export ra từ cái base endpoint là `/api`.
+
+Tiếp theo, trong 1 repository, cần annotate:
+
+    @RepositoryRestResource(path = "structureCustom", collectionResourceRel = "structure")
+    public interface StructureRepo extends JpaRepository<Structure, Integer> { }
+
+Theo đó, `@RepositoryRestResource` thực ra là optional, xuất hiện để có thể remap endpoint từ cái mặc định là `/structure` (automatically set theo JpaRepo) thành `/structureCustom`
