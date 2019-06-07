@@ -145,3 +145,13 @@ VD2:
 Danh sách trả về là List\<BigDecimal\>
 
 Có vẻ như HQL nó sẽ parse giá trị của ResultSet về lại đúng type khai báo trong entity có dính liếu, còn nativeQuery nó sẽ tự đánh giá chuyện đó thông qua "hình hài" của resultSet. Trong vd trên, SOVAOVIEN là Number(11).
+
+---
+
+## Spring data rest
+
+Spring data rest hỗ trợ export các endpoint theo RESTful, từ các Entity của Hibernate, kết hợp tốt với JPA.
+
+Để có thể sử dụng, add dep sau:
+
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter-data-rest', version: '2.1.5.RELEASE'
