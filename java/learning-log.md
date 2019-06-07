@@ -152,12 +152,12 @@ Có vẻ như HQL nó sẽ parse giá trị của ResultSet về lại đúng ty
 
 Spring data rest hỗ trợ export các endpoint theo RESTful, từ các Entity của Hibernate, kết hợp tốt với JPA.
 
-Để có thể sử dụng, add dep sau:
+Để có thể sử dụng, add `dep` sau:
 
     // Gradle
     compile group: 'org.springframework.boot', name: 'spring-boot-starter-data-rest', version: '2.1.5.RELEASE'
 
-Trong file application.xml (hoặc application.properties, tùy dự án), cấu hình base path:
+Trong file `application.xml` (hoặc `application.properties`, tùy dự án), cấu hình base path:
 
     spring:
       data:
@@ -182,7 +182,7 @@ VD cách create new entity:
 
     { "desc": "Lorem ipsum", "level": 1 }
 
-Sau request đó sẽ trả về 201 --> Created.
+Sau request đó sẽ trả về `201` --> `Created`.
 
 Kiểm tra lại bằng cách GET tới đó
 
@@ -190,7 +190,7 @@ Kiểm tra lại bằng cách GET tới đó
 
 --> Ra 1 cái structure của spring data rest hỗ trợ cả phân trang và các entity có liên quan...
 
-Trường hợp các entity có relationship với nhau thì sau:
+Trường hợp các entity có relationship với nhau thì sao??
 
     POST http://localhost:10001/api/unit
     Content-Type: application/json;charset=UTF-8
