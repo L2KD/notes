@@ -215,3 +215,17 @@ Response:
     Response code: 201 (Created); Time: 61ms; Content length: 0 bytes
 
 Cool, right?
+
+### Dùng `projection` để ẩn, hoặc hiện field ra output của API
+
+Mặc định, đối với Spring data rest thì những primitive valued fields mới hiện ra trong output của API. Các field có relationship thường sẽ hiện ra theo kiểu:
+
+    manager: "http://localhost/api/employee/2"
+
+thay vì
+
+    manager: {
+      "name": "John Doe",
+      "dob": "",
+      ...
+    }
