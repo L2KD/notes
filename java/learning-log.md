@@ -255,3 +255,36 @@ Cách thực hiện:
         )
 
     Như vậy, 1 cách mặc định, repo này sẽ trả về cái hiển thị theo `interface` kia.
+
+---
+
+## Self-reference
+
+Quan hệ tự thân, vd lớp Employee có 1 prop là `manager` cũng thuộc kiểu là `Employee`, cho biết người quản lý của anh B là sếp A. Ngoài ra cũng còn có 1 prop khác là `subordinates` thuộc kiểu `Set<Employee>`, cho biết các hạ cấp của sếp A là anh B, C, D...
+
+Ví dụ
+
+    @Entity
+    public class DonViLuuTru {
+        @Id
+        private Integer id;
+        @Column(name = "id_cha")
+        private Integer parentId;
+        private Integer dvtt;
+        private String kyHieu;
+        private String moTa;
+
+        @OneToMany
+        @JoinColumn(name = "id_cha")
+        private Set<DonViLuuTru> children = new HashSet<>();
+    }
+
+Trong đó, parentId chính là id cha của instance hiện tại. Entity hiện tại có quan hệ `@OneToMany` với chính nó, join qua column là `id_cha`.
+
+Để hiện 1 cách đệ quy children thì dùng `Projection` (xem phần trên)
+
+    @Projection(...)
+    public interface ABC {
+      ...;
+      Set<ABC> getChildren();
+    }
