@@ -288,3 +288,5 @@ Trong đó, parentId chính là id cha của instance hiện tại. Entity hiệ
       ...;
       Set<ABC> getChildren();
     }
+
+Quan trọng là chỗ `Set<ABC>` để projection dựng lại đàn children (thông qua getter là `getChildren()`), sau đó ép kiểu về chính cái interface hiện tại.
