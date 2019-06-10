@@ -229,3 +229,29 @@ thay vì
       "dob": "",
       ...
     }
+
+Cách thực hiện:
+
+1.  Đầu tiên viết 1 Interface kiểu:
+
+        @Projection(
+            name = "defaultEmployee",
+            types = { Employee.class }
+        )
+        public interface DefaultEmployee {
+          Integer getId();
+          String getName();
+          Employee getManager();
+        }
+
+    Trong đó có annotation `@Projection` với name là đặt lại cái tên cho dễ theo dõi (vd hiện tất cả fields, hoặc chỉ hiện password, hoặc trừ passwd ra, hoặc hiện cả vợ bé ra...), `types` thì ref về cái Class mà mình muốn xử.
+
+2.  Kế tiếp, ở repo đang extends về JpaRepo, thêm annotation sau:
+
+
+        @RepositoryRestResource(
+            ...
+            excerptProjection = DefaultEmployee.class
+        )
+
+    Như vậy, 1 cách mặc định, repo này sẽ trả về cái hiển thị theo `interface` kia.
