@@ -290,3 +290,29 @@ Trong đó, parentId chính là id cha của instance hiện tại. Entity hiệ
     }
 
 Quan trọng là chỗ `Set<ABC>` để projection dựng lại đàn children (thông qua getter là `getChildren()`), sau đó ép kiểu về chính cái interface hiện tại.
+
+---
+
+## Recursive với self-reference entity
+
+Nêu vấn đề: Bên trên đã có cấu hình các entity quan hệ với chính nó. Tuy vậy yêu cầu đặt ra là lấy được cái field custom như:
+
+    # Pseudo code
+    this.fullName = this.parent.name + this.name
+
+    # Output mong muốn:
+    Kệ 1 - Ngăn 2 - Chồng 1
+
+    Trong đó Kệ 1 là this.parent.parent.name
+    Ngăn 2 là this.parent.name
+    Chồng 1 là this.name
+
+    v.v...
+
+Như vậy, theo suy nghĩ thông thường thì mình sẽ trả về
+
+    this.name nếu như this.parentId null
+    hoặc
+    đệ quy this.name = this.parent.name + this.name
+
+Vấn đề là phải móc được cái repo vào mới getOne() được parent trong DB.
