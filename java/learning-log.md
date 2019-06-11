@@ -315,4 +315,47 @@ Như vậy, theo suy nghĩ thông thường thì mình sẽ trả về
     hoặc
     đệ quy this.name = this.parent.name + this.name
 
-Vấn đề là phải móc được cái repo vào mới getOne() được parent trong DB.
+Vấn đề là phải móc được cái repo vào mới `getOne()` được parent trong DB.
+
+Cách xử lý:
+
+Vì để code thêm các xử lý này, ta phải tạo 1 cái class & interface khác để cái main repo implement luôn về cái class này
+
+    public interface DonViLuuTruRepo extends JpaRepository<DonViLuuTru, Integer>, CustomDonViRep { ... }
+
+Trong đó `CustomDonViRep` là cái đang được đề cập tới.
+
+    public interface CustomDonViRep {
+        String getFullName(DonViLuuTru donViLuuTru, DonViLuuTruRepo donViLuuTruRepo);
+    }
+
+    public class CustomDonViRepImpl implements CustomDonViRep {
+        @Override
+        public String getFullName(DonViLuuTru donViLuuTru, DonViLuuTruRepo donViLuuTruRepo) {
+            String currentName = String.format("(%s) %s", donViLuuTru.getKyHieu(), donViLuuTru.getMoTa());
+
+            if (donViLuuTru.getParentId() == null) {
+                return currentName;
+            } else {
+                return String.format("%s - %s", this.getFullName(
+                    donViLuuTruRepo.getOne(donViLuuTru.getParentId()),
+                    donViLuuTruRepo
+                ), currentName);
+            }
+        }
+    }
+
+Projection:
+
+    @Projection(
+        name = "Projection don gian cho phan hien thi Luu tru hsba",
+        types = DonViLuuTru.class
+    )
+    public interface BasicProjectionDonViLuuTru {
+        Integer getId();
+    //    String getMoTa();
+    //    String getKyHieu();
+
+        @Value("#{@donViLuuTruRepo.getFullName(target, @donViLuuTruRepo)}")
+        String getFullDisplayName();
+    }
