@@ -434,3 +434,5 @@ Cách xử lý: (https://stackoverflow.com/questions/29376090/how-to-apply-sprin
                     .map(l -> projectionFactory.createProjection(DefaultProjectionLuuTruHsba.class, l))
                 )
             );
+
+Cấu hình theo SO chỉ
