@@ -206,10 +206,12 @@ Kiểm tra lại bằng cách GET tới đó
 
 Trường hợp các entity có relationship với nhau thì sao??
 
-    POST http://localhost:10001/api/unit
-    Content-Type: application/json;charset=UTF-8
+```
+POST http://localhost:10001/api/unit
+Content-Type: application/json;charset=UTF-8
 
-    { "code": "K2", "desc": "Kệ số 3", "structureInfo": "http://localhost:10001/api/structure/1" }
+{ "code": "K2", "desc": "Kệ số 3", "structureInfo": "http://localhost:10001/api/structure/1" }
+```
 
 Response:
 
@@ -238,35 +240,40 @@ Mặc định, đối với Spring data rest thì những primitive valued field
 
 thay vì
 
+```json
     manager: {
       "name": "John Doe",
       "dob": "",
       ...
     }
+```
 
 Cách thực hiện:
 
 1.  Đầu tiên viết 1 Interface kiểu:
 
-        @Projection(
-            name = "defaultEmployee",
-            types = { Employee.class }
-        )
-        public interface DefaultEmployee {
-          Integer getId();
-          String getName();
-          Employee getManager();
-        }
+    ```Java
+    @Projection(
+        name = "defaultEmployee",
+        types = { Employee.class }
+    )
+    public interface DefaultEmployee {
+      Integer getId();
+      String getName();
+      Employee getManager();
+    }
+    ```
 
     Trong đó có annotation `@Projection` với name là đặt lại cái tên cho dễ theo dõi (vd hiện tất cả fields, hoặc chỉ hiện password, hoặc trừ passwd ra, hoặc hiện cả vợ bé ra...), `types` thì ref về cái Class mà mình muốn xử.
 
 2.  Kế tiếp, ở repo đang extends về JpaRepo, thêm annotation sau:
 
-
-        @RepositoryRestResource(
-            ...
-            excerptProjection = DefaultEmployee.class
-        )
+    ```java
+    @RepositoryRestResource(
+        ...
+        excerptProjection = DefaultEmployee.class
+    )
+    ```
 
     Như vậy, 1 cách mặc định, repo này sẽ trả về cái hiển thị theo `interface` kia.
 
@@ -278,30 +285,34 @@ Quan hệ tự thân, vd lớp Employee có 1 prop là `manager` cũng thuộc k
 
 Ví dụ
 
-    @Entity
-    public class DonViLuuTru {
-        @Id
-        private Integer id;
-        @Column(name = "id_cha")
-        private Integer parentId;
-        private Integer dvtt;
-        private String kyHieu;
-        private String moTa;
+```java
+@Entity
+public class DonViLuuTru {
+    @Id
+    private Integer id;
+    @Column(name = "id_cha")
+    private Integer parentId;
+    private Integer dvtt;
+    private String kyHieu;
+    private String moTa;
 
-        @OneToMany
-        @JoinColumn(name = "id_cha")
-        private Set<DonViLuuTru> children = new HashSet<>();
-    }
+    @OneToMany
+    @JoinColumn(name = "id_cha")
+    private Set<DonViLuuTru> children = new HashSet<>();
+}
+```
 
 Trong đó, parentId chính là id cha của instance hiện tại. Entity hiện tại có quan hệ `@OneToMany` với chính nó, join qua column là `id_cha`.
 
 Để hiện 1 cách đệ quy children thì dùng `Projection` (xem phần trên)
 
-    @Projection(...)
-    public interface ABC {
-      ...;
-      Set<ABC> getChildren();
-    }
+```java
+@Projection(...)
+public interface ABC {
+  ...;
+  Set<ABC> getChildren();
+}
+```
 
 Quan trọng là chỗ `Set<ABC>` để projection dựng lại đàn children (thông qua getter là `getChildren()`), sau đó ép kiểu về chính cái interface hiện tại.
 
@@ -335,44 +346,50 @@ Cách xử lý:
 
 Vì để code thêm các xử lý này, ta phải tạo 1 cái class & interface khác để cái main repo implement luôn về cái class này
 
-    public interface DonViLuuTruRepo extends JpaRepository<DonViLuuTru, Integer>, CustomDonViRep { ... }
+```java
+public interface DonViLuuTruRepo extends JpaRepository<DonViLuuTru, Integer>, CustomDonViRep { ... }
+```
 
 Trong đó `CustomDonViRep` là cái đang được đề cập tới.
 
-    public interface CustomDonViRep {
-        String getFullName(DonViLuuTru donViLuuTru, DonViLuuTruRepo donViLuuTruRepo);
-    }
+```java
+public interface CustomDonViRep {
+    String getFullName(DonViLuuTru donViLuuTru, DonViLuuTruRepo donViLuuTruRepo);
+}
 
-    public class CustomDonViRepImpl implements CustomDonViRep {
-        @Override
-        public String getFullName(DonViLuuTru donViLuuTru, DonViLuuTruRepo donViLuuTruRepo) {
-            String currentName = String.format("(%s) %s", donViLuuTru.getKyHieu(), donViLuuTru.getMoTa());
+public class CustomDonViRepImpl implements CustomDonViRep {
+    @Override
+    public String getFullName(DonViLuuTru donViLuuTru, DonViLuuTruRepo donViLuuTruRepo) {
+        String currentName = String.format("(%s) %s", donViLuuTru.getKyHieu(), donViLuuTru.getMoTa());
 
-            if (donViLuuTru.getParentId() == null) {
-                return currentName;
-            } else {
-                return String.format("%s - %s", this.getFullName(
-                    donViLuuTruRepo.getOne(donViLuuTru.getParentId()),
-                    donViLuuTruRepo
-                ), currentName);
-            }
+        if (donViLuuTru.getParentId() == null) {
+            return currentName;
+        } else {
+            return String.format("%s - %s", this.getFullName(
+                donViLuuTruRepo.getOne(donViLuuTru.getParentId()),
+                donViLuuTruRepo
+            ), currentName);
         }
     }
+}
+```
 
 Projection:
 
-    @Projection(
-        name = "Projection don gian cho phan hien thi Luu tru hsba",
-        types = DonViLuuTru.class
-    )
-    public interface BasicProjectionDonViLuuTru {
-        Integer getId();
-    //    String getMoTa();
-    //    String getKyHieu();
+```java
+@Projection(
+    name = "Projection don gian cho phan hien thi Luu tru hsba",
+    types = DonViLuuTru.class
+)
+public interface BasicProjectionDonViLuuTru {
+    Integer getId();
+//    String getMoTa();
+//    String getKyHieu();
 
-        @Value("#{@donViLuuTruRepo.getFullName(target, @donViLuuTruRepo)}")
-        String getFullDisplayName();
-    }
+    @Value("#{@donViLuuTruRepo.getFullName(target, @donViLuuTruRepo)}")
+    String getFullDisplayName();
+}
+```
 
 ## Advanced search cho Spring data REST
 
@@ -413,10 +430,12 @@ Có điều `@RepositoryRestController` lại không có EntityBody.
 
 Ta phải inject `PagedResourcesAssembler` vào method để assemble resource:
 
-    @GetMapping public Object getByCriteria(@RequestParam...,
-      PagedResourcesAssembler pagedResourcesAssembler) {
-        return ResponseEntity.ok(pagedResourcesAssembler.toResource(repo).findAll(e, PageRequest.of(p, s))));
-    }
+```java
+@GetMapping public Object getByCriteria(@RequestParam...,
+  PagedResourcesAssembler pagedResourcesAssembler) {
+    return ResponseEntity.ok(pagedResourcesAssembler.toResource(repo).findAll(e, PageRequest.of(p, s))));
+}
+```
 
 Khi này, request vào endpoint:
 
@@ -424,30 +443,34 @@ Khi này, request vào endpoint:
 
 Result:
 
-    {
-    _embedded: {...},
-    _links: {
-    self: {
+```
+{
+  _embedded: {...},
+  _links: {
+  self: {
     href: "http://localhost/nhan-vien?name=NVA&sex=1"
-    }
-    },
-    page: {
+  }
+  },
+  page: {
     size: 10,
     totalElements: 1,
     totalPages: 1,
     number: 0
-    }
-    }
+  }
+}
+```
 
 **Vấn đề:** Khi này sẽ không tận dụng được `projection` để hiện thị thông tin như khi truy cập trực tiếp qua spring data rest. Do bên kia được annotation excerpt project cho repo, còn ở đây lấy instance của repo ra và gọi `findAll` thì thực ra nó trả về `Page` của type NhanVien (không có projection)
 
 Cách xử lý: (https://stackoverflow.com/questions/29376090/how-to-apply-spring-data-projections-in-a-spring-mvc-controllers/29386907#29386907)
 
-    return ResponseEntity.ok(pagedResourcesAssembler.toResource(
-                luuTruHsbaRepo.findAll(e, PageRequest.of(p, s))
-                    .map(l -> projectionFactory.createProjection(DefaultProjectionLuuTruHsba.class, l))
-                )
-            );
+```java
+return ResponseEntity.ok(pagedResourcesAssembler.toResource(
+            luuTruHsbaRepo.findAll(e, PageRequest.of(p, s))
+                .map(l -> projectionFactory.createProjection(DefaultProjectionLuuTruHsba.class, l))
+            )
+        );
+```
 
 Cấu hình theo SO chỉ
 
