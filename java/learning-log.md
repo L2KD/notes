@@ -18,7 +18,7 @@ gradle -Pprod bootJar
 
 Lệnh trên sẽ đóng gói app vào 1 fat jar (một file jar chứa tất cả deps cần thiết để có thể chạy ngay bằng lệnh `java`), sử dụng profile Prod (profile mặc định khi run). Nếu muốn nhiều profile thì ngăn cách bằng dấu `,`. Vd: `gradle -Pprod,swagger bootJar`.
 
-      mvn package
+    mvn package
 
 Tương tự vậy, lệnh trên sẽ đóng gói lại thành jar hay war thì tùy vào file pom.xml định nghĩa.
 
@@ -32,17 +32,17 @@ Sau khi có được file jar, nếu build bằng gradle thì sẽ nằm trong `
 
 Chạy bằng lệnh:
 
-      java -jar build/libs/some-app.0.0.1-SNAPSHOT.jar
+    java -jar build/libs/some-app.0.0.1-SNAPSHOT.jar
 
 Lệnh tren sẽ chạy file jar một cách trực tiếp.
 
 Nếu muốn truyền profile vào thì dùng:
 
-      java -Dspring.profiles.active=prod,no-liquibase,swagger -jar some-app.jar
+    java -Dspring.profiles.active=prod,no-liquibase,swagger -jar some-app.jar
 
 Có thể chạy trực tiếp executable jar
 
-      ./some-app.jar
+    ./some-app.jar
 
 Lúc này nếu muốn profile phải truyền vào như args.
 
@@ -69,16 +69,18 @@ Ví dụ hiện tại ta đang có 1 service, cần protect các endpoint trên 
 
 Ví dụ hiện tại ta đang có 1 service, cần protect các endpoint trên service này. Khi này service (our app) được xem như là một Resource Server, tạo mọt configuration như sau:
 
-    @Configuration
-    @EnableResourceServer
-    protected static class ResourceServerConfiguration extends ResourceServerConfigurerAdapter {
-      @Override
-      public void configure(HttpSecurity http) throws Exception {
-        http
-          .antMatcher("/me")
-          .authorizeRequests().anyRequest().authenticated();
-      }
-    }
+```Java
+@Configuration
+@EnableResourceServer
+protected static class ResourceServerConfiguration extends ResourceServerConfigurerAdapter {
+  @Override
+  public void configure(HttpSecurity http) throws Exception {
+    http
+      .antMatcher("/me")
+      .authorizeRequests().anyRequest().authenticated();
+  }
+}
+```
 
 @EnableAuthorizationServer để cấu hình app hiện tại thành một OAuth2 server (thay vì xài 1 bên khác như FB hay google).
 
@@ -122,25 +124,29 @@ Như vậy tất cả endpoint `/api/**` đều phải có Authority là ADMIN m
 
 VD
 
-    @Query(value = "select distinct k.sovaovien from KhamBenhNoiTru k" +
-            " where trunc(k.ngayLap) BETWEEN trunc(:ngayVao) and trunc(:ngayRa) and k.dvtt = :dvtt")
-    List<Integer> findAllByDvtt(
-            @Param("dvtt") String dvtt,
-            @Param("ngayVao") Date ngayVao,
-            @Param("ngayRa") Date ngayRa,
-            Pageable pageable);
+```Java
+@Query(value = "select distinct k.sovaovien from KhamBenhNoiTru k" +
+        " where trunc(k.ngayLap) BETWEEN trunc(:ngayVao) and trunc(:ngayRa) and k.dvtt = :dvtt")
+List<Integer> findAllByDvtt(
+        @Param("dvtt") String dvtt,
+        @Param("ngayVao") Date ngayVao,
+        @Param("ngayRa") Date ngayRa,
+        Pageable pageable);
+```
 
 Danh sách trả về là 1 list Integer --> OK
 
 VD2:
 
-    @Query(value = "select distinct k.SOVAOVIEN from HIS_MANAGER.NOITRU_DIEUTRI k" +
-            " where TRUNC(NGAYLAP) BETWEEN TRUNC(:ngayVao) and TRUNC(:ngayRa) and k.DVTT = :dvtt", nativeQuery = true)
-    List<Integer> findAllByDvtt(
-            @Param("dvtt") String dvtt,
-            @Param("ngayVao") Date ngayVao,
-            @Param("ngayRa") Date ngayRa,
-            Pageable pageable);
+```Java
+@Query(value = "select distinct k.SOVAOVIEN from HIS_MANAGER.NOITRU_DIEUTRI k" +
+        " where TRUNC(NGAYLAP) BETWEEN TRUNC(:ngayVao) and TRUNC(:ngayRa) and k.DVTT = :dvtt", nativeQuery = true)
+List<Integer> findAllByDvtt(
+        @Param("dvtt") String dvtt,
+        @Param("ngayVao") Date ngayVao,
+        @Param("ngayRa") Date ngayRa,
+        Pageable pageable);
+```
 
 Danh sách trả về là List\<BigDecimal\>
 
@@ -154,22 +160,28 @@ Spring data rest hỗ trợ export các endpoint theo RESTful, từ các Entity 
 
 Để có thể sử dụng, add `dep` sau:
 
-    // Gradle
-    compile group: 'org.springframework.boot', name: 'spring-boot-starter-data-rest', version: '2.1.5.RELEASE'
+```Groovy
+// Gradle
+compile group: 'org.springframework.boot', name: 'spring-boot-starter-data-rest', version: '2.1.5.RELEASE'
+```
 
 Trong file `application.xml` (hoặc `application.properties`, tùy dự án), cấu hình base path:
 
-    spring:
-      data:
-        rest:
-          base-path: /api
+```Yaml
+spring:
+  data:
+    rest:
+      base-path: /api
+```
 
 Như vậy, tất cả sẽ được export ra từ cái base endpoint là `/api`.
 
 Tiếp theo, trong 1 repository, cần annotate:
 
-    @RepositoryRestResource(path = "structureCustom", collectionResourceRel = "structure")
-    public interface StructureRepo extends JpaRepository<Structure, Integer> { }
+```Java
+@RepositoryRestResource(path = "structureCustom", collectionResourceRel = "structure")
+public interface StructureRepo extends JpaRepository<Structure, Integer> { }
+```
 
 Theo đó, `@RepositoryRestResource` thực ra là optional, xuất hiện để có thể remap endpoint từ cái mặc định là `/structure` (automatically set theo JpaRepo) thành `/structureCustom`.
 
@@ -177,10 +189,12 @@ Ví dụ cơ bản CRUD: Theo quy ước RESTful thì các mỗi thao tác sẽ 
 
 VD cách create new entity:
 
-    POST http://localhost:10001/api/structure
-    Content-Type: application/json;charset=UTF-8
+```
+POST http://localhost:10001/api/structure
+Content-Type: application/json;charset=UTF-8
 
-    { "desc": "Lorem ipsum", "level": 1 }
+{ "desc": "Lorem ipsum", "level": 1 }
+```
 
 Sau request đó sẽ trả về `201` --> `Created`.
 
