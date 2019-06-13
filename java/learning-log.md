@@ -389,4 +389,21 @@ Ví dụ:
 
 Đoạn trên sẽ lấy tất cả nhân viên có tên NVA và có giới tính là 1.
 
-Đoạn trên sẽ nằm trong controller (RepositoryRestController)
+Đoạn trên sẽ nằm trong controller, bên trong controller có autowire repo vào để chèn đoạn code trên vào trong 1 cái Mapping nào đó.
+
+Nhưng vấn đề là ta cần output theo HAL để cho nó đúng RESTful.
+
+Để output ra được HAL, ta phải annotate controller là `@RepositoryRestController`.
+
+Có điều `@RepositoryRestController` lại không có EntityBody.
+
+Ta phải inject `PagedResourcesAssembler` vào method để assemble resource:
+
+    @GetMapping public Object getByCriteria(@RequestParam...,
+      PagedResourcesAssembler pagedResourcesAssembler) {
+        return ResponseEntity.ok(pagedResourcesAssembler.toResource(repo).findAll(e, PageRequest.of(p, s))));
+    }
+
+Khi này, request vào endpoint:
+
+    http://localhost/nhan-vien?name=NVA&sex=1
