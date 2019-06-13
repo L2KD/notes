@@ -359,3 +359,7 @@ Projection:
         @Value("#{@donViLuuTruRepo.getFullName(target, @donViLuuTruRepo)}")
         String getFullDisplayName();
     }
+
+## Advanced search cho Spring data REST
+
+Thường thì Spring data rest sẽ expose cái `/search` kèm theo 1 số method mình định lại bên trong cái repo extending JpaRepo (hoặc PagingAndSort...)
