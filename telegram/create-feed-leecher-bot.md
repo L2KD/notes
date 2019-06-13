@@ -30,6 +30,6 @@ Phần body
 
 ## TODO
 
-[ ] Validate DB.
-[ ] Versioning.
-[ ] Dùng các nguồn khác không phải là RSS.
+- [ ] Validate DB.
+- [ ] Versioning.
+- [ ] Dùng các nguồn khác không phải là RSS.
