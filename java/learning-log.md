@@ -407,3 +407,20 @@ Ta phải inject `PagedResourcesAssembler` vào method để assemble resource:
 Khi này, request vào endpoint:
 
     http://localhost/nhan-vien?name=NVA&sex=1
+
+Result:
+
+    {
+    _embedded: {...},
+    _links: {
+    self: {
+    href: "http://localhost/nhan-vien?name=NVA&sex=1"
+    }
+    },
+    page: {
+    size: 10,
+    totalElements: 1,
+    totalPages: 1,
+    number: 0
+    }
+    }
