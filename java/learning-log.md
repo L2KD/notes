@@ -424,3 +424,13 @@ Result:
     number: 0
     }
     }
+
+**Vấn đề:** Khi này sẽ không tận dụng được `projection` để hiện thị thông tin như khi truy cập trực tiếp qua spring data rest. Do bên kia được annotation excerpt project cho repo, còn ở đây lấy instance của repo ra và gọi `findAll` thì thực ra nó trả về `Page` của type NhanVien (không có projection)
+
+Cách xử lý: (https://stackoverflow.com/questions/29376090/how-to-apply-spring-data-projections-in-a-spring-mvc-controllers/29386907#29386907)
+
+    return ResponseEntity.ok(pagedResourcesAssembler.toResource(
+                luuTruHsbaRepo.findAll(e, PageRequest.of(p, s))
+                    .map(l -> projectionFactory.createProjection(DefaultProjectionLuuTruHsba.class, l))
+                )
+            );
