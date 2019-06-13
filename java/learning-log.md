@@ -436,3 +436,9 @@ Cách xử lý: (https://stackoverflow.com/questions/29376090/how-to-apply-sprin
             );
 
 Cấu hình theo SO chỉ
+
+---
+
+## Avoid stackoverflowerror for entity's ManyToOne relationships...
+
+Thường thì là do
