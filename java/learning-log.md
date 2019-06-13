@@ -441,4 +441,12 @@ Cấu hình theo SO chỉ
 
 ## Avoid stackoverflowerror for entity's ManyToOne relationships...
 
-Thường thì là do
+Thường thì là do `toString()` hoặc/và `hashCode()` của `@Data` (Lombok) tự động sinh ra.
+
+Exclude bằng cách:
+
+    // On the top of Entity
+    @EqualsAndHashCode(exclude = {"parent", "children"})
+
+    // Top of ManyToOne/OneToMany that we don't want Lombok to automatically generate the method.
+    @ToString.Exclude
