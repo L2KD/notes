@@ -363,3 +363,30 @@ Projection:
 ## Advanced search cho Spring data REST
 
 Thường thì Spring data rest sẽ expose cái `/search` kèm theo 1 số method mình định lại bên trong cái repo extending JpaRepo (hoặc PagingAndSort...)
+
+Ví dụ:
+
+Tìm theo tên nhân viên:
+
+    List<NhanVien> findByName(String name);
+
+Tìm theo giới tính:
+
+    List<NhanVien> findBySex(Integer sex);
+
+Thế bây giờ muốn vừa tìm theo tên vừa tìm theo sex thì phải có thêm 1 method nữa sao? (`findByNameAndSex`). Cái này sẽ phát sinh theo một tỉ lệ rất khó đoán nếu như số lượng props của Entity nhiều, chưa kể mình phải check null và build cái query theo input vào của API nữa.
+
+Để giải quyết, ta phải dùng `Example`.
+
+Ví dụ:
+
+    NhanVien nv = new NhanVien();
+    nv.setName("NVA");
+    nv.setSex(1);
+    Example<NhanVien> e = Example.of(nv);
+
+    repo.findAll(e);
+
+Đoạn trên sẽ lấy tất cả nhân viên có tên NVA và có giới tính là 1.
+
+Đoạn trên sẽ nằm trong controller (RepositoryRestController)
