@@ -189,7 +189,7 @@ Ví dụ cơ bản CRUD: Theo quy ước RESTful thì các mỗi thao tác sẽ 
 
 VD cách create new entity:
 
-```
+```http
 POST http://localhost:10001/api/structure
 Content-Type: application/json;charset=UTF-8
 
@@ -200,13 +200,15 @@ Sau request đó sẽ trả về `201` --> `Created`.
 
 Kiểm tra lại bằng cách GET tới đó
 
-    GET http://localhost:10001/api/structure
+```http
+GET http://localhost:10001/api/structure
+```
 
 --> Ra 1 cái structure của spring data rest hỗ trợ cả phân trang và các entity có liên quan...
 
 Trường hợp các entity có relationship với nhau thì sao??
 
-```
+```http
 POST http://localhost:10001/api/unit
 Content-Type: application/json;charset=UTF-8
 
@@ -215,20 +217,22 @@ Content-Type: application/json;charset=UTF-8
 
 Response:
 
-    HTTP/1.1 201 Created
-    Expires: 0
-    Cache-Control: no-cache, no-store, max-age=0, must-revalidate
-    X-XSS-Protection: 1; mode=block
-    Pragma: no-cache
-    Location: http://localhost:10001/api/unit/5
-    Date: Fri, 07 Jun 2019 04:21:27 GMT
-    Connection: keep-alive
-    X-Content-Type-Options: nosniff
-    Content-Length: 0
+```http
+HTTP/1.1 201 Created
+Expires: 0
+Cache-Control: no-cache, no-store, max-age=0, must-revalidate
+X-XSS-Protection: 1; mode=block
+Pragma: no-cache
+Location: http://localhost:10001/api/unit/5
+Date: Fri, 07 Jun 2019 04:21:27 GMT
+Connection: keep-alive
+X-Content-Type-Options: nosniff
+Content-Length: 0
 
-    <Response body is empty>
+<Response body is empty>
 
-    Response code: 201 (Created); Time: 61ms; Content length: 0 bytes
+Response code: 201 (Created); Time: 61ms; Content length: 0 bytes
+```
 
 Cool, right?
 
@@ -241,11 +245,11 @@ Mặc định, đối với Spring data rest thì những primitive valued field
 thay vì
 
 ```json
-    manager: {
-      "name": "John Doe",
-      "dob": "",
-      ...
-    }
+manager: {
+  "name": "John Doe",
+  "dob": "",
+  ...
+}
 ```
 
 Cách thực hiện:
