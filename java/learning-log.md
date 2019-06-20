@@ -520,3 +520,15 @@ FileUtils.copyInputStreamToFile(inputStream, reportFile);
 ```
 
 Ref: https://stackoverflow.com/a/31579156/3844992
+
+---
+
+## Zuul
+
+`Zuul` là một Proxy, đóng vai trò là App gateway, một phần tất yếu trong kiến trúc microservice. Ngoài ra `zuul` cũng là một server-side load balancer.
+
+### Include Zuul vào bằng cách
+
+Lấy dep: group ID of `org.springframework.cloud`, artifact ID of `spring-cloud-starter-netflix-zuul`.
+
+To enable it, annotate a Spring Boot main class with `@EnableZuulProxy`.
