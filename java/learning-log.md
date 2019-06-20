@@ -494,11 +494,11 @@ Exclude bằng cách:
 
 ---
 
-Đọc file từ resource
+## Đọc file từ `resources` folder
 
 Vd có file `text.txt` trong
 
-    src/main/resource/text.txt
+    src/main/resources/text.txt
 
 Để lấy file đó, bình thường sẽ dùng
 
@@ -509,3 +509,14 @@ File theFile = new File("src/main/resources/text.txt");
 Vấn đề là khi run trực tiếp trong IDE thì cái này chạy ngon lành, nhưng khi run bằng executable jar thì lại báo lỗi `File not found` do nó không tìm ra folder `src`.
 
 Tuy vậy các resources vẫn được nhét vào jar bt.
+
+**Giải pháp:**
+
+```java
+ClassPathResource cpr = new ClassPathResource("/text.txt");
+InputStream inputStream = cpr.getInputStream();
+File reportFile = File.createTempFile("text", "txt");
+FileUtils.copyInputStreamToFile(inputStream, reportFile);
+```
+
+Ref: https://stackoverflow.com/a/31579156/3844992
