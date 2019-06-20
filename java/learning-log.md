@@ -533,4 +533,8 @@ Lấy dep: group ID of `org.springframework.cloud`, artifact ID of `spring-cloud
 
 To enable it, annotate a Spring Boot main class with `@EnableZuulProxy`.
 
-Theo quy ước, service có ID `users`
+Theo quy ước, service có ID `users` sẽ nhận requests từ proxy có tại `/users`.
+
+## Ribbon
+
+Ribbon là client-size load balancer.
