@@ -491,3 +491,21 @@ Exclude bằng cách:
 
     // Top of ManyToOne/OneToMany that we don't want Lombok to automatically generate the method.
     @ToString.Exclude
+
+---
+
+Đọc file từ resource
+
+Vd có file `text.txt` trong
+
+    src/main/resource/text.txt
+
+Để lấy file đó, bình thường sẽ dùng
+
+```java
+File theFile = new File("src/main/resources/text.txt");
+```
+
+Vấn đề là khi run trực tiếp trong IDE thì cái này chạy ngon lành, nhưng khi run bằng executable jar thì lại báo lỗi `File not found` do nó không tìm ra folder `src`.
+
+Tuy vậy các resources vẫn được nhét vào jar bt.
