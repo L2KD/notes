@@ -58,3 +58,29 @@ Build và push lên private hub bằng gradle.
    ```
 
 6. Chạy `gradle jib`.
+
+---
+
+Sử dụng image đã build
+
+1. Pull về
+
+   ```
+   docker pull your-repo:<port>/iamge-name:version
+   ```
+
+   Kết quả
+
+   ```
+   Using default tag: latest
+   latest: Pulling from emr-service
+   e7c96db7181b: Already exists
+   f910a506b6cb: Already exists
+   b6abafe80f63: Already exists
+   763d64e2e818: Pull complete
+   0f4f2dd0f42f: Pull complete
+   d3df4b142ef1: Pull complete
+   0334b69c57e9: Pull complete
+   Digest: sha256:57bd93b76549e9c578f2a659e3891a4ba164f75a61324d1bc89acade7b426794
+   Status: Downloaded newer image for ...
+   ```
