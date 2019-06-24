@@ -596,3 +596,24 @@ public class SecurityBeanOverrideConfiguration {
   }
 }
 ```
+
+```java
+@RunWith(SpringRunner.class)
+@SpringBootTest(classes = SecurityBeanOverrideConfiguration.class)
+@AutoConfigureMockMvc
+public class LuuTruHsbaResourceTest {
+  @Autowired
+  private MockMvc mockMvc;
+  @Test
+  @WithMockUser(roles = "USER")
+  public void editPhieuMuonHsba() throws Exception {
+      mockMvc.perform(put("/api/..."))
+          .andExpect(status().isForbidden());
+      mockMvc.perform(patch(xxx))
+          .andExpect(status().isForbidden());
+  }
+```
+
+Khi này thì chỗ Authorization mới nhận được 'fake' user được nhập vào với roles mong muốn mà không cần phải xin token từ uaa service...
+
+Hoặc có cách khác là phải viết lại phần nấu token, hoặc mock cả phần xin token (như integration test).
