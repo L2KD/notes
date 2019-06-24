@@ -538,3 +538,61 @@ Theo quy ước, service có ID `users` sẽ nhận requests từ proxy có tạ
 ## Ribbon
 
 Ribbon là client-size load balancer.
+
+---
+
+## Spring Boot Unit Test với Spring Security JWT tokens
+
+Đối với một số API, việc cần phải có lớp bảo vệ cho các private endpoints là chuyện rất bình thường. VD:
+
+```java
+@Configuration
+@EnableResourceServer
+@EnableGlobalMethodSecurity(prePostEnabled = true, securedEnabled = true)
+public class SecurityConfiguration extends ResourceServerConfigurerAdapter {
+  @Override
+  public void configure(HttpSecurity http) throws Exception {
+      http
+          .csrf()
+          .disable()
+          .headers()
+          .frameOptions()
+          .disable()
+      .and()
+          .sessionManagement()
+          .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+      .and()
+          .authorizeRequests()
+          .antMatchers("/api/**").authenticated()
+          ...;
+
+  }
+  @Bean
+  public TokenStore tokenStore(JwtAccessTokenConverter jwtAccessTokenConverter) {
+      return new JwtTokenStore(jwtAccessTokenConverter);
+  }
+
+  @Bean
+  public JwtAccessTokenConverter jwtAccessTokenConverter(OAuth2SignatureVerifierClient signatureVerifierClient) {
+      return new OAuth2JwtAccessTokenConverter(oAuth2Properties, signatureVerifierClient);
+  }
+```
+
+Nhưng lúc này khi test được run, khúc trên sẽ check các request được gởi tới (thông qua mockmvc perform...) và kiểm tra xem có được authenticated không (authorization bằng jwt chẳng hạn). Để bypass chuyện này, cần phải khai báo một `@Configuration` khác, và nói với TestClass rằng lấy cái config kia mà xài.
+
+```java
+@Configuration
+public class SecurityBeanOverrideConfiguration {
+  @Bean
+  @Primary
+  public TokenStore tokenStore() {
+      return null;
+  }
+
+  @Bean
+  @Primary
+  public JwtAccessTokenConverter jwtAccessTokenConverter() {
+      return null;
+  }
+}
+```
