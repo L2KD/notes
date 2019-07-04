@@ -165,6 +165,9 @@ Spring data rest hỗ trợ export các endpoint theo RESTful, từ các Entity 
 compile group: 'org.springframework.boot', name: 'spring-boot-starter-data-rest', version: '2.1.5.RELEASE'
 ```
 
+^
+Phải add thêm cái spring-data-rest-core nữa.
+
 Trong file `application.xml` (hoặc `application.properties`, tùy dự án), cấu hình base path:
 
 ```Yaml
