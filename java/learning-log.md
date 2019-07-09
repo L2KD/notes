@@ -406,8 +406,13 @@ public interface BasicProjectionDonViLuuTru {
 @Entity
 class ABC {
   private Kind someProps;
-  public boolean isUuTien() {
-    return this.getBakb().getCapCuu() == 1
+
+  @Transient
+  private boolean isUuTien;
+
+  @PostLoad
+  public void onLoad() {
+    this.isUuTien = this.getBakb().getCapCuu() == 1
         || this.getBakb().getNgaySinh().plusYears(80).isBefore(LocalDate.now())
         || this.getBakb().getNgaySinh().plusYears(6).isAfter(LocalDate.now());
   }
