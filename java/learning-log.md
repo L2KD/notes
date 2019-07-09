@@ -349,7 +349,7 @@ Như vậy, theo suy nghĩ thông thường thì mình sẽ trả về
 
 Vấn đề là phải móc được cái repo vào mới `getOne()` được parent trong DB.
 
-Cách xử lý:
+Cách xử lý: **(BAD IMPLEMENTATION, DON'T FOLLOW)**
 
 Vì để code thêm các xử lý này, ta phải tạo 1 cái class & interface khác để cái main repo implement luôn về cái class này
 
@@ -646,5 +646,3 @@ Khi này thì chỗ Authorization mới nhận được 'fake' user được nh�
 Hoặc có cách khác là phải viết lại phần nấu token, hoặc mock cả phần xin token (như integration test).
 
 ---
-
-## Spring data rest Calcu
