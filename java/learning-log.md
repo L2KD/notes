@@ -398,6 +398,30 @@ public interface BasicProjectionDonViLuuTru {
 }
 ```
 
+**Chỗ này chưa ổn lắm** vì nó sẽ gây confused trong cái /search của spring data rest.
+
+Để xử lý, viết thêm một method trong entity kiểu như:
+
+```java
+@Entity
+class ABC {
+  private Kind someProps;
+  public boolean isUuTien() {
+    return this.getBakb().getCapCuu() == 1
+        || this.getBakb().getNgaySinh().plusYears(80).isBefore(LocalDate.now())
+        || this.getBakb().getNgaySinh().plusYears(6).isAfter(LocalDate.now());
+  }
+}
+```
+
+Như vậy, có thể dùng `isUuTien()` trong projections.
+
+SpEl:
+
+```java
+@Value("#{target.isUuTien()}")
+```
+
 ## Advanced search cho Spring data REST
 
 Thường thì Spring data rest sẽ expose cái `/search` kèm theo 1 số method mình định lại bên trong cái repo extending JpaRepo (hoặc PagingAndSort...)
@@ -620,3 +644,7 @@ public class LuuTruHsbaResourceTest {
 Khi này thì chỗ Authorization mới nhận được 'fake' user được nhập vào với roles mong muốn mà không cần phải xin token từ uaa service...
 
 Hoặc có cách khác là phải viết lại phần nấu token, hoặc mock cả phần xin token (như integration test).
+
+---
+
+## Spring data rest Calcu
