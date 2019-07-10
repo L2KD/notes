@@ -22,8 +22,10 @@ Start service: `pcscd`.
 
 Giới thiệu sơ về yubikey.
 
-Có 2 slot. Mặc định slot đầu sẽ là Yubico OTP. Kích hoạt bằng cách chạm vào button 0.3-1.5s. Khi chạm sẽ gởi 1 đoạn các ký tự gì đó xem như là OTP để đăng nhập.
+Có 2 slot. Mặc định slot đầu sẽ là Yubico OTP. Kích hoạt bằng cách chạm vào button 0.3-1.5s. Khi chạm sẽ gởi 1 đoạn các ký tự gì đó xem như là OTP để đăng nhập. Slot 2 sẽ được kích hoạt khi chạm 2-5s.
 
 **Lưu ý khi overwrite config vào slot 1**
 
-Khi xuất xưởng, yubikey được preconfig OTP vào slot 1. Prefix `CC` được dùng cho credentials. Khi overwrite lại `VV` sẽ được dùng. Về mặt kỹ thuật, `VV` hay `CC` đều có mức độ bảo mật như nhau. Nhưng 1 số service provider lại prevent `VV` do họ nghĩ rằng user can thiệp vào thì sẽ ảnh hưởng ít nhiều tới độ bảo mật.
+Khi xuất xưởng, yubikey được preconfig OTP vào slot 1. Prefix `CC` được dùng cho credentials. Khi overwrite lại `VV` sẽ được dùng. Về mặt kỹ thuật, `VV` hay `CC` đều có mức độ bảo mật như nhau. Nhưng 1 số service provider lại prevent `VV` do họ nghĩ rằng user can thiệp vào thì sẽ ảnh hưởng ít nhiều tới độ bảo mật. (Xem thêm tại [đây](https://wiki.archlinux.org/index.php/YubiKey#Installation))
+
+Suy nghĩ kỹ trước khi thực hiện việc này.
