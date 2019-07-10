@@ -29,3 +29,14 @@ Có 2 slot. Mặc định slot đầu sẽ là Yubico OTP. Kích hoạt bằng c
 Khi xuất xưởng, yubikey được preconfig OTP vào slot 1. Prefix `CC` được dùng cho credentials. Khi overwrite lại `VV` sẽ được dùng. Về mặt kỹ thuật, `VV` hay `CC` đều có mức độ bảo mật như nhau. Nhưng 1 số service provider lại prevent `VV` do họ nghĩ rằng user can thiệp vào thì sẽ ảnh hưởng ít nhiều tới độ bảo mật. (Xem thêm tại [đây](https://wiki.archlinux.org/index.php/YubiKey#Installation))
 
 Suy nghĩ kỹ trước khi thực hiện việc này.
+
+---
+
+Dùng HOTP với lastpass free
+
+1. Cài Yubikey OATH desktop (AUR).
+1. Sau đó vào lastpass enable Google Authenticator. View QR.
+1. Mở Yubikey OATH desktop và scan QR. QR phải ở cùng 1 mành hình với app.
+1. Nó sẽ tự add thêm 1 credential vào.
+1. Touch btn để generate code. Paste code này vào chỗ U2F của Lastpass.
+1. OK.
