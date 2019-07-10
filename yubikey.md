@@ -40,3 +40,5 @@ Dùng HOTP với lastpass free
 1. Nó sẽ tự add thêm 1 credential vào.
 1. Touch btn để generate code. Paste code này vào chỗ U2F của Lastpass.
 1. OK.
+
+Nếu quá rắc rối, chi \$1/month để dùng lastpass premium.
