@@ -42,3 +42,21 @@ Dùng HOTP với lastpass free
 1. OK.
 
 Nếu quá rắc rối, chi \$1/month để dùng lastpass premium.
+
+---
+
+`ykman`
+
+## Add service:
+
+    ykman oath add -t <servicename> key
+
+Trong đó key lấy từ lastpass google authenticator (thay vì QR code). Service name gõ lastpass.
+
+    ykman oath add -t lastpass dfguhsldflkdf
+
+## Generate code
+
+    ykman oath code lastpass
+
+Sau đó touch button để lấy OTP.
