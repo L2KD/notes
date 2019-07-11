@@ -41,3 +41,5 @@ Thêm file `huong_dieu_tri.csv`
 14;Chuyển khoa;1
 15;Hội chẩn;1
 ```
+
+Sau đó chạy plugin liquibase:update
