@@ -20,7 +20,7 @@ _Images_ mean: Photos + Videos
    go get -u cloud.google.com/go/compute/metadata
    go get -u google.golang.org/api
    ```
-1. `cd` to the `google.golang.org/api` src, then checkout the 0.3.2 tag, due to the gphotos api disappear after 0.3.2
+1. `cd` to the `google.golang.org/api` src, then checkout the 0.3.2 tag, due to the gphotos api vaporization after 0.3.2
 
    ```bash
    cd $GOPATH/src/google.golang.org/api
@@ -42,4 +42,16 @@ _Images_ mean: Photos + Videos
    export GOOGLE_CLIENT_ID=YYY
    cd $GOPATH/bin
    ./hello-google-photos example.jpg
+
+   2019/08/05 14:30:55 Open https://accounts.google.com/o/oauth2/auth?client_id=xxx
+   Enter code:
+   ```
+
+   Open the link in the browser, then login to your account (to which you desired to upload your photos), grab the code and paste to the cmd line.
+
+   ```
+   Enter code: 4/lgGItD1bFthL
+   2019/08/05 14:38:55 Uploading IMG_1416.jpg
+   2019/08/05 14:38:56 Uploaded IMG_1416.jpg as token CAISiQMAS
+   2019/08/05 14:38:56 Adding media IMG_1416.jpg
    ```
