@@ -20,5 +20,26 @@ _Images_ mean: Photos + Videos
    go get -u cloud.google.com/go/compute/metadata
    go get -u google.golang.org/api
    ```
-1. `cd` to the `google.golang.org/api` src, then checkout the 0.3.2 tag (`git checkout tags/v0.3.2`)
-   Set the following environment variables:
+1. `cd` to the `google.golang.org/api` src, then checkout the 0.3.2 tag, due to the gphotos api disappear after 0.3.2
+
+   ```bash
+   cd $GOPATH/src/google.golang.org/api
+   git checkout tags/v0.3.2
+   ```
+
+1. Build the tool.
+
+   ```bash
+   vi $GOPATH/src/hello-google-photos
+   # In vim
+   :GoInstall
+   ```
+
+1. Test the tool: Set the following environment variables:
+
+   ```bash
+   export GOOGLE_CLIENT_SECRET=XXX
+   export GOOGLE_CLIENT_ID=YYY
+   cd $GOPATH/bin
+   ./hello-google-photos example.jpg
+   ```
