@@ -238,3 +238,11 @@ Bot đó phải nhận được tin nhắn mới có thể Send được (tránh
 
 ---
 
+Sau khi update lên Go1.12, khi chạy 
+
+```
+go get -u github.com/...
+```
+
+bị báo lỗi `git not on branch...`. Fix bằng cách cd vào đúng thư mục đó và gco về master sau  
+		
