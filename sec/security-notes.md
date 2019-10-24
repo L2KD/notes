@@ -1,6 +1,11 @@
 Dạo gần đây mình bị ám ảnh bởi mọi thứ liên quan đến bảo mật. Cụ thể hơn là bảo mật thông tin cá nhân. Đành viết vài dòng để lại khi cần thì có summary cho nhanh.
 
-1. SMS is bad
+Sau đây là 1 số nhận định được tổng hợp lại từ nhiều nguồn (là các chuyên gia, các blog hoặc bài viết về privacy được đánh giá cao):
+
+0. Luôn dùng Password Manager (LastPass, 1Password, Bitwarden...).
+1. Luôn dùng 2FA. Một số cách phổ biến: TOTP, HOTP, YubiKey...
+1. Tránh dùng các thứ liên quan tới SMS. SMS is bad.
+1.
 
 Tắt Preview notification của iOS cho mọi ứng dụng. Hãy nghĩ thử về trường hợp sau:
 
