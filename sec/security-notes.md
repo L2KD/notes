@@ -18,3 +18,9 @@ Form của chức năng này thường là nhập vào username, và 1 loạt c�
 Không cần mật khẩu phone cũng có thể xem được nội dung tin nhắn. Từ đây hắn có thể reset được password nhờ vào code hiện trên phone (vẫn đang được khóa).
 
 **Cách xử lý:** Tạm thời: Vào Settings > Notifications > Preview > Only when locked. Tốt hơn: Tắt option recovery password via sms. (Why? SMS is bad).
+
+---
+
+Go further:
+
+https://www.nytimes.com/2019/10/04/smarter-living/10-tips-internet-privacy-crowdwise.html
