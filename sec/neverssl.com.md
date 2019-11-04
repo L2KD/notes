@@ -24,4 +24,12 @@ Không có TLS, không có HSTS header. Gõ vào đây sẽ văng về trang por
 
 ## Alternative
 
-Một số trang tương đồng cùng 1 chức năng (tuy có thể có những chức năng thừa khác hoặc mục đích tồn tại không giống 100%)
+Một số trang tương đồng cùng 1 chức năng (tuy có thể có những chức năng thừa khác hoặc mục đích tồn tại không giống 100%).
+
+- http://example.com (trang này là tên miền được đặt riêng, nên sẽ không bao giờ được bán lại cho bên khác, tuy vậy không có lời hứa về HSTS hoặc HTTP only).
+
+- http://perdu.com (in FR).
+
+- http://purple.com (K.O.; Hiện đã bị bán cho một hãng kinh doanh nệm).
+
+_Source_ https://superuser.com/questions/1490795/why-does-neverssl-com-redirects-you-to-a-random-subdomain
