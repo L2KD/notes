@@ -277,6 +277,49 @@ Lúc này sẽ có 1 ổ nằm ở #1, type 83 (Linux)
 
 Sau đó tạo thêm ổ #2, cũng Linux.
 
+### Tạo PV, VG, LV
+
 Tiếp tục, dùng LVM để tạo lần lượt: Physical Volume, Volume Group, Logical Volume.
 
-pvcreate
+```
+pvcreate /dev/sdX2 
+
+Do sdX1 là /boot rồi
+```
+
+Kiểm tra lại bằng `pvscan` hoặc `pvdisplay`.
+
+Tiếp tục, tạo VG
+
+```
+vgcreate vg0 /dev/sdX2
+
+Trong đó vg0 là tùy chọn
+
+```
+
+Tiếp, tạo LV
+
+```
+lvcreate -L 8G vg0 -n swap
+lvcreate -L 80G vg0 -n root
+lvcreate -l 100%FREE vg0 -n home
+```
+
+Như vậy ta sẽ có
+
+```
+/dev/mapper/vg0/swap có 8GB
+/dev/mapper/vg0/root có 80GB
+/dev/mapper/vg0/home có phần còn lại của ổ đĩa
+```
+
+### Bật lvm (active vg)
+
+```
+# modprobe dm_mod
+# vgscan
+# vgchange -ay
+```
+
+### Tạo fs
