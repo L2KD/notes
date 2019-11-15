@@ -323,3 +323,20 @@ Như vậy ta sẽ có
 ```
 
 ### Tạo fs
+
+Lúc này tạo file system (ext4, vfat hay bất cứ cái gì)
+
+```
+mkfs.vfat /dev/sdX1 (tức là cái /boot)
+mkfs.ext4 /dev/mapper/vg0/swap
+mkfs.btrfs /dev/mapper/vg0/home
+...
+```
+
+Lưu ý, để kernel hiểu được ta dùng LVM, phải thêm vào trong cái header và `mkinitcpio` lại.
+
+```
+/etc/mkinitcpio.conf
+
+HOOKS=(base udev ... block lvm2 filesystems)
+```
