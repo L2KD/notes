@@ -253,4 +253,18 @@ So they use their own notations instead of RAID-1-0-10...
 
 ## Quick guide
 
-Thường thì 
+Thường thì chúng ta phải ghi 1 cái MBR hoặc GPT cho ổ đĩa mới.
+
+Và để không bị rắc rối với Grub (grub2) thì nên cho /boot nó nằm ở ngoài LVM.
+
+Như vậy: Dùng fdisk để làm 2 việc trên.
+
+```
+fdisk /dev/sdX
+```
+
+Lúc này sẽ có 1 ổ nằm ở #1, type 83 (Linux)
+
+Sau đó tạo thêm ổ #2, cũng Linux.
+
+Tiếp tục, dùng LVM để tạo lần lượt: Physical Volume, Volume Group, Logical Volume.
