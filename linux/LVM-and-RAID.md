@@ -250,3 +250,7 @@ is RAID-10.
 - IS - or Integrated Striping, is RAID-0.
 
 So they use their own notations instead of RAID-1-0-10...
+
+## Quick guide
+
+Thường thì 
