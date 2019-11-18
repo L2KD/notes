@@ -20,4 +20,8 @@ Trả lời: "It's magic!"
 
 Ok, thực ra câu trả lời không phải là magic. Mà là initramfs. Mỗi hệ thống linux có 1 cái ramfs file system (wow, there are lots of fs here you know), được mount và được gọi là `ramfs`. Có thể bạn sẽ không thấy nó bởi vì nó được mount chồng lên bằng cái file system thực khác rồi (/root).
 
-Tuy vậy, kernel có 1 thứ gọi là cpio được nén lại và chèn vào nó, để rồi nó được giải nén thành cái rootfs sau khi khởi động.
+Tuy vậy, kernel có 1 thứ gọi là cpio được nén lại và chèn vào nó, để rồi nó được giải nén thành cái rootfs sau khi khởi động. Xịn hơn là chính bạn cũng có thể nén cái cpio đó lại rồi chèn vào kernel để nó extract ra lúc boot.
+
+Trước khi kernel chạy cái mã `init` đã lỗi thời, nó sẽ check xem trong cái rootfs có chứa file nào tên là `/init` không, nếu có thì nó sẽ bỏ qua cái phương thức truyền thống (mount/init code) mà chạy luôn cái `/init` đó. 
+
+Phần `/init` này sẽ đảm nhận mọi thứ rắc rối mà kernel nó nghĩ là rắc rối. Bằng cách này, chúng ta có thể build 1 cái kernel không cần support hết các thể loại controller ổ cứng hay fs gì cả, thay vì vậy nó nằm trong các module của cái initramfs. (Hiện tại Arch Linux default kernel đang làm như vậy).
