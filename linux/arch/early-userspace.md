@@ -10,4 +10,14 @@ Tưởng tượng 1 người dùng có 2 SATA controllers, 3 IDE controllers, 7 
 
 Rồi nếu tôi muốn mount root fs trên 1 cái VG LVM bên trong 1 cái container được mã hóa, lại nằm trong 1 cái array chạy RAID thì sao?
 
-Cuộc đời màu hồng giờ đã chuyển sang thâm. Kernel nó rất khôn rằng nó sẽ giả bộ ngu -- hay đơn giản hơn là nó không quan tâm về các nhu cầu của bạn, đặc biệt là giờ nó bắt đầu mập mạp (vì nó phải ăn hết mấy cái driver trên thế giới này)
+Cuộc đời màu hồng giờ đã chuyển sang thâm. Kernel nó rất khôn rằng nó sẽ giả bộ ngu -- hay đơn giản hơn là nó không quan tâm về các nhu cầu của bạn, đặc biệt là giờ nó bắt đầu mập mạp (vì nó phải ăn hết mấy cái driver trên thế giới này).
+
+Giải pháp cho vấn đề này là chuyển hết những thứ đó vào userspace, handling hardware detection, cài mọi thứ rắc rối mà người dùng muốn, mount root fs và chạy luôn cái /sbin/init. "Ồ, làm sao tôi chạy được mấy ứng dụng userspace khi mà root fs chưa được mount?".
+
+Trả lời: "It's magic!"
+
+## initramfs là gì?
+
+Ok, thực ra câu trả lời không phải là magic. Mà là initramfs. Mỗi hệ thống linux có 1 cái ramfs file system (wow, there are lots of fs here you know), được mount và được gọi là `ramfs`. Có thể bạn sẽ không thấy nó bởi vì nó được mount chồng lên bằng cái file system thực khác rồi (/root).
+
+Tuy vậy, kernel có 1 thứ gọi là cpio được nén lại và chèn vào nó, để rồi nó được giải nén thành cái rootfs sau khi khởi động.
