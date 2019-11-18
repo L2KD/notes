@@ -2,7 +2,7 @@ Bài này dịch từ [bài này](https://web.archive.org/web/20150430223035/htt
 
 ## Booting Linux Systems
 
-Hồi xưa, khởi động 1 hệ thống linux đơn giản như sau: Bootloader load kernel. Kernel sẽ được giải nén (extracted) và init phần cứng. Kernel init cụm điều khiển (controller) hard disk (tức là đĩa cứng), tìm thấy dĩa cứng, thấy root file system, mount nó và chạy `/sbin/init`.
+Hồi xưa, khởi động 1 hệ thống linux đơn giản như sau: Bootloader sẽ load kernel. Kernel sau đó sẽ được giải nén (extracted) và init phần cứng. Kernel init cụm điều khiển (controller) hard disk (tức là đĩa cứng), tìm thấy dĩa cứng, thấy root file system, mount nó và chạy `/sbin/init`.
 
 Hiện nay, do có quá xá controllers (vì sự phát triển quá nhanh của công nghệ), các distro luôn cố tỏ ra thân thiện và support hết chúng nó. Nên các dev đã dồn hết công sức ngày đêm để build 1 cục kernel nặng vài MB và hỗ trợ tận răng (nguyên văn bài gốc là tới cái bồn rửa chén cũng được hỗ trợ). À phần ngày đêm là mình nói hơi quá lên thôi chứ không phải nhé.
 
