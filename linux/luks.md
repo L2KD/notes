@@ -36,3 +36,15 @@ Do 1 số trường hợp cần phải mount partition lúc boot, 1 cách tự �
 
 Cách cấu hình:
 
+```
+# /etc/fstab
+
+# /dev/mapper/crypthome
+UUID=uuid	/home     	btrfs     	rw,relatime,ssd,space_cache,subvolid=5,subvol=/	0 0
+
+# /etc/crypttab
+
+home /dev/vg0/home none
+```
+
+Khi boot, sẽ phải nhập passphrase để unlock partition.
