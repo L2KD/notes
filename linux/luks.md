@@ -48,3 +48,11 @@ home /dev/vg0/home none
 ```
 
 Khi boot, sẽ phải nhập passphrase để unlock partition.
+
+Có thể phải thêm module sau vào `/etc/mkinitcpio.conf`
+
+```
+MODULES=(dm_mod)
+```
+
+More at: https://www.golinuxcloud.com/mount-luks-encrypted-disk-partition-linux/
