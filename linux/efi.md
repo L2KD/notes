@@ -52,16 +52,25 @@ Lệnh trên sẽ gen lại grub vào vị trí `/boot`, thư mục con bên tro
 Khi này bên trong `/boot` sẽ có dạng như sau:
 
 ```
-‣ tree -d /boot
-1 [error opening dir]
+‣ sudo tree /boot   
 /boot
 ├── EFI
-└── grub
-    ├── fonts
-    ├── i386-pc
-    ├── themes
-    │   └── starfield
-    └── x86_64-efi
+├── grub
+│   ├── fonts
+│   ├── grub.cfg
+│   ├── grub.cfg.backup.moly
+│   ├── grubenv
+│   ├── i386-pc
+│   ├── themes
+│   │   └── starfield
+│   └── x86_64-efi
+├── initramfs-linux-fallback.img
+├── initramfs-linux.img
+└── vmlinuz-linux
 
-7 directories
+7 directories, 598 files
 ```
+
+Lưu ý:
+
+Đối với 1 số máy, phải copy file `.efi` ra 1 vị trí default mới có thể boot được. 
