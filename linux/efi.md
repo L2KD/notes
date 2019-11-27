@@ -28,3 +28,17 @@ Device     Boot   Start       End   Sectors   Size Id Type
 ```
 
 Kế tiếp, boot lên live usb của arch linux.
+
+Mount `/dev/mapper/vg0-root` vào `/mnt`.
+
+Mount `/dev/sda3` vào `/mnt/boot`.
+
+Gen lại fstab (`genfstab -U -p /mnt >> /mnt/etc/fstab`), nhớ chỉnh sửa lại cho đúng.
+
+Sau đó chroot vào `/mnt`. (`arch-chroot /mnt`).
+
+Chỉnh lại file `mkinitcpio.conf` để adapt early userspace đúng với hardware hiện tại (các card màn hình là chủ yếu...).
+
+Chạy lệnh `mkinitcpio -p linux` để tạo ra EU mới.
+
+Kế tiếp gen grub với điều kiện sau khi cài package (`efibootmgr`).
