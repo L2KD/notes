@@ -18,6 +18,8 @@ Backup lại `/boot`.
 
 Dùng fdisk tạo 1 phân vùng mới kiểu `ef`, phân vùng này cắt ra từ `sda1` thành `sda1` và `sda3`. Mỗi phân vùng nhỏ là 500M. `sda1` vẫn như cũ là Kiểu `83`, copy ngược lại data đã backup về chỗ cũ (phòng trường hợp lại quay về máy cũ).
 
+Sau đó mkfs kiểu vfat -F32.
+
 Khi này các disk trong máy sẽ như sau:
 
 ```
@@ -74,3 +76,11 @@ Khi này bên trong `/boot` sẽ có dạng như sau:
 Lưu ý:
 
 Đối với 1 số máy, phải copy file `.efi` ra 1 vị trí default mới có thể boot được. 
+
+VD
+
+```
+cp /boot/EFI/grub/grubx64.efi /boot/EFI/Boot/Bootx64.efi
+```
+
+Src: https://wiki.archlinux.org/index.php/GRUB/EFI_examples
