@@ -42,3 +42,26 @@ Chỉnh lại file `mkinitcpio.conf` để adapt early userspace đúng với ha
 Chạy lệnh `mkinitcpio -p linux` để tạo ra EU mới.
 
 Kế tiếp gen grub với điều kiện sau khi cài package (`efibootmgr`).
+
+```
+grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB
+```
+
+Lệnh trên sẽ gen lại grub vào vị trí `/boot`, thư mục con bên trong là `GRUB`.
+
+Khi này bên trong `/boot` sẽ có dạng như sau:
+
+```
+‣ tree -d /boot
+1 [error opening dir]
+/boot
+├── EFI
+└── grub
+    ├── fonts
+    ├── i386-pc
+    ├── themes
+    │   └── starfield
+    └── x86_64-efi
+
+7 directories
+```
