@@ -11,3 +11,5 @@ Try:
 - Reconfig the vbox driver
 
       sudo vboxreload
+
+- You might have to install the kernel headers: `linux-headers`.
