@@ -28,4 +28,6 @@ Hình trên mô tả hệ thống ATG-4 của GoGo, hiện được sử dụng 
 
 Hệ thống ATG có 2 khuyết điểm lớn như sau:
 
-1. 
+1. Do hoạt động trên băng tần thấp (800MHz), nên chỉ có thể cung cấp được tốc độ tối đa cho mỗi chuyến bay vào khoảng 10 Mbps. Để so sánh thì [tốc độ internet bình quân](https://www.speedtest.net/reports/united-states/2018/#fixed) của Hoa Kỳ gần 100 Mbps. Khi có nhiều người dùng cùng lúc, tốc độ cho mỗi người dùng chỉ đủ để check mail, và thậm chí là để check mail thì có khi cũng phải chờ trong vô vọng.
+
+2. 
