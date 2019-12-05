@@ -4,3 +4,7 @@ Lướt internet ở độ cao 10 km thực tế là điều mà chúng ta mong 
 
 ![10 quan tâm khi đặt vé máy bay](https://miro.medium.com/max/1306/0*OiNjMo2GsbQWQEoq)
 
+> Nguồn: 2018 Global Traveler 
+
+Hiện tại, các hãng hàng không thu $17 mỗi hành khách chi phí các dịch vụ như thức ăn hay bán lẻ trên chuyến bay. Nếu có cả wifi trên chuyến bay, hành khách sẽ phải trả thêm $4 và điều này sẽ mang về thêm khoảng 30 tỉ đô vào doanh thu cho các hãng hàng không vào năm 2035.
+
