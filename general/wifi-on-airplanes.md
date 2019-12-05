@@ -14,9 +14,18 @@ Có hai cách để chúng ta đem internet về với các phi cơ.
 
 ## Hệ thống Air to ground (ATG)
 
-Hệ thống này, vào thủa ban sơ lúc nó được phát triển, hoạt động như thể mạng di động mà chúng ta đang sử dụng như trên điện thoại. Nhưng không giống các trạm phát sóng di động chủ yếu phát tín hiệu xuống, các trạm này cung cấp internet cho các phi cơ bằng cách [phát tín hiệu lên phía trên](https://fortune.com/2017/08/10/how-does-wifi-work-on-planes/). Các antenne được bố trí ngay bụng máy bay sẽ thu tín hiệu này và truyền đến máy chủ cũng được đặt trên máy bay. Server này có modem để có thể chuyển đổi tín hiệu ở tần số radio thành tín hiệu máy tính và ngược lại, cung cấp internet cho khách bay thông qua các access points đặt bên trong phi cơ. Thông tin được trao đổi giữa antenne của máy bay và các trạm thu phát sóng trong suốt hành trình bay. Tiếp đên, các trạm phát sóng được kết nối vào các trung tâm vận hành được quản bởi các nhà cung cấp dịch vụ y như các ISP di động.
+Hệ thống này, vào thủa ban sơ lúc nó được phát triển, hoạt động như thể mạng di động mà chúng ta đang sử dụng như trên điện thoại. Nhưng không giống các trạm phát sóng di động chủ yếu phát tín hiệu xuống, các tháp này cung cấp internet cho các phi cơ bằng cách [phát tín hiệu lên phía trên](https://fortune.com/2017/08/10/how-does-wifi-work-on-planes/). Các antenne được bố trí ngay bụng máy bay sẽ thu tín hiệu này và truyền đến máy chủ cũng được đặt trên máy bay. Server này có modem để có thể chuyển đổi tín hiệu ở tần số radio thành tín hiệu máy tính và ngược lại, cung cấp internet cho khách bay thông qua các access points đặt bên trong phi cơ. Thông tin được trao đổi giữa antenne của máy bay và các tháp thu phát sóng trong suốt hành trình bay. Tiếp đên, các tháp phát sóng được kết nối vào các trung tâm vận hành được quản bởi các nhà cung cấp dịch vụ y như các ISP di động.
 
 ![Ground-based towers projecting signal upward.](https://miro.medium.com/max/530/0*z8wD2ixUwoZwqZdV)
 
-> Các trạm phát sóng chiếu tín hiệu lên phía trên. Nguồn: [ThePointsGuy](https://thepointsguy.com/2015/11/how-in-flight-wi-fi-works/).
+> Các tháp phát sóng chiếu tín hiệu lên phía trên. Nguồn: [ThePointsGuy](https://thepointsguy.com/2015/11/how-in-flight-wi-fi-works/).
 
+![ATG-4 của hãng cung cấp GoGo bao gồm 2 antenne chính ngay dưới bụng máy bay, 2 antenne bên hông, một server và một dàn các router wifi bên trong máy bay.](https://miro.medium.com/max/1000/0*r-18bsHXs3IJhpae)
+
+> ATG-4 của hãng cung cấp GoGo bao gồm 2 antenne chính ngay dưới bụng máy bay, 2 antenne bên hông, một server và một dàn các router wifi bên trong máy bay.
+
+Hình trên mô tả hệ thống ATG-4 của GoGo, hiện được sử dụng ở các hãng hàng không của Hoa Kỳ. Tầm phủ sóng của GoGo kéo dài xuyên suốt Bắc Mỹ với hệ thống tầm 200 tháp.
+
+Hệ thống ATG có 2 khuyết điểm lớn như sau:
+
+1. 
