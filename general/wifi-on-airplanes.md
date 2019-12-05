@@ -50,4 +50,6 @@ Hai ưu điểm chính của hệ thống internet dựa trên vệ tinh:
 
 Tuy vậy, hệ thống này có ba điểm trừ:
 
-1 . Đắt đỏ.
+1. Đắt đỏ. Về mặt trang thiết bị, bảo trì cũng như băng thông đều tốn nhiều chi phí hơn hệ thống ATG. Nên các hãng hàng không nhỏ hay các hãng nội địa sẽ ít dùng hệ thống này.
+
+2. Khoảng cách mà dữ liệu di chuyển là cực kì xa, sẽ làm tăng độ trễ (latency). Độ trễ là thời gian mà dữ liệu di chuyển từ nguồn phát đến đích tính bằng ms (mili giây). Mặc dù tốc độ tổng thể cao hơn, khi bạn click vào một link, trang web sẽ delay một khoảng khá lớn trước khi load, và khi nó bắt đầu load được rồi thì gần như nó sẽ load ngay tức khắc. Hệ thống ATG, ngược lại, lại load gần như ngay lập tức do có độ trễ thấp, nhưng lại tốn gần như là mãi mãi để hoàn thành.
