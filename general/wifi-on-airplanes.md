@@ -36,4 +36,4 @@ Hệ thống ATG có 2 khuyết điểm lớn như sau:
 
 Hệ thống vệ tinh phức tạp hơn ATG, nhưng đem lại tốc độ nhanh hơn và đáng tin cậy hơn.
 
-Thay vì nằm dưới bụng, các antenne được trang bị trên đỉnh máy bay. Các antennes này thu tín hiệu từ các vệ tinh bay quanh trái đất. Nhưng vì cả đôi chúng nó (cái phi cơ của chúng ta và cái vệ tinh)
+Thay vì nằm dưới bụng, các antenne được trang bị trên đỉnh máy bay. Các antennes này thu tín hiệu từ các vệ tinh bay quanh trái đất. Nhưng vì cả đôi chúng nó (cái phi cơ của chúng ta và cái vệ tinh) đều di chuyển, và bọn chúng di chuyển không phải với một tốc độ chậm, và đôi khi chúng cách nhau đến 22 ngàn dặm (tức là đâu đó gần 36 ngàn cây số), nên các antenne này cần phải [liên tục tinh chỉnh vị trí](http://concourse.gogoair.com/gogo-international-ku-band-satellite-internet-work/) của chúng để có thể thu được tín hiệu.
