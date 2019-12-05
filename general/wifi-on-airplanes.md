@@ -36,4 +36,12 @@ Hệ thống ATG có 2 khuyết điểm lớn như sau:
 
 Hệ thống vệ tinh phức tạp hơn ATG, nhưng đem lại tốc độ nhanh hơn và đáng tin cậy hơn.
 
-Thay vì nằm dưới bụng, các antenne được trang bị trên đỉnh máy bay. Các antennes này thu tín hiệu từ các vệ tinh bay quanh trái đất. Nhưng vì cả đôi chúng nó (cái phi cơ của chúng ta và cái vệ tinh) đều di chuyển, và bọn chúng di chuyển không phải với một tốc độ chậm, và đôi khi chúng cách nhau đến 22 ngàn dặm (tức là đâu đó gần 36 ngàn cây số), nên các antenne này cần phải [liên tục tinh chỉnh vị trí](http://concourse.gogoair.com/gogo-international-ku-band-satellite-internet-work/) của chúng để có thể thu được tín hiệu.
+Thay vì nằm dưới bụng, các antenne được trang bị trên đỉnh máy bay. Các antennes này thu tín hiệu từ các vệ tinh bay quanh trái đất. Nhưng vì cả đôi chúng nó (cái phi cơ của chúng ta và cái vệ tinh) đều di chuyển, và bọn chúng di chuyển không phải với một tốc độ chậm, và đôi khi chúng cách nhau đến 22 ngàn dặm (tức là đâu đó gần 36 ngàn cây số), nên các antenne này cần phải [liên tục tinh chỉnh vị trí](http://concourse.gogoair.com/gogo-international-ku-band-satellite-internet-work/) của chúng để có thể thu được tín hiệu. Như vậy, ngoài các server và các wifi AP, một thiết bị khác có nhiệm vụ điều khiển antenne dựa trên vị trí và tốc độ chuyến bay. Các vệ tinh được kết nối với các trạm trên mặt đất. Các trạm trên mặt đất sẽ được kết nối vào các trung tâm vận hành quản bởi các nhà cung cấp dịch vụ.
+
+![Hệ thống hoạt động dựa trên các vệ tinh của GoGo gồm các antenne vệ tinh, một server, Kandu, để điều chỉnh các antenne, Modman để chuyển đổi tín hiệu và nhiều AP bên trong phi cơ.](https://miro.medium.com/max/1044/0*UBVkYwA5QSV0nqc9)
+
+> Hệ thống hoạt động dựa trên các vệ tinh của GoGo gồm các antenne vệ tinh, một server, Kandu, để điều chỉnh các antenne, Modman để chuyển đổi tín hiệu và nhiều AP bên trong phi cơ.
+
+Hai ưu điểm chính của hệ thống internet dựa trên vệ tinh: 
+
+1. 
