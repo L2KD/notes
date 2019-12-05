@@ -32,7 +32,7 @@ Hệ thống ATG có 2 khuyết điểm lớn như sau:
 
 2. Tầm phủ sóng khá lẻ tẻ, vì sẽ có ít tháp phát sóng hơn như trong hoang mạc hoặc là không có tháp nào như ở ngoài đại dương mênh mông. Việc này khiến cho hệ thống ATG không phải là sự lựa chọn phổ biến trong các chuyến bay quốc tế.
 
-## Hệ thống vệ tinh
+## Hệ thống (dựa trên) vệ tinh
 
 Hệ thống vệ tinh phức tạp hơn ATG, nhưng đem lại tốc độ nhanh hơn và đáng tin cậy hơn.
 
@@ -44,4 +44,10 @@ Thay vì nằm dưới bụng, các antenne được trang bị trên đỉnh m�
 
 Hai ưu điểm chính của hệ thống internet dựa trên vệ tinh: 
 
-1. 
+1. Vùng phủ sóng xem như là toàn cầu (trừ 2 cực). Với các chuyến bay dài, antenne có thể phải điều chỉnh vị trí để kết nối với vệ tinh khác, nhưng thường thì chỉ một lần thôi. Việc này rõ ràng biến hệ thống này được sử dụng rộng rãi trong các chuyến bay quốc tế.
+
+2. Nó hoạt động trên tần số cao hơn, cung cấp băng thông rộng hơn và tốc độ cao hơn. Hai [dãy băng tần](https://www.getconnected.aero/2017/09/lkuka-band-satellites-mean/) chính dùng cho internet vệ tinh là Ku-band (12-18GHz) và Ka-band (26-40GHz). Hai băng này cho băng thông từ 30-100Mbps cho mỗi phi cơ, tất nhiên là cao hơn mức 10Mbps của ATG.
+
+Tuy vậy, hệ thống này có ba điểm trừ:
+
+1 . Đắt đỏ.
