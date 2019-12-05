@@ -30,4 +30,10 @@ Hệ thống ATG có 2 khuyết điểm lớn như sau:
 
 1. Do hoạt động trên băng tần thấp (800MHz), nên chỉ có thể cung cấp được tốc độ tối đa cho mỗi chuyến bay vào khoảng 10 Mbps. Để so sánh thì [tốc độ internet bình quân](https://www.speedtest.net/reports/united-states/2018/#fixed) của Hoa Kỳ gần 100 Mbps. Khi có nhiều người dùng cùng lúc, tốc độ cho mỗi người dùng chỉ đủ để check mail, và thậm chí là để check mail thì có khi cũng phải chờ trong vô vọng.
 
-2. 
+2. Tầm phủ sóng khá lẻ tẻ, vì sẽ có ít tháp phát sóng hơn như trong hoang mạc hoặc là không có tháp nào như ở ngoài đại dương mênh mông. Việc này khiến cho hệ thống ATG không phải là sự lựa chọn phổ biến trong các chuyến bay quốc tế.
+
+## Hệ thống vệ tinh
+
+Hệ thống vệ tinh phức tạp hơn ATG, nhưng đem lại tốc độ nhanh hơn và đáng tin cậy hơn.
+
+Thay vì nằm dưới bụng, các antenne được trang bị trên đỉnh máy bay. Các antennes này thu tín hiệu từ các vệ tinh bay quanh trái đất. Nhưng vì cả đôi chúng nó (cái phi cơ của chúng ta và cái vệ tinh)
