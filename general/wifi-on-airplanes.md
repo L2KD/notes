@@ -56,3 +56,4 @@ Tuy vậy, hệ thống này có ba điểm trừ:
 
 3. Ngoài các chi phí về trang thiết bị, bảo trì thì một chi phí tiềm tàng khác đó là nhiên liệu. Khi nó có vẻ như là không đáng kể, các antenne đổi hình dạng (do nó phải điều chỉnh để connect tới các vệ tinh) vô tình sẽ giảm hiệu quả khí động học của máy bay. Hiện nay, các nhà cung cấp đang cố gắng để giảm kích cỡ của các antenne lại để giảm chi phí. Antenne 2Ku mới nhất của GoGo chỉ dày 4 inches (đâu đó 10 cm), sẽ tạo ra ít ma sát hơn.
 
+Dịch từ https://onezero.medium.com/what-makes-it-possible-to-browse-the-internet-at-35-000-feet-1afaea83eb5
