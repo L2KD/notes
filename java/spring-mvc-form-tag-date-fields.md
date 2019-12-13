@@ -91,4 +91,6 @@ public void initBinder(WebDataBinder binder) {
 }
 ```
 
-Thế là xong. Có thể map thoải mái LocalDateTime trong entity lên view và ngược lại (view map về controller)
+Thế là xong. Có thể map thoải mái LocalDateTime trong entity lên view và ngược lại (view map về model cho controller).
+
+Từ bước này có thể dùng jQuery UI datepicker để init cho input #thoiGianRaVien, format thì xem doc của jQ UI.
