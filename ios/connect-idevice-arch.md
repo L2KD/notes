@@ -41,17 +41,48 @@ Trên thunar gõ `afc://uuid` của ipad sẽ ra được chỗ `/private/var/mo
 
 Tuy vậy những thứ của VLC nó lại nằm bên trong `/private/var/mobile/Containers/Data/Application/F3D95DB8-1279-471B-B85D-4F5B228A968F/Documents/Inbox/Hitting.the.Apex.2015.1080p.BluRay.H264.AAC-RARBG.mp4`.
 
-House arrest là cái gì vậy ông thần?
- iTunes Document Sharing
+## House arrest
+
+Hay còn gọi là iTunes Document Sharing. Thực ra nó là 1 cái vỏ bọc các app lại để chúng không vượt ra khỏi cái nhà của chúng (house). Tất cả những thứ của cái app (data...) nó sẽ nằm riêng biệt với nhau.
+
+Như vậy, theo bên trên thì app VLC đó có thể có cái Documents bên trong
+
+```shell
+/private/var/mobile/Containers/Data/Application/F3D95DB8-1279-471B-B85D-4F5B228A968F/
+```
+
+Trong đó sẽ có
+
+```
+Documents/Inbox/Hitting.the.Apex.2015.1080p.BluRay.H264.AAC-RARBG.mp4
+```
+
+Chứng mình:
+
+```
+‣ idevicepair pair
+SUCCESS: Paired with device ddf10c8a9ab9e4843370addd5202c9404fe7e26b
+
+sudo ifuse --documents org.videolan.vlc-ios /run/media/vlc
+
+ls
+
+.
+..
+/Inbox
+
+cd Inbox
+ls
+
+.
+..
+Aladdin.mp4
+Hitting.the.Apex.2015.1080p.BluRay.H264.AAC-RARBG.mp4
+```
+
+
+----
 
 Toàn những tài liệu cách đây cả thập kỷ.
 
 Mình không đùa đâu. 2010 và 2011
-
-## VLC
-
-vlc sharing via wifi 
-
-    http://192.168.99.117/download//private/var/mobile/Containers/Data/Application/F3D95DB8-1279-471B-B85D-4F5B228A968F/Documents/Inbox/Hitting.the.Apex.2015.1080p.BluRay.H264.AAC-RARBG.mp4
-
-Như vậy cái app VLC 
