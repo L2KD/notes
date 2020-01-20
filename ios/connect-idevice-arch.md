@@ -14,5 +14,9 @@ Cài packages:
 
 1. pair
 
-        $ idevicepair pair
+       $ idevicepair pair
+
+2. Mount
+
+        sudo ifuse --documents org.videolan.vlc-ios /run/media/vlc
 
