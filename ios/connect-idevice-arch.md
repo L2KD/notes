@@ -10,15 +10,30 @@ Cài packages:
 - gvfs-gphoto2
 - thunar
 
-Để connect (mount), dùng ifuse:
+## Mục đích
 
-1. pair
+Trên mạng toàn chỉ cách copy photo đã chụp (nằm ở `/private/var/mobile/Media`) vô PC. Chuyện này có thê làm bằng thunar.
 
-       $ idevicepair pair
+1. Mở Thunar,
+2. Ghim ipad.
+3. Chọn Trust trên ipad.
+4. Đừng pair gì cả. Trong thunar chọn ipad. Sẽ mount được thư mục DCIM.
 
-2. Mount
+Mục đích chính là để copy film vào VLC app (kèm sub), thông qua cable. Vì VLC có cung cấp 1 cách copy via wifi nhưng do tốc độ chậm nên muốn dùng usb.
 
-        sudo ifuse --documents org.videolan.vlc-ios /run/media/vlc
+
+
+## Để connect (mount), 
+
+1. Dùng ifuse:
+
+        1. pair
+
+        $ idevicepair pair
+
+        2. Mount
+
+                sudo ifuse --documents org.videolan.vlc-ios /run/media/vlc
 
 House arrest là cái gì vậy ông thần?
  iTunes Document Sharing
