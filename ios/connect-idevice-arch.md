@@ -24,3 +24,7 @@ Cài packages:
 
 House arrest là cái gì vậy ông thần?
  iTunes Document Sharing
+
+Toàn những tài liệu cách đây cả thập kỷ.
+
+Mình không đùa đâu. 2010 và 2011
