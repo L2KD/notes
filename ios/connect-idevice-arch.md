@@ -20,3 +20,7 @@ Cài packages:
 
         sudo ifuse --documents org.videolan.vlc-ios /run/media/vlc
 
+
+
+House arrest là cái gì vậy ông thần?
+ iTunes Document Sharing
