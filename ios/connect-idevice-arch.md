@@ -6,7 +6,7 @@ Như vậy về góc độ bảo mật có thể nói đây là 1 design ok. Nh�
 
 Từ thời 13.3, ios đã cho Files app truy cập vào House của từng app (với 1 điều kiện là trong đó đã có data rồi và directories thì không tính). Việc này vô tình gây khó khăn cho người dùng rất nhiều.
 
-Ví dụ: App VLC. Khi Share (Open in VLC hoặc Copy to VLC), VLC sẽ lưu chúng trong 
+Ví dụ: App VLC. Khi Share (Open in VLC hoặc Copy to VLC), VLC sẽ lưu chúng trong
 
     House/Inbox
 
@@ -35,17 +35,17 @@ Trên mạng toàn chỉ cách copy photo đã chụp (nằm ở `/private/var/m
 
 ## Để connect
 
-1. Dùng ifuse: (mount)
+1.  Dùng ifuse: (mount)
 
-    1. Pair
+    1.  Pair
 
             $ idevicepair pair
 
-    2. Mount
+    2.  Mount
 
             sudo ifuse --documents org.videolan.vlc-ios /run/media/vlc
 
-2. AFC
+2.  AFC
 
 AFC (Apple File Conduit) is a service that runs on every iPhone / iPod, which iTunes uses to exchange files with the device. It is jailed to the directory /private/var/mobile/Media, which is on the second (non-OS) partition.
 
@@ -61,7 +61,7 @@ Hay còn gọi là iTunes Document Sharing. Thực ra nó là 1 cái vỏ bọc 
 
 Như vậy, theo bên trên thì app VLC đó có thể có cái Documents bên trong
 
-```shell
+```
 /private/var/mobile/Containers/Data/Application/F3D95DB8-1279-471B-B85D-4F5B228A968F/
 ```
 
