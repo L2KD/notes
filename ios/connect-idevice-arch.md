@@ -1,5 +1,7 @@
 # Làm sao để kết nối idevices trên arch linux mà không cần tới iTune
 
+tl;dr: **Well, I finally ended up using itunes.**
+
 Nói sơ qua về App trên ios. Mỗi app sẽ được phân cho 1 vùng nhớ riêng (gọi nôm na là House, tức là cái nhà, hoặc gọi theo doc của apple là [sandbox dir][1]. Các app đó có thể dùng House của mình để lưu dữ liệu mà không cần quan tâm dữ liệu của mình có bị ảnh hưởng tới các app không, và ngược lại, cũng không sợ các app khác làm gì tới dữ liệu của mình.
 
 Như vậy về góc độ bảo mật có thể nói đây là 1 design ok. Nhưng bảo mật thì (hầu như lúc nào cũng) đi ngược lại với thuận tiện.
@@ -93,10 +95,6 @@ ls
 Aladdin.mp4
 Hitting.the.Apex.2015.1080p.BluRay.H264.AAC-RARBG.mp4
 ```
-
----
-
-**Well, I finally ended up using itunes.**
 
 ---
 
