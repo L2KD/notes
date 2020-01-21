@@ -23,6 +23,7 @@ Tuy vậy, nếu dùng iTunes copy file vào VLC thì nó sẽ nằm trong `Docu
 - gvfs-afc
 - gvfs-gphoto2
 - thunar
+- ideviceinstaller-git (AUR)
 
 ## Mục đích
 
@@ -95,6 +96,35 @@ ls
 Aladdin.mp4
 Hitting.the.Apex.2015.1080p.BluRay.H264.AAC-RARBG.mp4
 ```
+
+---
+
+## Copy data vào App sandbox
+
+Đầu tiên phải pair.
+
+1. Mở màn hình ipad và nhập passcode.
+2. Pair
+
+   ```
+   $ idevicepair pair
+   SUCCESS: Paired with device ddf10c8a9ab9e4843370addd5202c9404fe7e26b
+   ```
+
+3. Mount
+
+   ```
+   $ sudo mkdir -p /run/media/vlc
+   $ sudo ifuse /run/media/vlc_container --documents org.videolan.vlc-ios
+   ```
+
+4. Truy cập và copy
+
+   ```
+   $ sudo -i
+   # cd /run/media/vlc
+   # rsync
+   ```
 
 ---
 
