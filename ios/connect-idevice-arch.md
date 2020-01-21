@@ -10,11 +10,11 @@ Từ thời 13.3, ios đã cho Files app truy cập vào Sandbox của từng ap
 
 Ví dụ: App VLC. Khi Share (Open in VLC hoặc Copy to VLC), VLC sẽ lưu chúng trong
 
-    Sandbox/Inbox
+    Sandbox/Documents/Inbox
 
 Mở app Files lên sẽ không thể thấy được dữ liệu (vì Sandbox không chứa file nào trừ directory tên `Inbox`).
 
-Tuy vậy, nếu dùng iTunes copy file vào VLC thì nó sẽ nằm cùng cấp với `Inbox`. Lúc này Files app mới có thể thấy được Sandbox của VLC.
+Tuy vậy, nếu dùng iTunes copy file vào VLC thì nó sẽ nằm trong `Documents`. Lúc này Files app mới có thể thấy được Sandbox của VLC.
 
 ## Các packages có thể cần cài
 
