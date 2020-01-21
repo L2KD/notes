@@ -47,16 +47,72 @@ Nếu quá rắc rối, chi \$1/month để dùng lastpass premium.
 
 `ykman`
 
-## Add service:
+Help:
 
-    ykman oath add -t <servicename> key
+`ykman -h`
 
-Trong đó key lấy từ lastpass google authenticator (thay vì QR code). Service name gõ lastpass.
+Với mỗi application sẽ có section help tương ứng. Ví dụ để xem help của application oath thì 
 
-    ykman oath add -t lastpass dfguhsldflkdf
+`ykman oath -h`
 
-## Generate code
+## OATH application
 
-    ykman oath code lastpass
+App này dùng để sinh ra OTP (HOTP & TOTP) (Tương tự với standard đang dùng cho các app như Google Authenticator...).
 
-Sau đó touch button để lấy OTP.
+Để add thêm service, có nhiều cách:
+
+1. Dùng CLI (`ykman oath`).
+2. Dùng GUI (của yubico).
+3. Dùng mobi app (Authenticator trên iOS) với NFC featured keys.
+
+Tất cả các cách trên đều sẽ add service vào key. Key được dùng để lấy OTP.
+
+### List services:
+
+App iOS: Kéo xuống và áp key vào điện thoại **(iPhone 8 nằm ở phía đầu của điện thoại)**.
+
+Linux: 
+
+```
+$ ykman oath list
+Bitbucket:voldedore
+Epic Games:voldedore@Epic Games
+LastPass:voldedore@gmail.com
+```
+### Generate code
+
+iOS: Xem phần trên
+
+Linux:
+
+```
+$ ykman oath code LastPass:voldedore@gmail.com        
+LastPass:voldedore@gmail.com  982977
+```
+
+Tùy vào lúc add service có thểm option `-t` hay không, có thể phải touch device. 
+
+Lưu ý: `-t` chỉ có thể sử dụng trên PC. Do key áp vào điện thoại không có điện vào nên không touch được key. (Physically touchable but nothing happens).
+
+### Add service:
+
+Trên app iOS, thực hiện add service & scan QR, sau đó áp key vào điện thoại.
+
+Trên linux:
+
+    ykman oath add <servicename> key
+
+Trong đó key lấy từ QR code (dùng app khác để scan lấy key) hoặc có 1 số service show key lúc enabling 2FA via OTP.
+
+    ykman oath add lastpass dfguhsldflkdf
+
+Ngoài ra còn có nhiều option như: 
+
+- `-t`: Touch khi lấy code.
+- `-o`: HOTP hay TOTP (mặc định là TOTP).
+- `-a`: Mặc định là SHA1.
+- `-i`: Issuer.
+
+Xem thêm: `ykman oath add -h`.
+
+Một số service có thể cung cấp full các thông tin trên thông qua QR code. Hoặc chỉ cung cấp 1 vài thông tin required (các option khác sẽ là mặc định).
