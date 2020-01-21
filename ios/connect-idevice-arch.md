@@ -1,18 +1,18 @@
 # Làm sao để kết nối idevices trên arch linux mà không cần tới iTune
 
-Nói sơ qua về App trên ios. Mỗi app sẽ được phân cho 1 vùng nhớ riêng (gọi nôm na là House, tức là cái nhà, hoặc gọi theo doc của apple là sandbox dir). Các app đó có thể dùng House của mình để lưu dữ liệu mà không cần quan tâm dữ liệu của mình có bị ảnh hưởng tới các app không, và ngược lại, cũng không sợ các app khác làm gì tới dữ liệu của mình.
+Nói sơ qua về App trên ios. Mỗi app sẽ được phân cho 1 vùng nhớ riêng (gọi nôm na là House, tức là cái nhà, hoặc gọi theo doc của apple là [sandbox dir][1]. Các app đó có thể dùng House của mình để lưu dữ liệu mà không cần quan tâm dữ liệu của mình có bị ảnh hưởng tới các app không, và ngược lại, cũng không sợ các app khác làm gì tới dữ liệu của mình.
 
 Như vậy về góc độ bảo mật có thể nói đây là 1 design ok. Nhưng bảo mật thì (hầu như lúc nào cũng) đi ngược lại với thuận tiện.
 
-Từ thời 13.3, ios đã cho Files app truy cập vào House của từng app (với 1 điều kiện là trong đó đã có data rồi và directories thì không tính). Việc này vô tình gây khó khăn cho người dùng rất nhiều.
+Từ thời 13.3, ios đã cho Files app truy cập vào Sandbox của từng app (với 1 điều kiện là trong đó đã có data rồi và directories thì không tính). Việc này vô tình gây khó khăn cho người dùng rất nhiều.
 
 Ví dụ: App VLC. Khi Share (Open in VLC hoặc Copy to VLC), VLC sẽ lưu chúng trong
 
-    House/Inbox
+    Sandbox/Inbox
 
-Mở app Files lên sẽ không thể thấy được dữ liệu (vì House không chứa file nào trừ directory tên `Inbox`).
+Mở app Files lên sẽ không thể thấy được dữ liệu (vì Sandbox không chứa file nào trừ directory tên `Inbox`).
 
-Tuy vậy, nếu dùng iTunes copy file vào VLC thì nó sẽ nằm cùng cấp với `Inbox`. Lúc này Files app mới có thể thấy được House của VLC.
+Tuy vậy, nếu dùng iTunes copy file vào VLC thì nó sẽ nằm cùng cấp với `Inbox`. Lúc này Files app mới có thể thấy được Sandbox của VLC.
 
 ## Các packages có thể cần cài
 
@@ -103,3 +103,5 @@ Hitting.the.Apex.2015.1080p.BluRay.H264.AAC-RARBG.mp4
 Toàn những tài liệu cách đây cả thập kỷ.
 
 Mình không đùa đâu. 2010 và 2011
+
+[1]: https://developer.apple.com/library/archive/documentation/FileManagement/Conceptual/FileSystemProgrammingGuide/FileSystemOverview/FileSystemOverview.html#//apple_ref/doc/uid/TP40010672-CH2-SW13
