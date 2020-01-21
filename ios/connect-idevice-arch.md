@@ -55,7 +55,7 @@ Khi ghim ipad vào máy tính (có trust không?), usbmux nó sẽ tự trao đ�
 
 Trên thunar gõ `afc://uuid` của ipad sẽ ra được chỗ `/private/var/mobile/Media`.
 
-Tuy vậy những thứ của VLC nó lại nằm bên trong `/private/var/mobile/Containers/Data/Application/F3D95DB8-1279-471B-B85D-4F5B228A968F/Documents/Inbox/Hitting.the.Apex.2015.1080p.BluRay.H264.AAC-RARBG.mp4`.
+Tuy vậy những thứ của VLC nó lại nằm bên trong `/private/var/mobile/Containers/Data/Application/F3D95DB8-1279-471B-B85D-4F5B228A968F/Documents/Inbox/Hitting.the.Apex.2015.1080p.BluRay.H264.AAC-RARBG.mp4`, tức là trong App Sandbox.
 
 ## House arrest
 
