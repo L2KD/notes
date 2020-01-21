@@ -1,4 +1,8 @@
-# Làm sao để kết nối idevices trên arch linux mà không cần tới iTune?
+# Làm sao để kết nối idevices trên arch linux mà không cần tới iTune
+
+Nói sơ qua về App trên ios. Mỗi app sẽ được phân cho 1 vùng nhớ riêng (gọi nôm na là House, tức là cái nhà). Các app đó có thể dùng House của mình để lưu dữ liệu mà không cần quan tâm dữ liệu của mình có bị ảnh hưởng tới các app không, và ngược lại, cũng không sợ các app khác làm gì tới dữ liệu của mình.
+
+Như vậy về góc độ bảo mật có thể nói đây là 1 design ok. Nhưng design thì ngược lại với thuận tiện.
 
 ## Các packages có thể cần cài
 
