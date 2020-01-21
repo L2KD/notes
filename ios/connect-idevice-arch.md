@@ -19,7 +19,7 @@ Tuy vậy, nếu dùng iTunes copy file vào VLC thì nó sẽ nằm trong `Docu
 ## Các packages có thể cần cài
 
 - ifuse
-- libimobiledevice
+- [libimobiledevice][2]
 - gvfs-afc
 - gvfs-gphoto2
 - thunar
@@ -103,3 +103,4 @@ Toàn những tài liệu cách đây cả thập kỷ.
 Mình không đùa đâu. 2010 và 2011
 
 [1]: https://developer.apple.com/library/archive/documentation/FileManagement/Conceptual/FileSystemProgrammingGuide/FileSystemOverview/FileSystemOverview.html#//apple_ref/doc/uid/TP40010672-CH2-SW13
+[2]: http://www.libimobiledevice.org/
