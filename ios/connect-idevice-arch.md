@@ -4,6 +4,15 @@ Nói sơ qua về App trên ios. Mỗi app sẽ được phân cho 1 vùng nhớ
 
 Như vậy về góc độ bảo mật có thể nói đây là 1 design ok. Nhưng bảo mật thì (hầu như lúc nào cũng) đi ngược lại với thuận tiện.
 
+Từ thời 13.3, ios đã cho Files app truy cập vào House của từng app (với 1 điều kiện là trong đó đã có data rồi và directories thì không tính). Việc này vô tình gây khó khăn cho người dùng rất nhiều.
+
+Ví dụ: App VLC. Khi Share (Open in VLC hoặc Copy to VLC), VLC sẽ lưu chúng trong 
+
+    House/Inbox
+
+Mở app Files lên sẽ không thể thấy được dữ liệu (vì House không chứa file nào trừ directory tên `Inbox`).
+
+
 ## Các packages có thể cần cài
 
 - ifuse
@@ -84,8 +93,11 @@ Aladdin.mp4
 Hitting.the.Apex.2015.1080p.BluRay.H264.AAC-RARBG.mp4
 ```
 
+---
 
-----
+**Well, I finally ended up using itunes.**
+
+---
 
 Toàn những tài liệu cách đây cả thập kỷ.
 
