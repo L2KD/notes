@@ -123,8 +123,11 @@ Hitting.the.Apex.2015.1080p.BluRay.H264.AAC-RARBG.mp4
    ```
    $ sudo -i
    # cd /run/media/vlc
-   # rsync
+   # rsync --info=progress2 /home/admin/Downloads/some-file.mkv ./
+       660,508,709 100%    1.35MB/s    0:07:46 (xfr#1, to-chk=0/1)
    ```
+
+Tốc độ khá chậm (so với iTunes).
 
 ---
 
