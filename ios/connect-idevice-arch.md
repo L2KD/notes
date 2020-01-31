@@ -6,7 +6,7 @@ Nói sơ qua về App trên ios. Mỗi app sẽ được phân cho 1 vùng nhớ
 
 Như vậy về góc độ bảo mật có thể nói đây là 1 design ok. Nhưng bảo mật thì (hầu như lúc nào cũng) đi ngược lại với thuận tiện.
 
-Từ thời 13.3, ios đã cho Files app truy cập vào Sandbox của từng app (với 1 điều kiện là trong đó đã có data rồi và directories thì không tính). Việc này vô tình gây khó khăn cho người dùng rất nhiều.
+Từ thời 13.3, ios đã cho Files app truy cập vào Sandbox của từng app (với 1 điều kiện là trong đó đã có data rồi và directories thì không tính). Việc này (việc Files app chỉ hiện App folder khi có data bên trong chứ không phải là dir) vô tình gây khó khăn cho người dùng rất nhiều.
 
 Ví dụ: App VLC. Khi Share (Open in VLC hoặc Copy to VLC), VLC sẽ lưu chúng trong
 
@@ -164,7 +164,31 @@ List các mountable devices:
 ```
 $ gio mount --list --detail
 
+Volume(0): Documents on The Coloured Guide
+  Type: GProxyVolume (GProxyVolumeMonitorAfc)
+  ids:
+   uuid: 'ddf10c8a9ab9e4843370addd5202c9404fe7e26b'
+  uuid=ddf10c8a9ab9e4843370addd5202c9404fe7e26b
+  activation_root=afc://ddf10c8a9ab9e4843370addd5202c9404fe7e26b:3/
+  themed icons:  [computer-apple-ipad]  [computer-apple]  [computer]  [computer-apple-ipad-symbolic]  [computer-apple-symbolic]  [computer-symbolic]
+  symbolic themed icons:  [computer-apple-ipad-symbolic]  [computer-apple-symbolic]  [computer-symbolic]  [computer-apple-ipad]  [computer-apple]  [computer]
+  can_mount=1
+  can_eject=0
+  should_automount=1
+Volume(1): iPad
+  Type: GProxyVolume (GProxyVolumeMonitorGPhoto2)
+  ids:
+   unix-device: '/dev/bus/usb/001/013'
+  activation_root=gphoto2://Apple_Inc._iPad_ddf10c8a9ab9e4843370addd5202c9404fe7e26b/
+  themed icons:  [camera-photo]
+  symbolic themed icons:  [camera-photo-symbolic]  [camera-symbolic]  [camera-photo]  [camera]
+  can_mount=1
+  can_eject=0
+  should_automount=1
+
 ```
+
+Như vậy có lẽ là Volume(1) là `DCIM` dùng để copy photos. Thử mở Volume(0) bằng dolphin. À dolphin sucks, thành ra mình mở bằng
 
 ---
 
