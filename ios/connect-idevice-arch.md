@@ -200,6 +200,31 @@ Lưu ý: Ghi ghim cable vào, chọn Don't trust this computer... (weird behavio
 
 không cần pair bằng idevice.
 
+**Tuy vậy copy bị lỗi...**
+
+Ta đành debug thôi.
+
+```
+gio info afc://ddf10c8a9ab9e4843370addd5202c9404fe7e26b:3/org.videolan.vlc-ios/
+
+display name: VLC
+name: org.videolan.vlc-ios
+type: directory
+uri: afc://ddf10c8a9ab9e4843370addd5202c9404fe7e26b:3/org.videolan.vlc-ios
+attributes:
+  standard::type: 2
+  standard::name: org.videolan.vlc-ios
+  standard::display-name: VLC
+  standard::icon: GFileIcon:0x55de7ef24e40
+  standard::content-type: inode/directory
+  standard::fast-content-type: inode/directory
+  standard::symbolic-icon: inode-directory-symbolic, folder-symbolic, inode-directory, folder
+  id::filesystem: afc:host=ddf10c8a9ab9e4843370addd5202c9404fe7e26b,port=3
+  unix::uid: 1000
+  unix::gid: 1000
+
+```
+
 ---
 
 Toàn những tài liệu cách đây cả thập kỷ.
