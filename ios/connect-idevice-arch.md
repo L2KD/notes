@@ -129,6 +129,43 @@ Hitting.the.Apex.2015.1080p.BluRay.H264.AAC-RARBG.mp4
 
 Tốc độ khá chậm (so với iTunes).
 
+Cách khác để connect vào là dùng `GIO`. (Xem tại [đây][3]).
+
+Để có `gio`, cần cài `gvfs-afc`.
+
+```
+$ sudo pacman -Qi gvfs-afc
+Please touch the device.
+Name            : gvfs-afc
+Version         : 1.42.2-1
+Description     : Virtual filesystem implementation for GIO (AFC backend; Apple mobile devices)
+Architecture    : x86_64
+URL             : https://wiki.gnome.org/Projects/gvfs
+Licenses        : LGPL
+Groups          : gnome
+Provides        : None
+Depends On      : gvfs=1.42.2  libimobiledevice  usbmuxd
+Optional Deps   : None
+Required By     : None
+Optional For    : gvfs
+Conflicts With  : None
+Replaces        : None
+Installed Size  : 148.07 KiB
+Packager        : Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
+Build Date      : Fri 22 Nov 2019 05:45:17 PM +07
+Install Date    : Mon 20 Jan 2020 04:21:27 PM +07
+Install Reason  : Explicitly installed
+Install Script  : No
+Validated By    : Signature
+```
+
+List các mountable devices:
+
+```
+$ gio mount --list --detail
+
+```
+
 ---
 
 Toàn những tài liệu cách đây cả thập kỷ.
@@ -137,3 +174,4 @@ Mình không đùa đâu. 2010 và 2011
 
 [1]: https://developer.apple.com/library/archive/documentation/FileManagement/Conceptual/FileSystemProgrammingGuide/FileSystemOverview/FileSystemOverview.html#//apple_ref/doc/uid/TP40010672-CH2-SW13
 [2]: http://www.libimobiledevice.org/
+[3]: https://stackoverflow.com/questions/483460/how-to-mount-from-command-line-like-the-nautilus-does
