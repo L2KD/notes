@@ -188,7 +188,17 @@ Volume(1): iPad
 
 ```
 
-Như vậy có lẽ là Volume(1) là `DCIM` dùng để copy photos. Thử mở Volume(0) bằng dolphin. À dolphin sucks, thành ra mình mở bằng
+Như vậy có lẽ là Volume(1) là `DCIM` dùng để copy photos. Thử mở Volume(0) bằng dolphin. À dolphin sucks, thành ra mình mở bằng Thunar.
+
+```
+afc://ddf10c8a9ab9e4843370addd5202c9404fe7e26b:3/org.videolan.vlc-ios/
+```
+
+Ngon lành.
+
+Lưu ý: Ghi ghim cable vào, chọn Don't trust this computer... (weird behavior).
+
+không cần pair bằng idevice.
 
 ---
 
