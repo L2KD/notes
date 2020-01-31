@@ -223,6 +223,23 @@ attributes:
   unix::uid: 1000
   unix::gid: 1000
 
+$ gio list afc://ddf10c8a9ab9e4843370addd5202c9404fe7e26b:3/org.videolan.vlc-ios/
+Green.Book.2018.720p.BluRay.HEVC.x265.RMTeam.mkv
+Chernobyl.S01E02.720p.10bit.[@TvSeriesBay].mkv
+Chernobyl.S01E01.720p.mkv
+Chernobyl.S01E04.720p.10bit.x265.(@TvSeriesBay).mkv
+Chernobyl.S01E03.720p.10bit.x265.[@TvSeriesBay].srt
+Inbox
+Chernobyl.S01E05.720p.10bit.x265.[@TvSeriesBay].srt
+Chernobyl.S01E05.720p.10bit.x265.[@TvSeriesBay].mkv
+Chernobyl.S01E03.720p.10bit.x265.[@TvSeriesBay].mkv
+Ford v Ferrari 720p web x265 [@HollywoodBay].mkv
+Chernobyl.S01E04.720p.10bit.x265.(@TvSeriesBay).srt
+Joker.2019.@HollywoodBay.720p.HC.HDRip.2CH.x265.ass.ass
+Chernobyl.S01E01.720p.srt
+Chernobyl.S01E02.720p.10bit.[@TvSeriesBay].srt
+
+
 ```
 
 ---
