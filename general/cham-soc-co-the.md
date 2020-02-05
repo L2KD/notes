@@ -4,7 +4,7 @@
 
 Các loại hóa chất cơ bản được sử dụng trong mỹ phẩm
 
-- Sulfate
+- Sulfate. K phải chất hóa học, nó là chất tẩy.
 
 ## Dầu gội
 
