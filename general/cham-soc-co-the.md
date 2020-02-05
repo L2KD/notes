@@ -1,8 +1,16 @@
 # Chăm sóc cơ thể
 
+## Kiến thức chung
+
+Các loại hóa chất cơ bản được sử dụng trong mỹ phẩm
+
+- Sulfate
+
 ## Dầu gội
 
 Dầu gội có nhiệm vụ chính là tẩy rửa các chất bẩn trên tóc, bụi bặm, vi khuẩn gây hại. Trong thành phần có thể chứa nhiều hóa chất chủ yếu để làm chuyện đó. Việc này vô tình lại gây hại cho da dầu và vô tình tẩy luôn dầu tiết ra từ da đầu. Vì thế mới phát sinh nhu cầu sử dụng dầu xả tóc.
+
+Loại này có thể dùng thoải mái. Nhưng nếu bị kích ứng quá có thể tìm mua các hãng dịu và lành như Dove.
 
 ## Dầu xả
 
