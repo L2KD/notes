@@ -4,7 +4,7 @@
 
 Các loại hóa chất cơ bản được sử dụng trong mỹ phẩm
 
-- Sulfate. K phải chất hóa học, nó là chất tẩy.
+- Sulfate. K phải chất hóa học, nó là chất tạo bọt và tẩy.
 - Tinh dầu argan. Chưa nhiều vit E nhằm kích thích mọc tóc. Tốt cho da, mắt.
 - Tinh chất Keratin. Protein có trong tóc. Bổ sung nhằm làm tóc suôn mượt.
 - Dầu maca. Giúp tóc khỏe, tránh gãy rụng.
@@ -19,3 +19,7 @@ Loại này có thể dùng thoải mái. Nhưng nếu bị kích ứng quá có
 ## Dầu xả
 
 Dầu xả được sử dụng sau khi gội chủ yếu để bổ sung thêm các dưỡng chất tốt cho tóc và da đầu (keratin...). Tác dụng chủ yếu là nhằm làm tóc suôn mượt, không bị khô, rối.
+
+## Chăm sóc tóc
+
+## SRM
