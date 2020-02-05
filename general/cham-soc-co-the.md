@@ -5,6 +5,8 @@
 Các loại hóa chất cơ bản được sử dụng trong mỹ phẩm
 
 - Sulfate. K phải chất hóa học, nó là chất tẩy.
+- Tinh dầu argan.
+- Tinh chất Keratin.
 
 ## Dầu gội
 
