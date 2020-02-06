@@ -26,6 +26,8 @@ Dầu xả được sử dụng sau khi gội chủ yếu để bổ sung thêm 
 
 Do dầu xả được bôi trực tiếp vào thân và ngọn tóc (chứ không ngấm vào da đầu) nên khi rửa lại bằng nước sạch, không nên gội quá kĩ vì có thể sẽ bị trôi dầu xả đi, làm lãng phí.
 
+Vì dầu gội không xài mỗi ngày, nên mỹ phẩm chăm sóc tóc sẽ dính vào tóc mỗi ngày. Thành ra xả tóc là chuyện bắt buộc mỗi ngày. Dầu xả cũng có một chút tác dụng rửa sạch mỹ phẩm trên tóc.
+
 ## Chăm sóc tóc
 
 Để tóc đẹp, CẦN phải có các loại mỹ phẩm cho tóc như gel, sáp, wax...
