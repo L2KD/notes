@@ -865,7 +865,7 @@ Element.extend({
       }
       if (document.defaultView) result = document.defaultView
         .getComputedStyle(this, null).getPropertyValue(property
-        .hyphenate());
+          .hyphenate());
       else if (this.currentStyle) result = this.currentStyle[property]
     }
     if (window.ie) result = Element.fixStyle(property, result, this);
@@ -975,7 +975,8 @@ Element.fixStyle = function (property, result, element) {
   if ($chk(parseInt(result))) return result;
   if (['height', 'width'].contains(property)) {
     var values = (property == 'width') ? ['left', 'right'] : ['top',
-    'bottom'];
+      'bottom'
+    ];
     var size = 0;
     values.each(function (value) {
       size += element.getStyle('border-' + value + '-width').toInt() +
@@ -1392,7 +1393,7 @@ $$.shared = {
         if (param[2]) {
           var el = context.getElementById(param[2]);
           if (!el || ((param[1] != '*') && (Element.getTag(el) != param[
-            1]))) return false;
+              1]))) return false;
           items = [el]
         } else {
           items = $A(context.getElementsByTagName(param[1]))
@@ -1431,7 +1432,7 @@ Element.Methods.Dom = {
       if (!param) break;
       param[1] = param[1] || '*';
       var temp = $$.shared[$$.shared.method].getParam(items, this, param,
-      i);
+        i);
       if (!temp) break;
       items = temp
     }
@@ -1476,7 +1477,8 @@ Element.extend({
         return (this.multiple) ? values : values[0];
       case 'input':
         if (!(this.checked && ['checkbox', 'radio'].contains(this
-          .type)) && !['hidden', 'text', 'password'].contains(this.type))
+            .type)) && !['hidden', 'text', 'password'].contains(this
+            .type))
           break;
       case 'textarea':
         return this.value
@@ -1563,32 +1565,936 @@ Element.extend({
   }
 });
 Element.Events.domready = {
-    add: function (fn) {
-        if (window.loaded) {
-          fn.call(this);
-          return
+  add: function (fn) {
+    if (window.loaded) {
+      fn.call(this);
+      return
+    }
+    var domReady = function () {
+      if (window.loaded) return;
+      window.loaded = true;
+      window.timer = $clear(window.timer);
+      this.fireEvent('domready')
+    }.bind(this);
+    if (document.readyState && window.webkit) {
+      window.timer = function () {
+        if (['loaded', 'complete'].contains(document.readyState))
+          domReady()
+      }.periodical(50)
+    } else if (document.readyState && window.ie) {
+      if (!$('ie_ready')) {
+        var src = (window.location.protocol == 'https:') ? '://0' :
+          'javascript:void(0)';
+        document.write('<script id=\"ie_ready\" defer src=\"' + src +
+          '\"><\\/script>');
+        $('ie_ready').onreadystatechange = function () {
+          if (this.readyState == 'complete') domReady()
         }
-        var domReady = function () {
-          if (window.loaded) return;
-          window.loaded = true;
-          window.timer = $clear(window.timer);
-          this.fireEvent('domready')
-        }.bind(this);
-        if (document.readyState && window.webkit) {
-          window.timer = function () {
-            if (['loaded', 'complete'].contains(document.readyState))
-              domReady()
-          }.periodical(50)
-        } else if (document.readyState && window.ie) {
-          if (!$('ie_ready')) {
-            var src = (window.location.protocol == 'https:') ? '://0' :
-              'javascript:void(0)';
-            document.write('<script id=\"ie_ready\" defer src=\"' + src +
-              '\"><\\/script>');
-            $('ie_ready').onreadystatechange = function () {
-              if (this.readyState == 'complete') domReady()
-            }
-          }
-        } else {
-          window.addListener(\
-              "load\",domReady);document.addListener(\"DOMContentLoaded\",domReady)}}};window.onDomReady=function(fn){return this.addEvent('domready',fn)};var Fx={};Fx.Base=new Class({options:{onStart:Class.empty,onComplete:Class.empty,onCancel:Class.empty,transition:function(p){return-(Math.cos(Math.PI*p)-1)/2},duration:500,unit:'px',wait:true,fps:50},initialize:function(options){this.element=this.element||null;this.setOptions(options);if(this.options.initialize)this.options.initialize.call(this)},step:function(){var time=$time();if(time<this.time+this.options.duration){this.delta=this.options.transition((time-this.time)/this.options.duration);this.setNow();this.increase()}else{this.stop(true);this.set(this.to);this.fireEvent('onComplete',this.element,10);this.callChain()}},set:function(to){this.now=to;this.increase();return this},setNow:function(){this.now=this.compute(this.from,this.to)},compute:function(from,to){return(to-from)*this.delta+from},start:function(from,to){if(!this.options.wait)this.stop();else if(this.timer)return this;this.from=from;this.to=to;this.change=this.to-this.from;this.time=$time();this.timer=this.step.periodical(Math.round(1000/this.options.fps),this);this.fireEvent('onStart',this.element);return this},stop:function(end){if(!this.timer)return this;this.timer=$clear(this.timer);if(!end)this.fireEvent('onCancel',this.element);return this},custom:function(from,to){return this.start(from,to)},clearTimer:function(end){return this.stop(end)}});Fx.Base.implement(new Chain,new Events,new Options);Fx.CSS={select:function(property,to){if(property.test(/color/i))return this.Color;var type=$type(to);if((type=='array')||(type=='string'&&to.contains(' ')))return this.Multi;return this.Single},parse:function(el,property,fromTo){if(!fromTo.push)fromTo=[fromTo];var from=fromTo[0],to=fromTo[1];if(!$chk(to)){to=from;from=el.getStyle(property)}var css=this.select(property,to);return{'from':css.parse(from),'to':css.parse(to),'css':css}}};Fx.CSS.Single={parse:function(value){return parseFloat(value)},getNow:function(from,to,fx){return fx.compute(from,to)},getValue:function(value,unit,property){if(unit=='px'&&property!='opacity')value=Math.round(value);return value+unit}};Fx.CSS.Multi={parse:function(value){return value.push?value:value.split(' ').map(function(v){return parseFloat(v)})},getNow:function(from,to,fx){var now=[];for(var i=0;i<from.length;i++)now[i]=fx.compute(from[i],to[i]);return now},getValue:function(value,unit,property){if(unit=='px'&&property!='opacity')value=value.map(Math.round);return value.join(unit+' ')+unit}};Fx.CSS.Color={parse:function(value){return value.push?value:value.hexToRgb(true)},getNow:function(from,to,fx){var now=[];for(var i=0;i<from.length;i++)now[i]=Math.round(fx.compute(from[i],to[i]));return now},getValue:function(value){return'rgb('+value.join(',')+')'}};Fx.Style=Fx.Base.extend({initialize:function(el,property,options){this.element=$(el);this.property=property;this.parent(options)},hide:function(){return this.set(0)},setNow:function(){this.now=this.css.getNow(this.from,this.to,this)},set:function(to){this.css=Fx.CSS.select(this.property,to);return this.parent(this.css.parse(to))},start:function(from,to){if(this.timer&&this.options.wait)return this;var parsed=Fx.CSS.parse(this.element,this.property,[from,to]);this.css=parsed.css;return this.parent(parsed.from,parsed.to)},increase:function(){this.element.setStyle(this.property,this.css.getValue(this.now,this.options.unit,this.property))}});Element.extend({effect:function(property,options){return new Fx.Style(this,property,options)}});Fx.Styles=Fx.Base.extend({initialize:function(el,options){this.element=$(el);this.parent(options)},setNow:function(){for(var p in this.from)this.now[p]=this.css[p].getNow(this.from[p],this.to[p],this)},set:function(to){var parsed={};this.css={};for(var p in to){this.css[p]=Fx.CSS.select(p,to[p]);parsed[p]=this.css[p].parse(to[p])}return this.parent(parsed)},start:function(obj){if(this.timer&&this.options.wait)return this;this.now={};this.css={};var from={},to={};for(var p in obj){var parsed=Fx.CSS.parse(this.element,p,obj[p]);from[p]=parsed.from;to[p]=parsed.to;this.css[p]=parsed.css}return this.parent(from,to)},increase:function(){for(var p in this.now)this.element.setStyle(p,this.css[p].getValue(this.now[p],this.options.unit,p))}});Element.extend({effects:function(options){return new Fx.Styles(this,options)}});Fx.Elements=Fx.Base.extend({initialize:function(elements,options){this.elements=$$(elements);this.parent(options)},setNow:function(){for(var i in this.from){var iFrom=this.from[i],iTo=this.to[i],iCss=this.css[i],iNow=this.now[i]={};for(var p in iFrom)iNow[p]=iCss[p].getNow(iFrom[p],iTo[p],this)}},set:function(to){var parsed={};this.css={};for(var i in to){var iTo=to[i],iCss=this.css[i]={},iParsed=parsed[i]={};for(var p in iTo){iCss[p]=Fx.CSS.select(p,iTo[p]);iParsed[p]=iCss[p].parse(iTo[p])}}return this.parent(parsed)},start:function(obj){if(this.timer&&this.options.wait)return this;this.now={};this.css={};var from={},to={};for(var i in obj){var iProps=obj[i],iFrom=from[i]={},iTo=to[i]={},iCss=this.css[i]={};for(var p in iProps){var parsed=Fx.CSS.parse(this.elements[i],p,iProps[p]);iFrom[p]=parsed.from;iTo[p]=parsed.to;iCss[p]=parsed.css}}return this.parent(from,to)},increase:function(){for(var i in this.now){var iNow=this.now[i],iCss=this.css[i];for(var p in iNow)this.elements[i].setStyle(p,iCss[p].getValue(iNow[p],this.options.unit,p))}}});Fx.Slide=Fx.Base.extend({options:{mode:'vertical'},initialize:function(el,options){this.element=$(el);this.wrapper=new Element('div',{'styles':$extend(this.element.getStyles('margin'),{'overflow':'hidden'})}).injectAfter(this.element).adopt(this.element);this.element.setStyle('margin',0);this.setOptions(options);this.now=[];this.parent(this.options);this.open=true;this.addEvent('onComplete',function(){this.open=(this.now[0]===0)});if(window.webkit419)this.addEvent('onComplete',function(){if(this.open)this.element.remove().inject(this.wrapper)})},setNow:function(){for(var i=0;i<2;i++)this.now[i]=this.compute(this.from[i],this.to[i])},vertical:function(){this.margin='margin-top';this.layout='height';this.offset=this.element.offsetHeight},horizontal:function(){this.margin='margin-left';this.layout='width';this.offset=this.element.offsetWidth},slideIn:function(mode){this[mode||this.options.mode]();return this.start([this.element.getStyle(this.margin).toInt(),this.wrapper.getStyle(this.layout).toInt()],[0,this.offset])},slideOut:function(mode){this[mode||this.options.mode]();return this.start([this.element.getStyle(this.margin).toInt(),this.wrapper.getStyle(this.layout).toInt()],[-this.offset,0])},hide:function(mode){this[mode||this.options.mode]();this.open=false;return this.set([-this.offset,0])},show:function(mode){this[mode||this.options.mode]();this.open=true;return this.set([0,this.offset])},toggle:function(mode){if(this.wrapper.offsetHeight==0||this.wrapper.offsetWidth==0)return this.slideIn(mode);return this.slideOut(mode)},increase:function(){this.element.setStyle(this.margin,this.now[0]+this.options.unit);this.wrapper.setStyle(this.layout,this.now[1]+this.options.unit)}});Fx.Transition=function(transition,params){params=params||[];if($type(params)!='array')params=[params];return $extend(transition,{easeIn:function(pos){return transition(pos,params)},easeOut:function(pos){return 1-transition(1-pos,params)},easeInOut:function(pos){return(pos<=0.5)?transition(2*pos,params)/2:(2-transition(2*(1-pos),params))/2}})};Fx.Transitions=new Abstract({linear:function(p){return p}});Fx.Transitions.extend=function(transitions){for(var transition in transitions){Fx.Transitions[transition]=new Fx.Transition(transitions[transition]);Fx.Transitions.compat(transition)}};Fx.Transitions.compat=function(transition){['In','Out','InOut'].each(function(easeType){Fx.Transitions[transition.toLowerCase()+easeType]=Fx.Transitions[transition]['ease'+easeType]})};Fx.Transitions.extend({Pow:function(p,x){return Math.pow(p,x[0]||6)},Expo:function(p){return Math.pow(2,8*(p-1))},Circ:function(p){return 1-Math.sin(Math.acos(p))},Sine:function(p){return 1-Math.sin((1-p)*Math.PI/2)},Back:function(p,x){x=x[0]||1.618;return Math.pow(p,2)*((x+1)*p-x)},Bounce:function(p){var value;for(var a=0,b=1;1;a+=b,b/=2){if(p>=(7-4*a)/11){value=-Math.pow((11-6*a-11*p)/4,2)+b*b;break}}return value},Elastic:function(p,x){return Math.pow(2,10*--p)*Math.cos(20*p*Math.PI*(x[0]||1)/3)}});['Quad','Cubic','Quart','Quint'].each(function(transition,i){Fx.Transitions[transition]=new Fx.Transition(function(p){return Math.pow(p,[i+2])});Fx.Transitions.compat(transition)});var Drag={};Drag.Base=new Class({options:{handle:false,unit:'px',onStart:Class.empty,onBeforeStart:Class.empty,onComplete:Class.empty,onSnap:Class.empty,onDrag:Class.empty,limit:false,modifiers:{x:'left',y:'top'},grid:false,snap:6},initialize:function(el,options){this.setOptions(options);this.element=$(el);this.handle=$(this.options.handle)||this.element;this.mouse={'now':{},'pos':{}};this.value={'start':{},'now':{}};this.bound={'start':this.start.bindWithEvent(this),'check':this.check.bindWithEvent(this),'drag':this.drag.bindWithEvent(this),'stop':this.stop.bind(this)};this.attach();if(this.options.initialize)this.options.initialize.call(this)},attach:function(){this.handle.addEvent('mousedown',this.bound.start);return this},detach:function(){this.handle.removeEvent('mousedown',this.bound.start);return this},start:function(event){this.fireEvent('onBeforeStart',this.element);this.mouse.start=event.page;var limit=this.options.limit;this.limit={'x':[],'y':[]};for(var z in this.options.modifiers){if(!this.options.modifiers[z])continue;this.value.now[z]=this.element.getStyle(this.options.modifiers[z]).toInt();this.mouse.pos[z]=event.page[z]-this.value.now[z];if(limit&&limit[z]){for(var i=0;i<2;i++){if($chk(limit[z][i]))this.limit[z][i]=($type(limit[z][i])=='function')?limit[z][i]():limit[z][i]}}}if($type(this.options.grid)=='number')this.options.grid={'x':this.options.grid,'y':this.options.grid};document.addListener('mousemove',this.bound.check);document.addListener('mouseup',this.bound.stop);this.fireEvent('onStart',this.element);event.stop()},check:function(event){var distance=Math.round(Math.sqrt(Math.pow(event.page.x-this.mouse.start.x,2)+Math.pow(event.page.y-this.mouse.start.y,2)));if(distance>this.options.snap){document.removeListener('mousemove',this.bound.check);document.addListener('mousemove',this.bound.drag);this.drag(event);this.fireEvent('onSnap',this.element)}event.stop()},drag:function(event){this.out=false;this.mouse.now=event.page;for(var z in this.options.modifiers){if(!this.options.modifiers[z])continue;this.value.now[z]=this.mouse.now[z]-this.mouse.pos[z];if(this.limit[z]){if($chk(this.limit[z][1])&&(this.value.now[z]>this.limit[z][1])){this.value.now[z]=this.limit[z][1];this.out=true}else if($chk(this.limit[z][0])&&(this.value.now[z]<this.limit[z][0])){this.value.now[z]=this.limit[z][0];this.out=true}}if(this.options.grid[z])this.value.now[z]-=(this.value.now[z]%this.options.grid[z]);this.element.setStyle(this.options.modifiers[z],this.value.now[z]+this.options.unit)}this.fireEvent('onDrag',this.element);event.stop()},stop:function(){document.removeListener('mousemove',this.bound.check);document.removeListener('mousemove',this.bound.drag);document.removeListener('mouseup',this.bound.stop);this.fireEvent('onComplete',this.element)}});Drag.Base.implement(new Events,new Options);Element.extend({makeResizable:function(options){return new Drag.Base(this,$merge({modifiers:{x:'width',y:'height'}},options))}});Drag.Move=Drag.Base.extend({options:{droppables:[],container:false,overflown:[]},initialize:function(el,options){this.setOptions(options);this.element=$(el);this.droppables=$$(this.options.droppables);this.container=$(this.options.container);this.position={'element':this.element.getStyle('position'),'container':false};if(this.container)this.position.container=this.container.getStyle('position');if(!['relative','absolute','fixed'].contains(this.position.element))this.position.element='absolute';var top=this.element.getStyle('top').toInt();var left=this.element.getStyle('left').toInt();if(this.position.element=='absolute'&&!['relative','absolute','fixed'].contains(this.position.container)){top=$chk(top)?top:this.element.getTop(this.options.overflown);left=$chk(left)?left:this.element.getLeft(this.options.overflown)}else{top=$chk(top)?top:0;left=$chk(left)?left:0}this.element.setStyles({'top':top,'left':left,'position':this.position.element});this.parent(this.element)},start:function(event){this.overed=null;if(this.container){var cont=this.container.getCoordinates();var el=this.element.getCoordinates();if(this.position.element=='absolute'&&!['relative','absolute','fixed'].contains(this.position.container)){this.options.limit={'x':[cont.left,cont.right-el.width],'y':[cont.top,cont.bottom-el.height]}}else{this.options.limit={'y':[0,cont.height-el.height],'x':[0,cont.width-el.width]}}}this.parent(event)},drag:function(event){this.parent(event);var overed=this.out?false:this.droppables.filter(this.checkAgainst,this).getLast();if(this.overed!=overed){if(this.overed)this.overed.fireEvent('leave',[this.element,this]);this.overed=overed?overed.fireEvent('over',[this.element,this]):null}return this},checkAgainst:function(el){el=el.getCoordinates(this.options.overflown);var now=this.mouse.now;return(now.x>el.left&&now.x<el.right&&now.y<el.bottom&&now.y>el.top)},stop:function(){if(this.overed&&!this.out)this.overed.fireEvent('drop',[this.element,this]);else this.element.fireEvent('emptydrop',this);this.parent();return this}});Element.extend({makeDraggable:function(options){return new Drag.Move(this,options)}});var Cookie=new Abstract({options:{domain:false,path:false,duration:false,secure:false},set:function(key,value,options){options=$merge(this.options,options);value=encodeURIComponent(value);if(options.domain)value+='; domain='+options.domain;if(options.path)value+='; path='+options.path;if(options.duration){var date=new Date();date.setTime(date.getTime()+options.duration*24*60*60*1000);value+='; expires='+date.toGMTString()}if(options.secure)value+='; secure';document.cookie=key+'='+value;return $extend(options,{'key':key,'value':value})},get:function(key){var value=document.cookie.match('(?:^|;)\\\\s*'+key.escapeRegExp()+'=([^;]*)');return value?decodeURIComponent(value[1]):false},remove:function(cookie,options){if($type(cookie)=='object')this.set(cookie.key,'',$merge(cookie,{duration:-1}));else this.set(cookie,'',$merge(options,{duration:-1}))}});var Json={toString:function(obj){switch($type(obj)){case'string':return'\"'+obj.replace(/([\"\\\\])/g,'\\\\$1')+'\"';case'array':return'['+obj.map(Json.toString).join(',')+']';case'object':var string=[];for(var property in obj)string.push(Json.toString(property)+':'+Json.toString(obj[property]));return'{'+string.join(',')+'}';case'number':if(isFinite(obj))break;case false:return'null'}return String(obj)},evaluate:function(str,secure){return(($type(str)!='string')||(secure&&!str.test(/^(\"(\\\\.|[^\"\\\\\\n\\r])*?\"|[,:{}\\[\\]0-9.\\-+Eaeflnr-u \\n\\r\\t])+?$/)))?null:eval('('+str+')')}};var Hash=new Class({length:0,initialize:function(object){this.obj=object||{};this.setLength()},get:function(key){return(this.hasKey(key))?this.obj[key]:null},hasKey:function(key){return(key in this.obj)},set:function(key,value){if(!this.hasKey(key))this.length++;this.obj[key]=value;return this},setLength:function(){this.length=0;for(var p in this.obj)this.length++;return this},remove:function(key){if(this.hasKey(key)){delete this.obj[key];this.length--}return this},each:function(fn,bind){$each(this.obj,fn,bind)},extend:function(obj){$extend(this.obj,obj);return this.setLength()},merge:function(){this.obj=$merge.apply(null,[this.obj].extend(arguments));return this.setLength()},empty:function(){this.obj={};this.length=0;return this},keys:function(){var keys=[];for(var property in this.obj)keys.push(property);return keys},values:function(){var values=[];for(var property in this.obj)values.push(this.obj[property]);return values}});function $H(obj){return new Hash(obj)};Hash.Cookie=Hash.extend({initialize:function(name,options){this.name=name;this.options=$extend({'autoSave':true},options||{});this.load()},save:function(){if(this.length==0){Cookie.remove(this.name,this.options);return true}var str=Json.toString(this.obj);if(str.length>4096)return false;Cookie.set(this.name,str,this.options);return true},load:function(){this.obj=Json.evaluate(Cookie.get(this.name),true)||{};this.setLength()}});Hash.Cookie.Methods={};['extend','set','merge','empty','remove'].each(function(method){Hash.Cookie.Methods[method]=function(){Hash.prototype[method].apply(this,arguments);if(this.options.autoSave)this.save();return this}});Hash.Cookie.implement(Hash.Cookie.Methods);var Slider=new Class({options:{onChange:Class.empty,onComplete:Class.empty,onTick:function(pos){this.knob.setStyle(this.p,pos)},mode:'horizontal',steps:100,offset:0},initialize:function(el,knob,options){this.element=$(el);this.knob=$(knob);this.setOptions(options);this.previousChange=-1;this.previousEnd=-1;this.step=-1;this.element.addEvent('mousedown',this.clickedElement.bindWithEvent(this));var mod,offset;switch(this.options.mode){case'horizontal':this.z='x';this.p='left';mod={'x':'left','y':false};offset='offsetWidth';break;case'vertical':this.z='y';this.p='top';mod={'x':false,'y':'top'};offset='offsetHeight'}this.max=this.element[offset]-this.knob[offset]+(this.options.offset*2);this.half=this.knob[offset]/2;this.getPos=this.element['get'+this.p.capitalize()].bind(this.element);this.knob.setStyle('position','relative').setStyle(this.p,-this.options.offset);var lim={};lim[this.z]=[-this.options.offset,this.max-this.options.offset];this.drag=new Drag.Base(this.knob,{limit:lim,modifiers:mod,snap:0,onStart:function(){this.draggedKnob()}.bind(this),onDrag:function(){this.draggedKnob()}.bind(this),onComplete:function(){this.draggedKnob();this.end()}.bind(this)});if(this.options.initialize)this.options.initialize.call(this)},set:function(step){this.step=step.limit(0,this.options.steps);this.checkStep();this.end();this.fireEvent('onTick',this.toPosition(this.step));return this},clickedElement:function(event){var position=event.page[this.z]-this.getPos()-this.half;position=position.limit(-this.options.offset,this.max-this.options.offset);this.step=this.toStep(position);this.checkStep();this.end();this.fireEvent('onTick',position)},draggedKnob:function(){this.step=this.toStep(this.drag.value.now[this.z]);this.checkStep()},checkStep:function(){if(this.previousChange!=this.step){this.previousChange=this.step;this.fireEvent('onChange',this.step)}},end:function(){if(this.previousEnd!==this.step){this.previousEnd=this.step;this.fireEvent('onComplete',this.step+'')}},toStep:function(position){return Math.round((position+this.options.offset)/this.max*this.options.steps)},toPosition:function(step){return this.max*step/this.options.steps}});Slider.implement(new Events);Slider.implement(new Options);
+      }
+    } else {
+      window.addListener(
+        "load", domReady);
+      document.addListener(
+        "DOMContentLoaded", domReady)
+    }
+  }
+};
+window.onDomReady = function (fn) {
+  return this.addEvent('domready', fn)
+};
+var Fx = {};
+Fx.Base = new Class({
+  options: {
+    onStart: Class.empty,
+    onComplete: Class.empty,
+    onCancel: Class.empty,
+    transition: function (p) {
+      return -(Math.cos(Math.PI * p) - 1) / 2
+    },
+    duration: 500,
+    unit: 'px',
+    wait: true,
+    fps: 50
+  },
+  initialize: function (options) {
+    this.element = this.element || null;
+    this.setOptions(options);
+    if (this.options.initialize) this.options.initialize.call(this)
+  },
+  step: function () {
+    var time = $time();
+    if (time < this.time + this.options.duration) {
+      this.delta = this.options.transition((time - this.time) / this
+        .options.duration);
+      this.setNow();
+      this.increase()
+    } else {
+      this.stop(true);
+      this.set(this.to);
+      this.fireEvent('onComplete', this.element, 10);
+      this.callChain()
+    }
+  },
+  set: function (to) {
+    this.now = to;
+    this.increase();
+    return this
+  },
+  setNow: function () {
+    this.now = this.compute(this.from, this.to)
+  },
+  compute: function (from, to) {
+    return (to - from) * this.delta + from
+  },
+  start: function (from, to) {
+    if (!this.options.wait) this.stop();
+    else if (this.timer) return this;
+    this.from = from;
+    this.to = to;
+    this.change = this.to - this.from;
+    this.time = $time();
+    this.timer = this.step.periodical(Math.round(1000 / this.options.fps),
+      this);
+    this.fireEvent('onStart', this.element);
+    return this
+  },
+  stop: function (end) {
+    if (!this.timer) return this;
+    this.timer = $clear(this.timer);
+    if (!end) this.fireEvent('onCancel', this.element);
+    return this
+  },
+  custom: function (from, to) {
+    return this.start(from, to)
+  },
+  clearTimer: function (end) {
+    return this.stop(end)
+  }
+});
+Fx.Base.implement(new Chain, new Events, new Options);
+Fx.CSS = {
+  select: function (property, to) {
+    if (property.test(/color/i)) return this.Color;
+    var type = $type(to);
+    if ((type == 'array') || (type == 'string' && to.contains(' ')))
+    return this.Multi;
+    return this.Single
+  },
+  parse: function (el, property, fromTo) {
+    if (!fromTo.push) fromTo = [fromTo];
+    var from = fromTo[0],
+      to = fromTo[1];
+    if (!$chk(to)) {
+      to = from;
+      from = el.getStyle(property)
+    }
+    var css = this.select(property, to);
+    return {
+      'from': css.parse(from),
+      'to': css.parse(to),
+      'css': css
+    }
+  }
+};
+Fx.CSS.Single = {
+  parse: function (value) {
+    return parseFloat(value)
+  },
+  getNow: function (from, to, fx) {
+    return fx.compute(from, to)
+  },
+  getValue: function (value, unit, property) {
+    if (unit == 'px' && property != 'opacity') value = Math.round(value);
+    return value + unit
+  }
+};
+Fx.CSS.Multi = {
+  parse: function (value) {
+    return value.push ? value : value.split(' ').map(function (v) {
+      return parseFloat(v)
+    })
+  },
+  getNow: function (from, to, fx) {
+    var now = [];
+    for (var i = 0; i < from.length; i++) now[i] = fx.compute(from[i], to[
+      i]);
+    return now
+  },
+  getValue: function (value, unit, property) {
+    if (unit == 'px' && property != 'opacity') value = value.map(Math
+    .round);
+    return value.join(unit + ' ') + unit
+  }
+};
+Fx.CSS.Color = {
+  parse: function (value) {
+    return value.push ? value : value.hexToRgb(true)
+  },
+  getNow: function (from, to, fx) {
+    var now = [];
+    for (var i = 0; i < from.length; i++) now[i] = Math.round(fx.compute(
+      from[i], to[i]));
+    return now
+  },
+  getValue: function (value) {
+    return 'rgb(' + value.join(',') + ')'
+  }
+};
+Fx.Style = Fx.Base.extend({
+  initialize: function (el, property, options) {
+    this.element = $(el);
+    this.property = property;
+    this.parent(options)
+  },
+  hide: function () {
+    return this.set(0)
+  },
+  setNow: function () {
+    this.now = this.css.getNow(this.from, this.to, this)
+  },
+  set: function (to) {
+    this.css = Fx.CSS.select(this.property, to);
+    return this.parent(this.css.parse(to))
+  },
+  start: function (from, to) {
+    if (this.timer && this.options.wait) return this;
+    var parsed = Fx.CSS.parse(this.element, this.property, [from, to]);
+    this.css = parsed.css;
+    return this.parent(parsed.from, parsed.to)
+  },
+  increase: function () {
+    this.element.setStyle(this.property, this.css.getValue(this.now, this
+      .options.unit, this.property))
+  }
+});
+Element.extend({
+  effect: function (property, options) {
+    return new Fx.Style(this, property, options)
+  }
+});
+Fx.Styles = Fx.Base.extend({
+  initialize: function (el, options) {
+    this.element = $(el);
+    this.parent(options)
+  },
+  setNow: function () {
+    for (var p in this.from) this.now[p] = this.css[p].getNow(this.from[
+      p], this.to[p], this)
+  },
+  set: function (to) {
+    var parsed = {};
+    this.css = {};
+    for (var p in to) {
+      this.css[p] = Fx.CSS.select(p, to[p]);
+      parsed[p] = this.css[p].parse(to[p])
+    }
+    return this.parent(parsed)
+  },
+  start: function (obj) {
+    if (this.timer && this.options.wait) return this;
+    this.now = {};
+    this.css = {};
+    var from = {},
+      to = {};
+    for (var p in obj) {
+      var parsed = Fx.CSS.parse(this.element, p, obj[p]);
+      from[p] = parsed.from;
+      to[p] = parsed.to;
+      this.css[p] = parsed.css
+    }
+    return this.parent(from, to)
+  },
+  increase: function () {
+    for (var p in this.now) this.element.setStyle(p, this.css[p].getValue(
+      this.now[p], this.options.unit, p))
+  }
+});
+Element.extend({
+  effects: function (options) {
+    return new Fx.Styles(this, options)
+  }
+});
+Fx.Elements = Fx.Base.extend({
+  initialize: function (elements, options) {
+    this.elements = $$(elements);
+    this.parent(options)
+  },
+  setNow: function () {
+    for (var i in this.from) {
+      var iFrom = this.from[i],
+        iTo = this.to[i],
+        iCss = this.css[i],
+        iNow = this.now[i] = {};
+      for (var p in iFrom) iNow[p] = iCss[p].getNow(iFrom[p], iTo[p],
+        this)
+    }
+  },
+  set: function (to) {
+    var parsed = {};
+    this.css = {};
+    for (var i in to) {
+      var iTo = to[i],
+        iCss = this.css[i] = {},
+        iParsed = parsed[i] = {};
+      for (var p in iTo) {
+        iCss[p] = Fx.CSS.select(p, iTo[p]);
+        iParsed[p] = iCss[p].parse(iTo[p])
+      }
+    }
+    return this.parent(parsed)
+  },
+  start: function (obj) {
+    if (this.timer && this.options.wait) return this;
+    this.now = {};
+    this.css = {};
+    var from = {},
+      to = {};
+    for (var i in obj) {
+      var iProps = obj[i],
+        iFrom = from[i] = {},
+        iTo = to[i] = {},
+        iCss = this.css[i] = {};
+      for (var p in iProps) {
+        var parsed = Fx.CSS.parse(this.elements[i], p, iProps[p]);
+        iFrom[p] = parsed.from;
+        iTo[p] = parsed.to;
+        iCss[p] = parsed.css
+      }
+    }
+    return this.parent(from, to)
+  },
+  increase: function () {
+    for (var i in this.now) {
+      var iNow = this.now[i],
+        iCss = this.css[i];
+      for (var p in iNow) this.elements[i].setStyle(p, iCss[p].getValue(
+        iNow[p], this.options.unit, p))
+    }
+  }
+});
+Fx.Slide = Fx.Base.extend({
+  options: {
+    mode: 'vertical'
+  },
+  initialize: function (el, options) {
+    this.element = $(el);
+    this.wrapper = new Element('div', {
+      'styles': $extend(this.element.getStyles('margin'), {
+        'overflow': 'hidden'
+      })
+    }).injectAfter(this.element).adopt(this.element);
+    this.element.setStyle('margin', 0);
+    this.setOptions(options);
+    this.now = [];
+    this.parent(this.options);
+    this.open = true;
+    this.addEvent('onComplete', function () {
+      this.open = (this.now[0] === 0)
+    });
+    if (window.webkit419) this.addEvent('onComplete', function () {
+      if (this.open) this.element.remove().inject(this.wrapper)
+    })
+  },
+  setNow: function () {
+    for (var i = 0; i < 2; i++) this.now[i] = this.compute(this.from[i],
+      this.to[i])
+  },
+  vertical: function () {
+    this.margin = 'margin-top';
+    this.layout = 'height';
+    this.offset = this.element.offsetHeight
+  },
+  horizontal: function () {
+    this.margin = 'margin-left';
+    this.layout = 'width';
+    this.offset = this.element.offsetWidth
+  },
+  slideIn: function (mode) {
+    this[mode || this.options.mode]();
+    return this.start([this.element.getStyle(this.margin).toInt(), this
+      .wrapper.getStyle(this.layout).toInt()
+    ], [0, this.offset])
+  },
+  slideOut: function (mode) {
+    this[mode || this.options.mode]();
+    return this.start([this.element.getStyle(this.margin).toInt(), this
+      .wrapper.getStyle(this.layout).toInt()
+    ], [-this.offset, 0])
+  },
+  hide: function (mode) {
+    this[mode || this.options.mode]();
+    this.open = false;
+    return this.set([-this.offset, 0])
+  },
+  show: function (mode) {
+    this[mode || this.options.mode]();
+    this.open = true;
+    return this.set([0, this.offset])
+  },
+  toggle: function (mode) {
+    if (this.wrapper.offsetHeight == 0 || this.wrapper.offsetWidth == 0)
+      return this.slideIn(mode);
+    return this.slideOut(mode)
+  },
+  increase: function () {
+    this.element.setStyle(this.margin, this.now[0] + this.options.unit);
+    this.wrapper.setStyle(this.layout, this.now[1] + this.options.unit)
+  }
+});
+Fx.Transition = function (transition, params) {
+  params = params || [];
+  if ($type(params) != 'array') params = [params];
+  return $extend(transition, {
+    easeIn: function (pos) {
+      return transition(pos, params)
+    },
+    easeOut: function (pos) {
+      return 1 - transition(1 - pos, params)
+    },
+    easeInOut: function (pos) {
+      return (pos <= 0.5) ? transition(2 * pos, params) / 2 : (2 -
+        transition(2 * (1 - pos), params)) / 2
+    }
+  })
+};
+Fx.Transitions = new Abstract({
+  linear: function (p) {
+    return p
+  }
+});
+Fx.Transitions.extend = function (transitions) {
+  for (var transition in transitions) {
+    Fx.Transitions[transition] = new Fx.Transition(transitions[transition]);
+    Fx.Transitions.compat(transition)
+  }
+};
+Fx.Transitions.compat = function (transition) {
+  ['In', 'Out', 'InOut'].each(function (easeType) {
+    Fx.Transitions[transition.toLowerCase() + easeType] = Fx.Transitions[
+      transition]['ease' + easeType]
+  })
+};
+Fx.Transitions.extend({
+  Pow: function (p, x) {
+    return Math.pow(p, x[0] || 6)
+  },
+  Expo: function (p) {
+    return Math.pow(2, 8 * (p - 1))
+  },
+  Circ: function (p) {
+    return 1 - Math.sin(Math.acos(p))
+  },
+  Sine: function (p) {
+    return 1 - Math.sin((1 - p) * Math.PI / 2)
+  },
+  Back: function (p, x) {
+    x = x[0] || 1.618;
+    return Math.pow(p, 2) * ((x + 1) * p - x)
+  },
+  Bounce: function (p) {
+    var value;
+    for (var a = 0, b = 1; 1; a += b, b /= 2) {
+      if (p >= (7 - 4 * a) / 11) {
+        value = -Math.pow((11 - 6 * a - 11 * p) / 4, 2) + b * b;
+        break
+      }
+    }
+    return value
+  },
+  Elastic: function (p, x) {
+    return Math.pow(2, 10 * --p) * Math.cos(20 * p * Math.PI * (x[0] ||
+      1) / 3)
+  }
+});
+['Quad', 'Cubic', 'Quart', 'Quint'].each(function (transition, i) {
+  Fx.Transitions[transition] = new Fx.Transition(function (p) {
+    return Math.pow(p, [i + 2])
+  });
+  Fx.Transitions.compat(transition)
+});
+var Drag = {};
+Drag.Base = new Class({
+  options: {
+    handle: false,
+    unit: 'px',
+    onStart: Class.empty,
+    onBeforeStart: Class.empty,
+    onComplete: Class.empty,
+    onSnap: Class.empty,
+    onDrag: Class.empty,
+    limit: false,
+    modifiers: {
+      x: 'left',
+      y: 'top'
+    },
+    grid: false,
+    snap: 6
+  },
+  initialize: function (el, options) {
+    this.setOptions(options);
+    this.element = $(el);
+    this.handle = $(this.options.handle) || this.element;
+    this.mouse = {
+      'now': {},
+      'pos': {}
+    };
+    this.value = {
+      'start': {},
+      'now': {}
+    };
+    this.bound = {
+      'start': this.start.bindWithEvent(this),
+      'check': this.check.bindWithEvent(this),
+      'drag': this.drag.bindWithEvent(this),
+      'stop': this.stop.bind(this)
+    };
+    this.attach();
+    if (this.options.initialize) this.options.initialize.call(this)
+  },
+  attach: function () {
+    this.handle.addEvent('mousedown', this.bound.start);
+    return this
+  },
+  detach: function () {
+    this.handle.removeEvent('mousedown', this.bound.start);
+    return this
+  },
+  start: function (event) {
+    this.fireEvent('onBeforeStart', this.element);
+    this.mouse.start = event.page;
+    var limit = this.options.limit;
+    this.limit = {
+      'x': [],
+      'y': []
+    };
+    for (var z in this.options.modifiers) {
+      if (!this.options.modifiers[z]) continue;
+      this.value.now[z] = this.element.getStyle(this.options.modifiers[z])
+        .toInt();
+      this.mouse.pos[z] = event.page[z] - this.value.now[z];
+      if (limit && limit[z]) {
+        for (var i = 0; i < 2; i++) {
+          if ($chk(limit[z][i])) this.limit[z][i] = ($type(limit[z][i]) ==
+            'function') ? limit[z][i]() : limit[z][i]
+        }
+      }
+    }
+    if ($type(this.options.grid) == 'number') this.options.grid = {
+      'x': this.options.grid,
+      'y': this.options.grid
+    };
+    document.addListener('mousemove', this.bound.check);
+    document.addListener('mouseup', this.bound.stop);
+    this.fireEvent('onStart', this.element);
+    event.stop()
+  },
+  check: function (event) {
+    var distance = Math.round(Math.sqrt(Math.pow(event.page.x - this.mouse
+      .start.x, 2) + Math.pow(event.page.y - this.mouse.start.y, 2)));
+    if (distance > this.options.snap) {
+      document.removeListener('mousemove', this.bound.check);
+      document.addListener('mousemove', this.bound.drag);
+      this.drag(event);
+      this.fireEvent('onSnap', this.element)
+    }
+    event.stop()
+  },
+  drag: function (event) {
+    this.out = false;
+    this.mouse.now = event.page;
+    for (var z in this.options.modifiers) {
+      if (!this.options.modifiers[z]) continue;
+      this.value.now[z] = this.mouse.now[z] - this.mouse.pos[z];
+      if (this.limit[z]) {
+        if ($chk(this.limit[z][1]) && (this.value.now[z] > this.limit[z][
+            1])) {
+          this.value.now[z] = this.limit[z][1];
+          this.out = true
+        } else if ($chk(this.limit[z][0]) && (this.value.now[z] < this
+            .limit[z][0])) {
+          this.value.now[z] = this.limit[z][0];
+          this.out = true
+        }
+      }
+      if (this.options.grid[z]) this.value.now[z] -= (this.value.now[z] %
+        this.options.grid[z]);
+      this.element.setStyle(this.options.modifiers[z], this.value.now[z] +
+        this.options.unit)
+    }
+    this.fireEvent('onDrag', this.element);
+    event.stop()
+  },
+  stop: function () {
+    document.removeListener('mousemove', this.bound.check);
+    document.removeListener('mousemove', this.bound.drag);
+    document.removeListener('mouseup', this.bound.stop);
+    this.fireEvent('onComplete', this.element)
+  }
+});
+Drag.Base.implement(new Events, new Options);
+Element.extend({
+  makeResizable: function (options) {
+    return new Drag.Base(this, $merge({
+      modifiers: {
+        x: 'width',
+        y: 'height'
+      }
+    }, options))
+  }
+});
+Drag.Move = Drag.Base.extend({
+  options: {
+    droppables: [],
+    container: false,
+    overflown: []
+  },
+  initialize: function (el, options) {
+    this.setOptions(options);
+    this.element = $(el);
+    this.droppables = $$(this.options.droppables);
+    this.container = $(this.options.container);
+    this.position = {
+      'element': this.element.getStyle('position'),
+      'container': false
+    };
+    if (this.container) this.position.container = this.container.getStyle(
+      'position');
+    if (!['relative', 'absolute', 'fixed'].contains(this.position
+      .element)) this.position.element = 'absolute';
+    var top = this.element.getStyle('top').toInt();
+    var left = this.element.getStyle('left').toInt();
+    if (this.position.element == 'absolute' && !['relative', 'absolute',
+        'fixed'
+      ].contains(this.position.container)) {
+      top = $chk(top) ? top : this.element.getTop(this.options.overflown);
+      left = $chk(left) ? left : this.element.getLeft(this.options
+        .overflown)
+    } else {
+      top = $chk(top) ? top : 0;
+      left = $chk(left) ? left : 0
+    }
+    this.element.setStyles({
+      'top': top,
+      'left': left,
+      'position': this.position.element
+    });
+    this.parent(this.element)
+  },
+  start: function (event) {
+    this.overed = null;
+    if (this.container) {
+      var cont = this.container.getCoordinates();
+      var el = this.element.getCoordinates();
+      if (this.position.element == 'absolute' && !['relative', 'absolute',
+          'fixed'
+        ].contains(this.position.container)) {
+        this.options.limit = {
+          'x': [cont.left, cont.right - el.width],
+          'y': [cont.top, cont.bottom - el.height]
+        }
+      } else {
+        this.options.limit = {
+          'y': [0, cont.height - el.height],
+          'x': [0, cont.width - el.width]
+        }
+      }
+    }
+    this.parent(event)
+  },
+  drag: function (event) {
+    this.parent(event);
+    var overed = this.out ? false : this.droppables.filter(this
+      .checkAgainst, this).getLast();
+    if (this.overed != overed) {
+      if (this.overed) this.overed.fireEvent('leave', [this.element,
+        this]);
+      this.overed = overed ? overed.fireEvent('over', [this.element,
+        this]) : null
+    }
+    return this
+  },
+  checkAgainst: function (el) {
+    el = el.getCoordinates(this.options.overflown);
+    var now = this.mouse.now;
+    return (now.x > el.left && now.x < el.right && now.y < el.bottom &&
+      now.y > el.top)
+  },
+  stop: function () {
+    if (this.overed && !this.out) this.overed.fireEvent('drop', [this
+      .element, this
+    ]);
+    else this.element.fireEvent('emptydrop', this);
+    this.parent();
+    return this
+  }
+});
+Element.extend({
+  makeDraggable: function (options) {
+    return new Drag.Move(this, options)
+  }
+});
+var Cookie = new Abstract({
+  options: {
+    domain: false,
+    path: false,
+    duration: false,
+    secure: false
+  },
+  set: function (key, value, options) {
+    options = $merge(this.options, options);
+    value = encodeURIComponent(value);
+    if (options.domain) value += '; domain=' + options.domain;
+    if (options.path) value += '; path=' + options.path;
+    if (options.duration) {
+      var date = new Date();
+      date.setTime(date.getTime() + options.duration * 24 * 60 * 60 *
+        1000);
+      value += '; expires=' + date.toGMTString()
+    }
+    if (options.secure) value += '; secure';
+    document.cookie = key + '=' + value;
+    return $extend(options, {
+      'key': key,
+      'value': value
+    })
+  },
+  get: function (key) {
+    var value = document.cookie.match('(?:^|;)\\\\s*' + key
+    .escapeRegExp() + '=([^;]*)');
+    return value ? decodeURIComponent(value[1]) : false
+  },
+  remove: function (cookie, options) {
+    if ($type(cookie) == 'object') this.set(cookie.key, '', $merge(
+    cookie, {
+      duration: -1
+    }));
+    else this.set(cookie, '', $merge(options, {
+      duration: -1
+    }))
+  }
+});
+var Json = {
+  toString: function (obj) {
+    switch ($type(obj)) {
+      case 'string':
+        return '\"' + obj.replace(/([\"\\\\])/g, '\\\\$1') + '\"';
+      case 'array':
+        return '[' + obj.map(Json.toString).join(',') + ']';
+      case 'object':
+        var string = [];
+        for (var property in obj) string.push(Json.toString(property) +
+          ':' + Json.toString(obj[property]));
+        return '{' + string.join(',') + '}';
+      case 'number':
+        if (isFinite(obj)) break;
+      case false:
+        return 'null'
+    }
+    return String(obj)
+  },
+  evaluate: function (str, secure) {
+    return (($type(str) != 'string') || (secure && !str.test(
+      /^(\"(\\\\.|[^\"\\\\\\n\\r])*?\"|[,:{}\\[\\]0-9.\\-+Eaeflnr-u \\n\\r\\t])+?$/
+      ))) ? null : eval('(' + str + ')')
+  }
+};
+var Hash = new Class({
+  length: 0,
+  initialize: function (object) {
+    this.obj = object || {};
+    this.setLength()
+  },
+  get: function (key) {
+    return (this.hasKey(key)) ? this.obj[key] : null
+  },
+  hasKey: function (key) {
+    return (key in this.obj)
+  },
+  set: function (key, value) {
+    if (!this.hasKey(key)) this.length++;
+    this.obj[key] = value;
+    return this
+  },
+  setLength: function () {
+    this.length = 0;
+    for (var p in this.obj) this.length++;
+    return this
+  },
+  remove: function (key) {
+    if (this.hasKey(key)) {
+      delete this.obj[key];
+      this.length--
+    }
+    return this
+  },
+  each: function (fn, bind) {
+    $each(this.obj, fn, bind)
+  },
+  extend: function (obj) {
+    $extend(this.obj, obj);
+    return this.setLength()
+  },
+  merge: function () {
+    this.obj = $merge.apply(null, [this.obj].extend(arguments));
+    return this.setLength()
+  },
+  empty: function () {
+    this.obj = {};
+    this.length = 0;
+    return this
+  },
+  keys: function () {
+    var keys = [];
+    for (var property in this.obj) keys.push(property);
+    return keys
+  },
+  values: function () {
+    var values = [];
+    for (var property in this.obj) values.push(this.obj[property]);
+    return values
+  }
+});
+
+function $H(obj) {
+  return new Hash(obj)
+};
+Hash.Cookie = Hash.extend({
+  initialize: function (name, options) {
+    this.name = name;
+    this.options = $extend({
+      'autoSave': true
+    }, options || {});
+    this.load()
+  },
+  save: function () {
+    if (this.length == 0) {
+      Cookie.remove(this.name, this.options);
+      return true
+    }
+    var str = Json.toString(this.obj);
+    if (str.length > 4096) return false;
+    Cookie.set(this.name, str, this.options);
+    return true
+  },
+  load: function () {
+    this.obj = Json.evaluate(Cookie.get(this.name), true) || {};
+    this.setLength()
+  }
+});
+Hash.Cookie.Methods = {};
+['extend', 'set', 'merge', 'empty', 'remove'].each(function (method) {
+  Hash.Cookie.Methods[method] = function () {
+    Hash.prototype[method].apply(this, arguments);
+    if (this.options.autoSave) this.save();
+    return this
+  }
+});
+Hash.Cookie.implement(Hash.Cookie.Methods);
+var Slider = new Class({
+  options: {
+    onChange: Class.empty,
+    onComplete: Class.empty,
+    onTick: function (pos) {
+      this.knob.setStyle(this.p, pos)
+    },
+    mode: 'horizontal',
+    steps: 100,
+    offset: 0
+  },
+  initialize: function (el, knob, options) {
+    this.element = $(el);
+    this.knob = $(knob);
+    this.setOptions(options);
+    this.previousChange = -1;
+    this.previousEnd = -1;
+    this.step = -1;
+    this.element.addEvent('mousedown', this.clickedElement.bindWithEvent(
+      this));
+    var mod, offset;
+    switch (this.options.mode) {
+      case 'horizontal':
+        this.z = 'x';
+        this.p = 'left';
+        mod = {
+          'x': 'left',
+          'y': false
+        };
+        offset = 'offsetWidth';
+        break;
+      case 'vertical':
+        this.z = 'y';
+        this.p = 'top';
+        mod = {
+          'x': false,
+          'y': 'top'
+        };
+        offset = 'offsetHeight'
+    }
+    this.max = this.element[offset] - this.knob[offset] + (this.options
+      .offset * 2);
+    this.half = this.knob[offset] / 2;
+    this.getPos = this.element['get' + this.p.capitalize()].bind(this
+      .element);
+    this.knob.setStyle('position', 'relative').setStyle(this.p, -this
+      .options.offset);
+    var lim = {};
+    lim[this.z] = [-this.options.offset, this.max - this.options.offset];
+    this.drag = new Drag.Base(this.knob, {
+      limit: lim,
+      modifiers: mod,
+      snap: 0,
+      onStart: function () {
+        this.draggedKnob()
+      }.bind(this),
+      onDrag: function () {
+        this.draggedKnob()
+      }.bind(this),
+      onComplete: function () {
+        this.draggedKnob();
+        this.end()
+      }.bind(this)
+    });
+    if (this.options.initialize) this.options.initialize.call(this)
+  },
+  set: function (step) {
+    this.step = step.limit(0, this.options.steps);
+    this.checkStep();
+    this.end();
+    this.fireEvent('onTick', this.toPosition(this.step));
+    return this
+  },
+  clickedElement: function (event) {
+    var position = event.page[this.z] - this.getPos() - this.half;
+    position = position.limit(-this.options.offset, this.max - this
+      .options.offset);
+    this.step = this.toStep(position);
+    this.checkStep();
+    this.end();
+    this.fireEvent('onTick', position)
+  },
+  draggedKnob: function () {
+    this.step = this.toStep(this.drag.value.now[this.z]);
+    this.checkStep()
+  },
+  checkStep: function () {
+    if (this.previousChange != this.step) {
+      this.previousChange = this.step;
+      this.fireEvent('onChange', this.step)
+    }
+  },
+  end: function () {
+    if (this.previousEnd !== this.step) {
+      this.previousEnd = this.step;
+      this.fireEvent('onComplete', this.step + '')
+    }
+  },
+  toStep: function (position) {
+    return Math.round((position + this.options.offset) / this.max * this
+      .options.steps)
+  },
+  toPosition: function (step) {
+    return this.max * step / this.options.steps
+  }
+});
+Slider.implement(new Events);
+Slider.implement(new Options);
