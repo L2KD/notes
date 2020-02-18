@@ -125,3 +125,9 @@ public ResponseEntity listPatients() {
     return ResponseEntity.ok(hl7FhirUtils.getContext().newJsonParser().setPrettyPrint(true).encodeResourceToString(results));
 }
 ```
+
+## Security
+
+AuthN
+
+AuthZ
