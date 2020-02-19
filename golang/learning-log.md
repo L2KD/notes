@@ -37,7 +37,7 @@ Repository
    └── go.mod
 ```
 
-Typically, 1 repo chỉ chứa 1 module. Trong root dir của repo, có file `go.mod` sẽ khai báo _module path_
+Typically, 1 repo chỉ chứa 1 module. Trong root dir của repo, có file `go.mod` sẽ khai báo _module path_. Module path là prefix cho các packages của module. Nó còn là địa chỉ để `go` cmd biết đường mà load về module.
 
 [1]: https://tour.golang.org/
 [2]: https://golang.org/doc/code.html
