@@ -8,6 +8,12 @@ $GOBIN: Biến môi trường để các executable binary sau khi được comp
 
 ## Go command
 
+Build & install
+
+```
+go install
+```
+
 ## Go module
 
 Cách go quản lý module.
