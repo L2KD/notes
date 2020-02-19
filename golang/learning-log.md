@@ -37,6 +37,8 @@ go install github.com/u/repo
           Module path
 ```
 
+`go build` sẽ compile và compiled bin sẽ nằm trong cache. `go install` sẽ đặt compiled bin trong \$GOBIN
+
 Test
 
 ```
