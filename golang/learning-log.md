@@ -2,6 +2,10 @@
 
 Các bài nên đọc trước [Tour of Go][1], [How to Write Go Code][2]
 
+$GOPATH: Biến môi trường để set path tới chỗ để mọi thứ về Go. Mặc định là $HOME/go.
+
+$GOBIN: Biến môi trường để các executable binary sau khi được compiled ra từ src. Mặc định là $GOPATH/bin
+
 ## Go module
 
 Cách go quản lý module.
