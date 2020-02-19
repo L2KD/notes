@@ -12,6 +12,10 @@ $GOBIN: Biến môi trường để các executable binary sau khi được comp
 
 Fn nào viết hoa chữ cái đầu sẽ được exported và available trong các package khác có import pkg hiện tại.
 
+### main package
+
+Main
+
 ## Go command
 
 Build & install
