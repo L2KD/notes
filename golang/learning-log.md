@@ -2,9 +2,15 @@
 
 Các bài nên đọc trước [Tour of Go][1], [How to Write Go Code][2]
 
+### Cấu trúc thư mục sau khi cài Go
+
 $GOPATH: Biến môi trường để set path tới chỗ để mọi thứ về Go. Mặc định là $HOME/go.
 
 $GOBIN: Biến môi trường để các executable binary sau khi được compiled ra từ src. Mặc định là $GOPATH/bin
+
+### Scope
+
+Fn nào viết hoa chữ cái đầu sẽ được exported và available trong các package khác có import pkg hiện tại.
 
 ## Go command
 
