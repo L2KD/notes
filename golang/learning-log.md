@@ -6,6 +6,8 @@ $GOPATH: Biến môi trường để set path tới chỗ để mọi thứ về
 
 $GOBIN: Biến môi trường để các executable binary sau khi được compiled ra từ src. Mặc định là $GOPATH/bin
 
+## Go command
+
 ## Go module
 
 Cách go quản lý module.
