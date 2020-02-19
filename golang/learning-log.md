@@ -18,7 +18,9 @@ Cái này nó giống với
 
 ```
 go install .
-hoặc
+
+// hoặc
+
 go install github.com/u/repo
               ^
               |
