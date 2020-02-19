@@ -10,8 +10,25 @@ $GOBIN: Biến môi trường để các executable binary sau khi được comp
 
 Build & install
 
-```
+```bash
 go install
+```
+
+Cái này nó giống với
+
+```
+go install .
+hoặc
+go install github.com/u/repo
+              ^
+              |
+          Module path
+```
+
+Test
+
+```
+go test
 ```
 
 ## Go module
