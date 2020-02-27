@@ -1,5 +1,37 @@
 # Learning log
 
+## FHIR là gì và tại sao nên dùng FHIR.
+
+(Dịch từ https://fhir-france.blogspot.com/)
+
+0. FHIR (Fast Health Interoperability Resources) là chuẩn liên thông hệ thống mới nhất do HL7 định ra.
+
+1. Được thiết kế để cho phép trao đổi thông tin để hỗ trợ việc cung cấp dịch vụ chăm sóc sức khỏe trong nhiều môi trường khác nhau. Đặc tả được xây dựng và điều chỉnh các thực hành RESTful hiện đại, được sử dụng rộng rãi để cho phép cung cấp dịch vụ chăm sóc sức khỏe tích hợp trên một loạt các nhóm và tổ chức.
+
+1. Phạm vi dự định của FHIR là rộng, bao gồm con người và thú y, chăm sóc lâm sàng, y tế công cộng, thử nghiệm lâm sàng, quản trị và các khía cạnh tài chính
+
+1. Các khái niệm
+
+   - Một số các đặc tính (properties) mà 80% các hệ thống hiện đang sử dụng. Mỗi property có một kiểu dữ liệu (data type) riêng biệt (mặc dù một vài resource cho phép có thể có nhiều hơn 1 data type cho property)
+   - Cơ chế chuẩn mở rộng (extension standard) cho phép các dev có thể thêm properties mới một cách chắc chắn an toàn.
+   - Một định danh (identity) để nhờ đó có thể lưu trữ, tìm hoặc xem. (xem thêm sửa xóa - crud)
+   - Mỗi resource có một validation schema.
+   - Interoperability: Sự tương kết, liên thông giữa các hệ thống
+   - Resource: Đơn vị cơ bản của sự liên thông, thứ nhỏ nhất hay được nhắc đến. Vd: một bệnh nhân, một chẩn đoán hay y bác sĩ.
+   - Mỗi resource có một vài đặc điểm chung:
+   - Các resource có thể được tái sử dụng trong hệ biến hóa liên thông (paradigm). Tức là chúng ta có thể nhận (hoặc lưu) một resource thông qua RESTful service, sau đó tích hợp vào một tin nhắn (message) hoặc đính vào một tài liệu.
+   - FHIR được xây dựng trong một hệ thống có phiên bản (versioning). Mỗi resource có thể có nhiều phiên bản, và có các cơ chế để lấy lịch sử thay đổi của một resource nhất định.
+   - FHIR có thể được thể hiện dưới dạng JSON hoặc XML.
+
+1. Mỗi resource có các ví dụ chỉ ra cách sử dụng resource như thế nào.
+1. FHIR dưới dạng JSON rất lý tưởng để dùng cho việc dev mobile.
+1. Hiện đã có nhiều clients open-source để biến chuẩn FHIR này trở nên dễ sử dụng và dễ test.
+1. Cũng tồn tại nhiều server để test.
+
+## Conformance (tức là sự phù hợp)
+
+Do FHIR là một quy chuẩn (standard), nên các phần mềm khác implement nó phải khai báo một số meta data.
+
 ## Dependencies
 
 Để sử dụng được, cần add tối thiểu các deps sau
