@@ -28,9 +28,14 @@
 1. Hiện đã có nhiều clients open-source để biến chuẩn FHIR này trở nên dễ sử dụng và dễ test.
 1. Cũng tồn tại nhiều server để test.
 
-## Conformance (tức là sự phù hợp)
+## [Conformance (tức là sự phù hợp)](http://hl7.org/fhir/conformance-module.html)
 
-Do FHIR là một quy chuẩn (standard), nên các phần mềm khác implement nó phải khai báo một số meta data.
+Do FHIR là một quy chuẩn (standard), nên các phần mềm khác implement nó phải khai báo một số meta data, nhằm thể hiện các ý như:
+
+- Các quy tắc về resouce nào được sử dụng, resources nào không, các resource nào được thêm vào mà không phải là có sẵn (base definition).
+- Quy tắc về RESTful API, gởi tin...
+- Quy tắc về các terminologies được sử dụng.
+- Mô tả Resouce map (map từ resource fhir vào model nào của phần mềm).
 
 ## Dependencies
 
