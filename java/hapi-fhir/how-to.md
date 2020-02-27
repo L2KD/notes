@@ -37,6 +37,10 @@ Do FHIR là một quy chuẩn (standard), nên các phần mềm khác implement
 - Quy tắc về các terminologies được sử dụng.
 - Mô tả Resouce map (map từ resource fhir vào model nào của phần mềm).
 
+Conformance resources gồm có 2 resources thường được sử dụng để khai báo đầy đủ các thứ trên: ImplementationGuide và CapabilityStatement.
+
+Đối với HAPI thì CapabilityStatement nằm trong `/hapi-fhir-validation-resources-r4/src/main/resources/org/hl7/fhir/r4/model/profile/profiles-resources.xml`
+
 ## Dependencies
 
 Để sử dụng được, cần add tối thiểu các deps sau
