@@ -28,9 +28,11 @@
 1. Hiện đã có nhiều clients open-source để biến chuẩn FHIR này trở nên dễ sử dụng và dễ test.
 1. Cũng tồn tại nhiều server để test.
 
-## Những thành phần cơ bản của một phần mềm dựa từ FHIR
+## [Conformance (tức là sự phù hợp)](http://hl7.org/fhir/conformance-module.html)
 
-### [Conformance (tức là sự phù hợp)](http://hl7.org/fhir/conformance-module.html)
+Những thành phần cơ bản của một phần mềm dựa từ FHIR
+
+### Conformance (CapabilityStatement & StructureDefinition)
 
 Do FHIR là một quy chuẩn (standard), nên các phần mềm khác implement nó phải khai báo một số meta data, nhằm thể hiện các ý như:
 
@@ -50,7 +52,7 @@ Bằng chứng là lúc run time của HAPI (jpa server), sẽ có các profile 
 
 Ngoài ra validator còn load StructureDefinition trong `/hapi-fhir-validation-resources-r4/src/main/resources/org/hl7/fhir/r4/model/extension/extension-definitions.xml`.
 
-### Compartment definitions
+### [Compartment definitions](http://hl7.org/fhir/2016Sep/compartmentdefinition.html)
 
 Compartment là một logical grouping các resources có liên quan với nhau.
 
@@ -59,9 +61,11 @@ Khai báo để đạt được các mục đích sau:
 - Hoạt động như một cơ chế để có thể tìm kiếm các resources có liên quan một cách nhanh nhất.
 - Cung cấp khai báo cơ bản để áp dụng access control trên các resources.
 
-### SearchParam definitions
+### [SearchParam definitions](http://hl7.org/fhir/2016Sep/searchparameter.html)
 
 Khai báo thêm các search param (nằm ngoài chuẩn FHIR cơ bản) mà phần mềm có dùng đến.
+
+### ValueSet
 
 ## Dependencies
 
