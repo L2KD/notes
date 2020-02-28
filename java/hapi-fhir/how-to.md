@@ -67,6 +67,10 @@ Khai báo thêm các search param (nằm ngoài chuẩn FHIR cơ bản) mà ph�
 
 ### ValueSet
 
+ValueSet định ra một set những code dùng code systems, sử dụng trong các ngữ cảnh đặc biệt. Value sets link between CodeSystem definitions and their use in coded elements (terminologies).
+
+### Operation definitions
+
 ## Dependencies
 
 Để sử dụng được, cần add tối thiểu các deps sau
