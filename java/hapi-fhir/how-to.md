@@ -56,7 +56,12 @@ Compartment là một logical grouping các resources có liên quan với nhau.
 
 Khai báo để đạt được các mục đích sau:
 
--
+- Hoạt động như một cơ chế để có thể tìm kiếm các resources có liên quan một cách nhanh nhất.
+- Cung cấp khai báo cơ bản để áp dụng access control trên các resources.
+
+### SearchParam definitions
+
+Khai báo thêm các search param (nằm ngoài chuẩn FHIR cơ bản) mà phần mềm có dùng đến.
 
 ## Dependencies
 
