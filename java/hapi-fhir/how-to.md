@@ -28,7 +28,9 @@
 1. Hiện đã có nhiều clients open-source để biến chuẩn FHIR này trở nên dễ sử dụng và dễ test.
 1. Cũng tồn tại nhiều server để test.
 
-## [Conformance (tức là sự phù hợp)](http://hl7.org/fhir/conformance-module.html)
+## Những thành phần cơ bản của một phần mềm dựa từ FHIR
+
+### [Conformance (tức là sự phù hợp)](http://hl7.org/fhir/conformance-module.html)
 
 Do FHIR là một quy chuẩn (standard), nên các phần mềm khác implement nó phải khai báo một số meta data, nhằm thể hiện các ý như:
 
@@ -47,6 +49,8 @@ Conformance resources gồm có 2 resources thường được sử dụng để
 Bằng chứng là lúc run time của HAPI (jpa server), sẽ có các profile validator load các file trên.
 
 Ngoài ra validator còn load StructureDefinition trong `/hapi-fhir-validation-resources-r4/src/main/resources/org/hl7/fhir/r4/model/extension/extension-definitions.xml`.
+
+### Compartment definitions
 
 ## Dependencies
 
