@@ -46,6 +46,8 @@ Conformance resources gồm có 2 resources thường được sử dụng để
 
 Bằng chứng là lúc run time của HAPI (jpa server), sẽ có các profile validator load các file trên.
 
+Ngoài ra validator còn load StructureDefinition trong `/hapi-fhir-validation-resources-r4/src/main/resources/org/hl7/fhir/r4/model/extension/extension-definitions.xml`.
+
 ## Dependencies
 
 Để sử dụng được, cần add tối thiểu các deps sau
