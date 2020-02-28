@@ -69,6 +69,8 @@ Khai báo thêm các search param (nằm ngoài chuẩn FHIR cơ bản) mà ph�
 
 ValueSet định ra một set những code dùng code systems, sử dụng trong các ngữ cảnh đặc biệt. Value sets link between CodeSystem definitions and their use in coded elements (terminologies).
 
+HAPI có embed ValueSet của SNOMED CT, và LOINC. (file `/hapi-fhir-validation-resources-r4/src/main/resources/org/hl7/fhir/r4/model/valueset/valuesets.xml`)
+
 ### Operation definitions
 
 ## Dependencies
