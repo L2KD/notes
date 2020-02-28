@@ -52,6 +52,12 @@ Ngoài ra validator còn load StructureDefinition trong `/hapi-fhir-validation-r
 
 ### Compartment definitions
 
+Compartment là một logical grouping các resources có liên quan với nhau.
+
+Khai báo để đạt được các mục đích sau:
+
+-
+
 ## Dependencies
 
 Để sử dụng được, cần add tối thiểu các deps sau
