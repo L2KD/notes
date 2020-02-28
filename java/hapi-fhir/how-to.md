@@ -42,7 +42,7 @@ Conformance resources gồm có 2 resources thường được sử dụng để
 Đối với HAPI thì
 
 - CapabilityStatement nằm trong `/hapi-fhir-validation-resources-r4/src/main/resources/org/hl7/fhir/r4/model/profile/profiles-resources.xml` (có 2 cái)
-- Structure
+- StructureDefinition nằm trong file trên và `/hapi-fhir-validation-resources-r4/src/main/resources/org/hl7/fhir/r4/model/profile/profiles-others.xml`
 
 ## Dependencies
 
