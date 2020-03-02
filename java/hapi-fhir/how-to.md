@@ -32,7 +32,7 @@
 
 Những thành phần cơ bản của một phần mềm dựa từ FHIR.
 
-Đối với HAPI thì những thứ này có thể xem khi request tới /{baseEndpoints}/metadata
+Đối với HAPI thì những thứ này có thể xem khi request tới `/{baseEndpoints}/metadata`
 
 ### Conformance (CapabilityStatement & StructureDefinition)
 
