@@ -30,7 +30,9 @@
 
 ## [Conformance (tức là sự phù hợp)](http://hl7.org/fhir/conformance-module.html)
 
-Những thành phần cơ bản của một phần mềm dựa từ FHIR
+Những thành phần cơ bản của một phần mềm dựa từ FHIR.
+
+Đối với HAPI thì những thứ này có thể xem khi request tới /{baseEndpoints}/metadata
 
 ### Conformance (CapabilityStatement & StructureDefinition)
 
