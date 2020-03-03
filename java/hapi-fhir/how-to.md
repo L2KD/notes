@@ -206,3 +206,11 @@ public ResponseEntity listPatients() {
 AuthN
 
 AuthZ
+
+## DB improvements
+
+Clusterd
+
+```
+
+```
