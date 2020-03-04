@@ -75,6 +75,79 @@ HAPI có embed ValueSet của SNOMED CT, và LOINC. (file `/hapi-fhir-validation
 
 ### Operation definitions
 
+## Chức năng của HAPI
+
+### DB improvements
+
+Clusterd
+
+```
+2020-03-03 14:15:47.443  INFO 2854 --- [           main] org.hibernate.Version                    : HHH000412: Hibernate Core {5.3.7.Final}
+2020-03-03 14:15:47.444  INFO 2854 --- [           main] org.hibernate.cfg.Environment            : HHH000206: hibernate.properties not found
+2020-03-03 14:15:47.552  INFO 2854 --- [           main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2020-03-03 14:15:47.737  INFO 2854 --- [           main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+2020-03-03 14:15:48.262  INFO 2854 --- [           main] org.hibernate.search.engine.Version      : HSEARCH000034: Hibernate Search 5.11.3.Final
+2020-03-03 14:15:48.989  INFO 2854 --- [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2020-03-03 14:15:49.223  INFO 2854 --- [           main] o.h.h.i.QueryTranslatorFactoryInitiator  : HHH000397: Using ASTQueryTranslatorFactory
+2020-03-03 14:15:49.482  INFO 2854 --- [           main] c.u.f.j.sched.BaseSchedulerServiceImpl   : Creating Local Scheduler
+2020-03-03 14:15:49.499  INFO 2854 --- [           main] org.quartz.impl.StdSchedulerFactory      : Using default implementation for ThreadExecutor
+2020-03-03 14:15:49.508  INFO 2854 --- [           main] org.quartz.core.SchedulerSignalerImpl    : Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl
+2020-03-03 14:15:49.508  INFO 2854 --- [           main] org.quartz.core.QuartzScheduler          : Quartz Scheduler v.2.3.0 created.
+2020-03-03 14:15:49.509  INFO 2854 --- [           main] org.quartz.simpl.RAMJobStore             : RAMJobStore initialized.
+2020-03-03 14:15:49.510  INFO 2854 --- [           main] org.quartz.core.QuartzScheduler          : Scheduler meta-data: Quartz Scheduler (v2.3.0) 'local-0' with instanceId 'NON_CLUSTERED'
+  Scheduler class: 'org.quartz.core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'org.quartz.simpl.SimpleThreadPool' - with 4 threads.
+  Using job-store 'org.quartz.simpl.RAMJobStore' - which does not support persistence. and is not clustered.
+
+2020-03-03 14:15:49.510  INFO 2854 --- [           main] org.quartz.impl.StdSchedulerFactory      : Quartz scheduler 'local-0' initialized from an externally provided properties instance.
+2020-03-03 14:15:49.510  INFO 2854 --- [           main] org.quartz.impl.StdSchedulerFactory      : Quartz scheduler version: 2.3.0
+2020-03-03 14:15:49.510  INFO 2854 --- [           main] org.quartz.core.QuartzScheduler          : JobFactory set to: ca.uhn.fhir.jpa.sched.AutowiringSpringBeanJobFactory@4e74adb
+2020-03-03 14:15:49.510  INFO 2854 --- [           main] org.quartz.core.QuartzScheduler          : Scheduler local-0_$_NON_CLUSTERED paused.
+2020-03-03 14:15:49.510  INFO 2854 --- [           main] c.u.f.j.sched.BaseSchedulerServiceImpl   : Creating Clustered Scheduler
+2020-03-03 14:15:49.511  INFO 2854 --- [           main] org.quartz.impl.StdSchedulerFactory      : Using default implementation for ThreadExecutor
+2020-03-03 14:15:49.512  INFO 2854 --- [           main] org.quartz.core.SchedulerSignalerImpl    : Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl
+2020-03-03 14:15:49.512  INFO 2854 --- [           main] org.quartz.core.QuartzScheduler          : Quartz Scheduler v.2.3.0 created.
+2020-03-03 14:15:49.512  INFO 2854 --- [           main] org.quartz.simpl.RAMJobStore             : RAMJobStore initialized.
+2020-03-03 14:15:49.512  INFO 2854 --- [           main] org.quartz.core.QuartzScheduler          : Scheduler meta-data: Quartz Scheduler (v2.3.0) 'clustered-1' with instanceId 'NON_CLUSTERED'
+  Scheduler class: 'org.quartz.core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'org.quartz.simpl.SimpleThreadPool' - with 4 threads.
+  Using job-store 'org.quartz.simpl.RAMJobStore' - which does not support persistence. and is not clustered.
+
+2020-03-03 14:15:49.512  INFO 2854 --- [           main] org.quartz.impl.StdSchedulerFactory      : Quartz scheduler 'clustered-1' initialized from an externally provided properties instance.
+2020-03-03 14:15:49.512  INFO 2854 --- [           main] org.quartz.impl.StdSchedulerFactory      : Quartz scheduler version: 2.3.0
+2020-03-03 14:15:49.512  INFO 2854 --- [           main] org.quartz.core.QuartzScheduler          : JobFactory set to: ca.uhn.fhir.jpa.sched.AutowiringSpringBeanJobFactory@4e74adb
+2020-03-03 14:15:49.512  INFO 2854 --- [           main] org.quartz.core.QuartzScheduler          : Scheduler clustered-1_$_NON_CLUSTERED paused.
+2020-03-03 14:15:49.516  INFO 2854 --- [           main] c.u.f.j.sched.BaseSchedulerServiceImpl   : Scheduling local job ca.uhn.fhir.jpa.searchparam.registry.SearchParamRegistryImpl with interval 00:00:10.000
+2020-03-03 14:15:50.720  INFO 2854 --- [           main] c.u.f.j.sched.BaseSchedulerServiceImpl   : Scheduling local job ca.uhn.fhir.jpa.term.TermDeferredStorageSvcImpl$Job with interval 5000ms
+2020-03-03 14:15:51.113  INFO 2854 --- [           main] c.u.f.j.sched.BaseSchedulerServiceImpl   : Scheduling clustered job ca.uhn.fhir.jpa.search.reindex.ResourceReindexingSvcImpl with interval 00:00:10.000
+2020-03-03 14:15:58.233  INFO 2854 --- [           main] c.u.f.j.sched.BaseSchedulerServiceImpl   : Scheduling local job ca.uhn.fhir.jpa.util.ResourceCountCache with interval 00:10:00
+2020-03-03 14:16:00.007  INFO 2854 --- [           main] .f.r.h.c.DefaultProfileValidationSupport : Loading structure definitions from classpath: /org/hl7/fhir/r4/model/profile/profiles-resources.xml
+2020-03-03 14:16:00.022  INFO 2854 --- [           main] ca.uhn.fhir.util.XmlUtil                 : FHIR XML procesing will use StAX implementation 'Woodstox XML-processor' version '4.4.1'
+2020-03-03 14:16:00.463  INFO 2854 --- [           main] .f.r.h.c.DefaultProfileValidationSupport : Loading structure definitions from classpath: /org/hl7/fhir/r4/model/profile/profiles-types.xml
+2020-03-03 14:16:00.496  INFO 2854 --- [           main] .f.r.h.c.DefaultProfileValidationSupport : Loading structure definitions from classpath: /org/hl7/fhir/r4/model/profile/profiles-others.xml
+2020-03-03 14:16:00.638  INFO 2854 --- [           main] .f.r.h.c.DefaultProfileValidationSupport : Loading structure definitions from classpath: /org/hl7/fhir/r4/model/extension/extension-definitions.xml
+2020-03-03 14:16:00.838  INFO 2854 --- [           main] c.u.f.j.sched.BaseSchedulerServiceImpl   : Scheduling clustered job ca.uhn.fhir.jpa.term.TermReadSvcR4 with interval 00:10:00
+2020-03-03 14:16:01.614  INFO 2854 --- [           main] c.u.f.j.sched.BaseSchedulerServiceImpl   : Scheduling local job ca.uhn.fhir.jpa.subscription.SubscriptionTriggeringSvcImpl with interval 5000ms
+2020-03-03 14:16:01.704  WARN 2854 --- [           main] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
+2020-03-03 14:16:01.704  INFO 2854 --- [           main] c.n.c.sources.URLConfigurationSource     : To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2020-03-03 14:16:01.708  INFO 2854 --- [           main] c.netflix.config.DynamicPropertyFactory  : DynamicPropertyFactory is initialized with configuration sources: com.netflix.config.ConcurrentCompositeConfiguration@24be9868
+2020-03-03 14:16:02.155  INFO 2854 --- [           main] c.u.f.j.sched.BaseSchedulerServiceImpl   : Scheduling clustered job ca.uhn.fhir.jpa.search.warm.CacheWarmingSvcImpl with interval 00:00:10.000
+2020-03-03 14:16:02.166  INFO 2854 --- [           main] o.s.s.c.ScheduledExecutorFactoryBean     : Initializing ExecutorService
+2020-03-03 14:16:02.166  INFO 2854 --- [           main] o.s.s.c.ScheduledExecutorFactoryBean     : Initializing ExecutorService 'scheduledExecutorService'
+2020-03-03 14:16:02.242  INFO 2854 --- [           main] .s.s.UserDetailsServiceAutoConfiguration :
+
+Using generated security password: 865ec77d-c58e-4066-8378-862238df9d6e
+
+```
+
+### Scheduler
+
 ## Dependencies
 
 Để sử dụng được, cần add tối thiểu các deps sau
@@ -206,72 +279,3 @@ public ResponseEntity listPatients() {
 AuthN
 
 AuthZ
-
-## DB improvements
-
-Clusterd
-
-```
-2020-03-03 14:15:47.443  INFO 2854 --- [           main] org.hibernate.Version                    : HHH000412: Hibernate Core {5.3.7.Final}
-2020-03-03 14:15:47.444  INFO 2854 --- [           main] org.hibernate.cfg.Environment            : HHH000206: hibernate.properties not found
-2020-03-03 14:15:47.552  INFO 2854 --- [           main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
-2020-03-03 14:15:47.737  INFO 2854 --- [           main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5InnoDBDialect
-2020-03-03 14:15:48.262  INFO 2854 --- [           main] org.hibernate.search.engine.Version      : HSEARCH000034: Hibernate Search 5.11.3.Final
-2020-03-03 14:15:48.989  INFO 2854 --- [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2020-03-03 14:15:49.223  INFO 2854 --- [           main] o.h.h.i.QueryTranslatorFactoryInitiator  : HHH000397: Using ASTQueryTranslatorFactory
-2020-03-03 14:15:49.482  INFO 2854 --- [           main] c.u.f.j.sched.BaseSchedulerServiceImpl   : Creating Local Scheduler
-2020-03-03 14:15:49.499  INFO 2854 --- [           main] org.quartz.impl.StdSchedulerFactory      : Using default implementation for ThreadExecutor
-2020-03-03 14:15:49.508  INFO 2854 --- [           main] org.quartz.core.SchedulerSignalerImpl    : Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl
-2020-03-03 14:15:49.508  INFO 2854 --- [           main] org.quartz.core.QuartzScheduler          : Quartz Scheduler v.2.3.0 created.
-2020-03-03 14:15:49.509  INFO 2854 --- [           main] org.quartz.simpl.RAMJobStore             : RAMJobStore initialized.
-2020-03-03 14:15:49.510  INFO 2854 --- [           main] org.quartz.core.QuartzScheduler          : Scheduler meta-data: Quartz Scheduler (v2.3.0) 'local-0' with instanceId 'NON_CLUSTERED'
-  Scheduler class: 'org.quartz.core.QuartzScheduler' - running locally.
-  NOT STARTED.
-  Currently in standby mode.
-  Number of jobs executed: 0
-  Using thread pool 'org.quartz.simpl.SimpleThreadPool' - with 4 threads.
-  Using job-store 'org.quartz.simpl.RAMJobStore' - which does not support persistence. and is not clustered.
-
-2020-03-03 14:15:49.510  INFO 2854 --- [           main] org.quartz.impl.StdSchedulerFactory      : Quartz scheduler 'local-0' initialized from an externally provided properties instance.
-2020-03-03 14:15:49.510  INFO 2854 --- [           main] org.quartz.impl.StdSchedulerFactory      : Quartz scheduler version: 2.3.0
-2020-03-03 14:15:49.510  INFO 2854 --- [           main] org.quartz.core.QuartzScheduler          : JobFactory set to: ca.uhn.fhir.jpa.sched.AutowiringSpringBeanJobFactory@4e74adb
-2020-03-03 14:15:49.510  INFO 2854 --- [           main] org.quartz.core.QuartzScheduler          : Scheduler local-0_$_NON_CLUSTERED paused.
-2020-03-03 14:15:49.510  INFO 2854 --- [           main] c.u.f.j.sched.BaseSchedulerServiceImpl   : Creating Clustered Scheduler
-2020-03-03 14:15:49.511  INFO 2854 --- [           main] org.quartz.impl.StdSchedulerFactory      : Using default implementation for ThreadExecutor
-2020-03-03 14:15:49.512  INFO 2854 --- [           main] org.quartz.core.SchedulerSignalerImpl    : Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl
-2020-03-03 14:15:49.512  INFO 2854 --- [           main] org.quartz.core.QuartzScheduler          : Quartz Scheduler v.2.3.0 created.
-2020-03-03 14:15:49.512  INFO 2854 --- [           main] org.quartz.simpl.RAMJobStore             : RAMJobStore initialized.
-2020-03-03 14:15:49.512  INFO 2854 --- [           main] org.quartz.core.QuartzScheduler          : Scheduler meta-data: Quartz Scheduler (v2.3.0) 'clustered-1' with instanceId 'NON_CLUSTERED'
-  Scheduler class: 'org.quartz.core.QuartzScheduler' - running locally.
-  NOT STARTED.
-  Currently in standby mode.
-  Number of jobs executed: 0
-  Using thread pool 'org.quartz.simpl.SimpleThreadPool' - with 4 threads.
-  Using job-store 'org.quartz.simpl.RAMJobStore' - which does not support persistence. and is not clustered.
-
-2020-03-03 14:15:49.512  INFO 2854 --- [           main] org.quartz.impl.StdSchedulerFactory      : Quartz scheduler 'clustered-1' initialized from an externally provided properties instance.
-2020-03-03 14:15:49.512  INFO 2854 --- [           main] org.quartz.impl.StdSchedulerFactory      : Quartz scheduler version: 2.3.0
-2020-03-03 14:15:49.512  INFO 2854 --- [           main] org.quartz.core.QuartzScheduler          : JobFactory set to: ca.uhn.fhir.jpa.sched.AutowiringSpringBeanJobFactory@4e74adb
-2020-03-03 14:15:49.512  INFO 2854 --- [           main] org.quartz.core.QuartzScheduler          : Scheduler clustered-1_$_NON_CLUSTERED paused.
-2020-03-03 14:15:49.516  INFO 2854 --- [           main] c.u.f.j.sched.BaseSchedulerServiceImpl   : Scheduling local job ca.uhn.fhir.jpa.searchparam.registry.SearchParamRegistryImpl with interval 00:00:10.000
-2020-03-03 14:15:50.720  INFO 2854 --- [           main] c.u.f.j.sched.BaseSchedulerServiceImpl   : Scheduling local job ca.uhn.fhir.jpa.term.TermDeferredStorageSvcImpl$Job with interval 5000ms
-2020-03-03 14:15:51.113  INFO 2854 --- [           main] c.u.f.j.sched.BaseSchedulerServiceImpl   : Scheduling clustered job ca.uhn.fhir.jpa.search.reindex.ResourceReindexingSvcImpl with interval 00:00:10.000
-2020-03-03 14:15:58.233  INFO 2854 --- [           main] c.u.f.j.sched.BaseSchedulerServiceImpl   : Scheduling local job ca.uhn.fhir.jpa.util.ResourceCountCache with interval 00:10:00
-2020-03-03 14:16:00.007  INFO 2854 --- [           main] .f.r.h.c.DefaultProfileValidationSupport : Loading structure definitions from classpath: /org/hl7/fhir/r4/model/profile/profiles-resources.xml
-2020-03-03 14:16:00.022  INFO 2854 --- [           main] ca.uhn.fhir.util.XmlUtil                 : FHIR XML procesing will use StAX implementation 'Woodstox XML-processor' version '4.4.1'
-2020-03-03 14:16:00.463  INFO 2854 --- [           main] .f.r.h.c.DefaultProfileValidationSupport : Loading structure definitions from classpath: /org/hl7/fhir/r4/model/profile/profiles-types.xml
-2020-03-03 14:16:00.496  INFO 2854 --- [           main] .f.r.h.c.DefaultProfileValidationSupport : Loading structure definitions from classpath: /org/hl7/fhir/r4/model/profile/profiles-others.xml
-2020-03-03 14:16:00.638  INFO 2854 --- [           main] .f.r.h.c.DefaultProfileValidationSupport : Loading structure definitions from classpath: /org/hl7/fhir/r4/model/extension/extension-definitions.xml
-2020-03-03 14:16:00.838  INFO 2854 --- [           main] c.u.f.j.sched.BaseSchedulerServiceImpl   : Scheduling clustered job ca.uhn.fhir.jpa.term.TermReadSvcR4 with interval 00:10:00
-2020-03-03 14:16:01.614  INFO 2854 --- [           main] c.u.f.j.sched.BaseSchedulerServiceImpl   : Scheduling local job ca.uhn.fhir.jpa.subscription.SubscriptionTriggeringSvcImpl with interval 5000ms
-2020-03-03 14:16:01.704  WARN 2854 --- [           main] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
-2020-03-03 14:16:01.704  INFO 2854 --- [           main] c.n.c.sources.URLConfigurationSource     : To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
-2020-03-03 14:16:01.708  INFO 2854 --- [           main] c.netflix.config.DynamicPropertyFactory  : DynamicPropertyFactory is initialized with configuration sources: com.netflix.config.ConcurrentCompositeConfiguration@24be9868
-2020-03-03 14:16:02.155  INFO 2854 --- [           main] c.u.f.j.sched.BaseSchedulerServiceImpl   : Scheduling clustered job ca.uhn.fhir.jpa.search.warm.CacheWarmingSvcImpl with interval 00:00:10.000
-2020-03-03 14:16:02.166  INFO 2854 --- [           main] o.s.s.c.ScheduledExecutorFactoryBean     : Initializing ExecutorService
-2020-03-03 14:16:02.166  INFO 2854 --- [           main] o.s.s.c.ScheduledExecutorFactoryBean     : Initializing ExecutorService 'scheduledExecutorService'
-2020-03-03 14:16:02.242  INFO 2854 --- [           main] .s.s.UserDetailsServiceAutoConfiguration :
-
-Using generated security password: 865ec77d-c58e-4066-8378-862238df9d6e
-
-```
