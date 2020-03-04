@@ -148,6 +148,8 @@ Using generated security password: 865ec77d-c58e-4066-8378-862238df9d6e
 
 ### Scheduler
 
+Tự động chạy một số nhiệm vụ.
+
 ## Dependencies
 
 Để sử dụng được, cần add tối thiểu các deps sau
