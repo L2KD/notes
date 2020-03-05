@@ -148,7 +148,9 @@ Using generated security password: 865ec77d-c58e-4066-8378-862238df9d6e
 
 ### Scheduler
 
-Tự động chạy một số nhiệm vụ.
+Tự động chạy một số nhiệm vụ. Được viết dựa trên thư viện quartz scheduler org.
+
+Trong HAPI có 2 cái scheduler là `Local` và `Clustered`. Tức 2 classes trên extend lại abstract class HapiScheduler.
 
 ## Dependencies
 
