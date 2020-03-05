@@ -150,9 +150,12 @@ Using generated security password: 865ec77d-c58e-4066-8378-862238df9d6e
 
 Tự động chạy một số nhiệm vụ. Được viết dựa trên thư viện quartz scheduler org.
 
-Trong HAPI có 2 cái scheduler là `Local` và `Clustered`. Tức 2 classes trên extend lại abstract class HapiScheduler.
+Trong HAPI có 2 cái scheduler là `Local` và `Clustered`. Tức 2 classes trên extend lại abstract class `BaseHapiScheduler` (`LocalHapiScheduler` & `ClusteredHapiScheduler`)
 
-Sau đó sẽ có service `scheduler` để quản lý 2 ông scheduler trên.
+Sau đó sẽ có service `scheduler` để quản lý 2 ông scheduler trên (`ISchedulerService`).
+
+> Local scheduler sẽ thực thi chỉ 1 task xuyên suốt cluster (khi chạy trong môi trường cluster)
+> Còn Clustered sẽ thực thi locally (và chạy trên tất cả các node của cluster nếu đang chạy chế độ cluster)
 
 ## Dependencies
 
