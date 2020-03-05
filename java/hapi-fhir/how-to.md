@@ -176,6 +176,12 @@ Tiếp theo Task này được khai báo `Bean` ở phần `BaseConfig`.
 - SubscriptionLoader
 - BulkDataExport
 - BaseTermRead (abstract)
+- StaleSearchDeleting
+- CacheWarming
+- TermDeferredStorage
+- ResourceReindexing
+- SubscriptionTriggering
+- AnalyticsInterceptor
 
 ## Dependencies
 
