@@ -11,3 +11,7 @@
 > Tao sẽ dội sạch linh hồn của mày bằng 6L nước.
 
 1977 vlog
+
+> Mã gene này đẹp
+
+1977 vlog
