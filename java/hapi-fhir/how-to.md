@@ -157,6 +157,17 @@ Sau đó sẽ có service `scheduler` để quản lý 2 ông scheduler trên (`
 > Local scheduler sẽ thực thi chỉ 1 task xuyên suốt cluster (khi chạy trong môi trường cluster)
 > Còn Clustered sẽ thực thi locally (và chạy trên tất cả các node của cluster nếu đang chạy chế độ cluster)
 
+Sau đó các task nào cần scheduler sẽ Autowire `SchedulerService` vào.
+
+VD
+
+```java
+public class TermReindexingSvcImpl implements ITermReindexingSvc {
+	@Autowired
+	private ISchedulerService mySchedulerService;
+}
+```
+
 ## Dependencies
 
 Để sử dụng được, cần add tối thiểu các deps sau
