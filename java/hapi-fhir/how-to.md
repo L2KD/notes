@@ -170,6 +170,13 @@ public class TermReindexingSvcImpl implements ITermReindexingSvc {
 
 Tiếp theo Task này được khai báo `Bean` ở phần `BaseConfig`.
 
+**Các module sử dụng Scheduler**
+
+- TermReindexing
+- SubscriptionLoader
+- BulkDataExport
+- BaseTermRead (abstract)
+
 ## Dependencies
 
 Để sử dụng được, cần add tối thiểu các deps sau
