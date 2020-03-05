@@ -168,6 +168,8 @@ public class TermReindexingSvcImpl implements ITermReindexingSvc {
 }
 ```
 
+Tiếp theo Task này được khai báo Bean ở phần BaseConfig.
+
 ## Dependencies
 
 Để sử dụng được, cần add tối thiểu các deps sau
