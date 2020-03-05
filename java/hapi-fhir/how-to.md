@@ -152,6 +152,8 @@ Tự động chạy một số nhiệm vụ. Được viết dựa trên thư vi
 
 Trong HAPI có 2 cái scheduler là `Local` và `Clustered`. Tức 2 classes trên extend lại abstract class HapiScheduler.
 
+Sau đó sẽ có service `scheduler` để quản lý 2 ông scheduler trên.
+
 ## Dependencies
 
 Để sử dụng được, cần add tối thiểu các deps sau
