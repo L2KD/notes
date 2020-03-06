@@ -173,7 +173,7 @@ Tiếp theo Task này được khai báo `Bean` ở phần `BaseConfig`.
 **Các module sử dụng Scheduler**
 
 - TermReindexing
-- SubscriptionLoader
+- SubscriptionLoader <- pub/sub?
 - BulkDataExport
 - BaseTermRead (abstract)
 - StaleSearchDeleting
