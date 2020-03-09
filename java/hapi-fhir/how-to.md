@@ -30,12 +30,19 @@
 
 ## Module của FHIR
 
-- Foundation: Chịu trách nhiệm mọi thứ về cơ sở hạ tầng tổng thể cho FHIR specification.
-- Conformance.
-- Exchange
-- Terminology
-- Security & Privacy
-- Implementation Support
+- (1) Foundation: Chịu trách nhiệm mọi thứ về cơ sở hạ tầng tổng thể cho FHIR specification.
+- (2) Conformance.
+- (2) Exchange
+- (2) Terminology
+- (2) Security & Privacy
+- (2) Implementation Support
+- (3) Administration
+- (4) Clinical
+- (4) Diagnostics
+- (4) Medications
+- (4) Workflow
+- (4) Financial
+- (5) Clinical Reasoning
 
 ## [Conformance module (tức là sự phù hợp)](http://hl7.org/fhir/conformance-module.html)
 
