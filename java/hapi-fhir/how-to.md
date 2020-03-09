@@ -28,6 +28,10 @@
 1. Hiện đã có nhiều clients open-source để biến chuẩn FHIR này trở nên dễ sử dụng và dễ test.
 1. Cũng tồn tại nhiều server để test.
 
+## Module của FHIR
+
+Foundation: Chịu trách nhiệm mọi thứ về cơ sở hạ tầng tổng thể cho FHIR specification.
+
 ## [Conformance (tức là sự phù hợp)](http://hl7.org/fhir/conformance-module.html)
 
 Những thành phần cơ bản của một phần mềm dựa từ FHIR.
