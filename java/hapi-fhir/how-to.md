@@ -32,6 +32,10 @@
 
 - Foundation: Chịu trách nhiệm mọi thứ về cơ sở hạ tầng tổng thể cho FHIR specification.
 - Conformance.
+- Exchange
+- Terminology
+- Security & Privacy
+- Implementation Support
 
 ## [Conformance module (tức là sự phù hợp)](http://hl7.org/fhir/conformance-module.html)
 
