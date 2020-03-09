@@ -30,9 +30,10 @@
 
 ## Module của FHIR
 
-Foundation: Chịu trách nhiệm mọi thứ về cơ sở hạ tầng tổng thể cho FHIR specification.
+- Foundation: Chịu trách nhiệm mọi thứ về cơ sở hạ tầng tổng thể cho FHIR specification.
+- Conformance.
 
-## [Conformance (tức là sự phù hợp)](http://hl7.org/fhir/conformance-module.html)
+## [Conformance module (tức là sự phù hợp)](http://hl7.org/fhir/conformance-module.html)
 
 Những thành phần cơ bản của một phần mềm dựa từ FHIR.
 
