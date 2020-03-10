@@ -340,7 +340,14 @@ View more at https://github.com/smart-on-fhir/sample-apps-stu3/tree/master/fhir-
 Dùng docker
 
 ```
-$ docker pull node:alpine
+$ docker pull node:7.9-alpine
 $ git clone https://github.com/smart-on-fhir/sample-apps-stu3.git
 $ docker run -it --rm -v /where-you-put-it/sample-apps-stu3:/tmp/fhir node:alpine /bin/sh
+
+# inside the container
+
+# cd /tmp/fhir/fhir-downloader
+# npm i
+# node . -d /dev/null
+
 ```
