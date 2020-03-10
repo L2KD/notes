@@ -330,3 +330,7 @@ public ResponseEntity listPatients() {
 AuthN
 
 AuthZ
+
+## fhir-downloader
+
+Bulk data access
