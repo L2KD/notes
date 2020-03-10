@@ -334,3 +334,13 @@ AuthZ
 ## fhir-downloader
 
 Bulk data access
+
+View more at https://github.com/smart-on-fhir/sample-apps-stu3/tree/master/fhir-downloader, https://chat.fhir.org/#narrow/stream/179250-bulk-data/,
+
+Dùng docker
+
+```
+$ docker pull node:alpine
+$ git clone https://github.com/smart-on-fhir/sample-apps-stu3.git
+$ docker run -it --rm -v /where-you-put-it/sample-apps-stu3:/tmp/fhir node:alpine /bin/sh
+```
