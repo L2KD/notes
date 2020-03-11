@@ -347,9 +347,11 @@ $ docker run -it --rm -v /where-you-put-it/sample-apps-stu3:/tmp/fhir node:alpin
 # inside the container
 
 # cd /tmp/fhir/fhir-downloader
+# copy config.example.json config.json
+Adapt config by our server and token info if needed
 # npm i
 # node . -d /dev/null
 
 ```
 
-Well, failed...
+Well, failed... bởi vì cái \$import nó ở STU3. Server hiện tại ở R4.
