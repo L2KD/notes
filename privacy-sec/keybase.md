@@ -6,8 +6,14 @@ Installation
 sudo pacman -S keybase keybase-gui kbfs
 ```
 
-Register
+Register 1st device
 
 ```
-Add new mobile device
+keybase signup
+```
+
+Add 2nd device (mobile)
+
+```
+keybase device add
 ```
