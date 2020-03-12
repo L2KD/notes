@@ -161,4 +161,8 @@ Xác minh chính chủ tài khoản (github, reddit)
 
 Login trên web, chọn prove id, chọn `gpg, curl`.
 
-Thực hiện theo hướng dẫn trên web. (VD github thì cần tạo thêm 1 cái public gist, reddit thì cần comment vào /r của keybase)
+Thực hiện theo hướng dẫn trên web. (VD github thì cần tạo thêm 1 cái public gist, reddit thì cần comment vào /r của keybase...)
+
+_Ghi chú:_ Nếu không chạy curl mà dùng trực tiếp bằng keybase command thì nó sẽ prove dựa trên pgp key của keyring của pc đang dùng.
+
+Vẫn chưa biết cách dùng command keybase mà xài gpg key thì ntn.
