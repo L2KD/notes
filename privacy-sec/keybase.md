@@ -55,3 +55,13 @@ Or, you can type this verification code into your other device:
 
 ✔ Success! You added a new device named pomme8 to your account.
 ```
+
+PGP keys
+
+Import pub key from backup location
+
+```
+# cryptsetup open /dev/sdc1 my_usb
+Enter your strong passphrase
+# mount /dev/mapper/my_usb /somewhere_in_your_pc
+```
