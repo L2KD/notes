@@ -82,7 +82,7 @@ On the new terminal (because the old one has had the env variable $GNUPGHOME)
 Select the key for keybase
 
 ```
-$ keybase pgp select --multi
+$ keybase pgp select
 You are selecting a PGP key from your local GnuPG keychain, and
 will publish a statement signed with this key to make it part of
 your Keybase.io identity.
