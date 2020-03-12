@@ -107,6 +107,8 @@ If you use your yubikey here, you may have to enter your passphrase (master key)
 ▶ INFO   4096-bit RSA key, ID 8322BDB26DADE0F0, created 2019-07-23
 ```
 
+Sau lệnh này, keybase sẽ publish public key của bạn (gpg key) lên keybase. Nhưng nó sẽ nằm sau cái local keyring của pc đang dùng thực hiện lệnh trên. Mình muốn nó replace luôn pgp key của keybase nhưng chưa biết cách.
+
 More info about the command `keybase pgp select`
 
 ```
@@ -144,3 +146,19 @@ OPTIONS:
    --import	Import private key to the local Keybase keyring.
    --no-publish	Only import to Keybase keyring, do not publish on user profile.
 ```
+
+Đặt passphrase
+
+```
+$ keybase passphrase set
+
+Nhập mật khẩu siêu mạnh của bạn
+```
+
+Prove identities
+
+Xác minh chính chủ tài khoản (github, reddit)
+
+Login trên web, chọn prove id, chọn `gpg, curl`.
+
+Thực hiện theo hướng dẫn trên web. (VD github thì cần tạo thêm 1 cái public gist, reddit thì cần comment vào /r của keybase)
