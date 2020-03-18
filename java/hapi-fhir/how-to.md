@@ -325,6 +325,24 @@ public ResponseEntity listPatients() {
 }
 ```
 
+### Health check (This is not sure)
+
+```java
+@GetMapping(value = "/fhir-ping-server", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+public ResponseEntity ping() {
+    Map<String, String> res = new HashMap<>();
+    try {
+        hl7FhirUtils.getClient().forceConformanceCheck();
+    } catch (Exception e) {
+        res.put("status", "KO");
+        return ResponseEntity.status(500).body(res);
+    }
+
+    res.put("status", "OK");
+    return ResponseEntity.ok(res);
+}
+```
+
 ## Security
 
 AuthN
