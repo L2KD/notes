@@ -1,5 +1,9 @@
 # Bad humour, temporary trending
 
+> Sai lầm lớn nhất là cố gắng làm vừa lòng tất cả mọi người. Việc này vừa khó lại vừa ngu.
+
+Anonymous
+
 > ngân nga nốt rê thứ
 
 1977 vlog
