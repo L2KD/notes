@@ -89,6 +89,25 @@ sudo systemctl enable wg-quick@wg0
   curl -s http://ipv4.icanhazip.com
   ```
 
+## Troubleshooting
+
+If no internet connection after handshaking, then check for
+
+    sysctl net.ipv4.ip_forward
+
+If it's not `1`, then do:
+
+    sysctl -w net.ipv4.ip_forward=1
+    
+To make it permanent, touch a file e.g. in `/etc/sysctl.d/40-ipfwd.conf`
+
+    net.ipv4.ip_forward=1
+    
+Then do:
+
+    sysctl --system
+
+
 ---
 
 # Pi Hole
