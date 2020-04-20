@@ -9,3 +9,10 @@ Installed
 - redis, php-redis (conf) (enable, start)
 - nginx
 - php-fpm (enable, start)
+
+Tune
+
+Add indices for Calendar and Contact apps
+
+    cd /usr/share/webapps/nextcloud
+    sudo -u http php occ db:add-missing-indices
