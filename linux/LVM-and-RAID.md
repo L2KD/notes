@@ -250,3 +250,93 @@ is RAID-10.
 - IS - or Integrated Striping, is RAID-0.
 
 So they use their own notations instead of RAID-1-0-10...
+
+## Quick guide
+
+### Tạo MBR và `/boot`
+
+Thường thì chúng ta phải ghi 1 cái MBR hoặc GPT cho ổ đĩa mới.
+
+Và để không bị rắc rối với Grub (grub2) thì nên cho /boot nó nằm ở ngoài LVM.
+
+Như vậy: Dùng fdisk để làm 2 việc trên.
+
+```
+fdisk /dev/sdX
+
+o: Tạo MBR hoặc
+g: tạo GPT partition table
+n: tạo mới 1 partition
+w: ghi thay đổi
+d: xóa partition
+```
+
+`/boot` chỉ cần khoảng 500MB-1GB, không cần nhiều hơn, chừa những phần còn trống quý giá của ổ cứng cho những những điều khác cao cả không kém.
+
+Lúc này sẽ có 1 ổ nằm ở #1, type 83 (Linux)
+
+Sau đó tạo thêm ổ #2, cũng Linux.
+
+### Tạo PV, VG, LV
+
+Tiếp tục, dùng LVM để tạo lần lượt: Physical Volume, Volume Group, Logical Volume.
+
+```
+pvcreate /dev/sdX2 
+
+Do sdX1 là /boot rồi
+```
+
+Kiểm tra lại bằng `pvscan` hoặc `pvdisplay`.
+
+Tiếp tục, tạo VG
+
+```
+vgcreate vg0 /dev/sdX2
+
+Trong đó vg0 là tùy chọn
+
+```
+
+Tiếp, tạo LV
+
+```
+lvcreate -L 8G vg0 -n swap
+lvcreate -L 80G vg0 -n root
+lvcreate -l 100%FREE vg0 -n home
+```
+
+Như vậy ta sẽ có
+
+```
+/dev/mapper/vg0/swap có 8GB
+/dev/mapper/vg0/root có 80GB
+/dev/mapper/vg0/home có phần còn lại của ổ đĩa
+```
+
+### Bật lvm (active vg)
+
+```
+# modprobe dm_mod
+# vgscan
+# vgchange -ay
+```
+
+### Tạo fs
+
+Lúc này tạo file system (ext4, vfat hay bất cứ cái gì)
+
+```
+mkfs.vfat /dev/sdX1 (tức là cái /boot)
+mkfs.ext4 /dev/mapper/vg0/swap
+mkfs.btrfs /dev/mapper/vg0/home
+...
+```
+
+Lưu ý, để kernel hiểu được ta dùng LVM, phải thêm vào trong cái header và `mkinitcpio` lại.
+
+```
+/etc/mkinitcpio.conf
+
+HOOKS=(base udev ... block lvm2 filesystems)
+```

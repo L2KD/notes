@@ -27,4 +27,4 @@ auth  sufficient  pam_u2f.so  debug authfile=/etc/u2f_mappings cue
 
 Reboot machine.
 
-Lightdm should work. Sudo is elevated.
+Lightdm should work. Sudo is elevated with the key (by touching the golden button).

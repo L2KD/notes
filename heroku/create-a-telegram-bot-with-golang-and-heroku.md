@@ -4,6 +4,8 @@ _Mở đầu, giải thích sơ về mô hình hoạt động của telegram bot
 
 _Mọi xử lý sẽ nằm ở phía chúng ta (telegram không hỗ trợ về mọi trí não của con bot). Telegram chỉ hỗ trợ các kết nối từ con BOT, về server của ta, và ngược lại, tức là từ phía server trở qua con bot, đương nhiên, là thông qua hệ thống API của telegram cung cấp._
 
+_Có 2 cách để bot liên lạc với telegram. 1 là webhook, 2 là long pooling._
+
 1.  Đầu tiên phải tạo một con bot
 
     Bằng cách liên lạc với BotFather (@BotFather), the GodFather of the bots, and maybe the only one without his suffix bot for his name.
@@ -30,68 +32,70 @@ _Mọi xử lý sẽ nằm ở phía chúng ta (telegram không hỗ trợ về 
 
     2.  main.go
 
-            package main
+    ```go
+    package main
 
-            import (
-                "time"
-                "log"
-                "fmt"
-                "strconv"
-                "net/url"
-                "os"
+    import (
+        "time"
+        "log"
+        "fmt"
+        "strconv"
+        "net/url"
+        "os"
 
-                tb "gopkg.in/tucnak/telebot.v2"
-            )
+        tb "gopkg.in/tucnak/telebot.v2"
+    )
 
-            func main() {
-                b, err := tb.NewBot(tb.Settings{
-                    Token:  os.Getenv("SECRET_TOKEN"),
-                    Poller: &tb.LongPoller{Timeout: 10 * time.Second},
+    func main() {
+        b, err := tb.NewBot(tb.Settings{
+            Token:  os.Getenv("SECRET_TOKEN"),
+            Poller: &tb.LongPoller{Timeout: 10 * time.Second},
+        })
+
+        if err != nil {
+            log.Fatal(err)
+            return
+        }
+
+        b.Handle("/help", func(m *tb.Message) {
+            b.Send(m.Sender, "Con BÊ Ô TÊ này được viết vào một sáng thứ bảy đầy năng lượng, với 1 cái bàn phím và 1 chút ☕️.")
+        })
+
+        b.Handle(tb.OnText, func(m *tb.Message) {
+            b.Send(m.Sender, "This bot is currently not supported interactive mode. Please use the inline mode (@GoogleSisBot your_chat)")
+        })
+
+        b.Handle(tb.OnQuery, func(q *tb.Query) {
+            if q.Text != "" {
+                // Declaration of G Translate url (our beloved sister)
+                googleTranslateUrl := "https://translate.google.com.vn/translate_tts?ie=UTF-8&tl=vi&client=tw-ob&q="
+
+                // List of result for inline query
+                results := make(tb.Results, 1)
+
+                // The one we need
+                result := &tb.AudioResult{
+                    Title: q.Text,
+                    URL: googleTranslateUrl + url.QueryEscape(q.Text),
+                }
+
+                results[0] = result
+                results[0].SetResultID(strconv.Itoa(0))
+
+                err := b.Answer(q, &tb.QueryResponse{
+                    Results: results,
+                    CacheTime: 60, // in sec
                 })
 
                 if err != nil {
-                    log.Fatal(err)
-                    return
+                    fmt.Println(err)
                 }
-
-                b.Handle("/help", func(m *tb.Message) {
-                    b.Send(m.Sender, "Con BÊ Ô TÊ này được viết vào một sáng thứ bảy đầy năng lượng, với 1 cái bàn phím và 1 chút ☕️.")
-                })
-
-                b.Handle(tb.OnText, func(m *tb.Message) {
-                    b.Send(m.Sender, "This bot is currently not supported interactive mode. Please use the inline mode (@GoogleSisBot your_chat)")
-                })
-
-                b.Handle(tb.OnQuery, func(q *tb.Query) {
-                    if q.Text != "" {
-                        // Declaration of G Translate url (our beloved sister)
-                        googleTranslateUrl := "https://translate.google.com.vn/translate_tts?ie=UTF-8&tl=vi&client=tw-ob&q="
-
-                        // List of result for inline query
-                        results := make(tb.Results, 1)
-
-                        // The one we need
-                        result := &tb.AudioResult{
-                            Title: q.Text,
-                            URL: googleTranslateUrl + url.QueryEscape(q.Text),
-                        }
-
-                        results[0] = result
-                        results[0].SetResultID(strconv.Itoa(0))
-
-                        err := b.Answer(q, &tb.QueryResponse{
-                            Results: results,
-                            CacheTime: 60, // in sec
-                        })
-
-                        if err != nil {
-                            fmt.Println(err)
-                        }
-                    }
-                })
-
-                b.Start()
             }
+        })
+
+        b.Start()
+    }
+    ```
 
     Trong đó mình import 1 số thư viện cơ bản (`fmt`, `os`...), và thư viện chính là `tb` (telegram bot).
 
@@ -181,11 +185,11 @@ _Mọi xử lý sẽ nằm ở phía chúng ta (telegram không hỗ trợ về 
 
 Đối với Golang (hiện tại là ver2), một project phải nằm bên trong folder src. Vì khi chạy `go build` hoặc `go install`, go sẽ tìm trong src và (pkg, vendor, ...) để compile. Trick sau đây sẽ không bắt buộc phải add tay các deps (go get ...) mà sử dụng lại phần vendor của Godeps.
 
-Export var GOPATH về chỗ `/home/thevinh/Projects/Golang`
+Export var GOPATH về chỗ `/home/admin/Projects/Golang`
 
 Bố trí theo tree sau
 
-    /home/thevinh/Projects/Golang
+    /home/admin/Projects/Golang
     ├── bin
     └── src
         └── gsis-telegram-bot
@@ -227,8 +231,8 @@ vào cuối.
 
 Dùng `Send`.
 
-	channel, channelGetErr := b.ChatByID("chat_id_here_in_string") // Chỗ này không truyền username vào được, mặc dù Official Doc bảo là được...
-	b.Send(channel, "This test message")
+    channel, channelGetErr := b.ChatByID("chat_id_here_in_string") // Chỗ này không truyền username vào được, mặc dù Official Doc bảo là được...
+    b.Send(channel, "This test message")
 
 Để lấy được ID của chat (a bit tricky)
 
@@ -238,3 +242,10 @@ Bot đó phải nhận được tin nhắn mới có thể Send được (tránh
 
 ---
 
+Sau khi update lên Go1.12, khi chạy
+
+```
+go get -u github.com/...
+```
+
+bị báo lỗi `git not on branch...`. Fix bằng cách cd vào đúng thư mục đó và gco về master sau đó chạy `go get -u...` và `godep update...` .

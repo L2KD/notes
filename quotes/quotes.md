@@ -1,3 +1,5 @@
+# Quotes
+
 > He who works with his hands is a laborer.
 >
 > He who works with his hands and his head is a craftsman.
@@ -42,4 +44,6 @@ Sheldon Cooper
 
 Leonard Hofstadter
 
+> But if we're seeing them out in the open now, it's because they want us to know.
 
+Boris Shcherbina (HBO Chernobyl)
