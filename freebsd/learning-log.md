@@ -56,3 +56,19 @@ Cài sudo
 `pkg install sudo`
 
 `visudo` remove # for wheel.
+
+## Enable sshd:
+
+sysrc sshd_enable="YES"
+
+Lệnh trên sẽ thêm dòng sshd_enable="YES" vào file /etc/rc.conf. File rc.conf là file chứa tất cả config của hệ thống khi boot, run service nào, NIC gì...
+
+## Package mirror
+
+Tạo file
+
+```
+sudo cp /etc/pkg/FreeBSD.conf /usr/local/etc/pkg/repos/FreeBSD.conf
+```
+
+Sửa lại url là http://pkg0.twn.freebsd.org/ (Taiwan)
