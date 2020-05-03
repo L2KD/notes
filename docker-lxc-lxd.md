@@ -1,0 +1,1 @@
+https://unix.stackexchange.com/questions/254956/what-is-the-difference-between-docker-lxd-and-lxc
