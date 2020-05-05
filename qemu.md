@@ -5,6 +5,8 @@ Installed:
 - qemu
 - virt-manager
 - libvirt
+- ebtables
+- dnsmasq
 
 Start services:
 
