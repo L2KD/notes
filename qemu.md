@@ -7,6 +7,7 @@ Installed:
 - libvirt
 - ebtables
 - dnsmasq
+- spice-vdagent
 
 Start services:
 
