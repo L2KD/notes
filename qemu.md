@@ -8,3 +8,7 @@ Start services:
 
 - libvirtd
 - virtlogd
+
+Add user to libvirt group
+
+    # usermod -a -G libvirt `whoami`
