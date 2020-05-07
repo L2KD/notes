@@ -6,6 +6,11 @@
 cryptsetup luksFormat /dev/mapper/vg0/home
 
 ```
+hoặc
+
+```
+cryptsetup luksFormat /dev/sdc1
+```
 
 Cung cấp password.
 
@@ -21,13 +26,29 @@ Gõ vào password.
 
 Khi này partition đó sẽ được mở và available tại /dev/mapper/crypthome
 
-Sau đó có thể tiến hành mount và sử dụng như bình thường.
+Sau đó có thể tiến hành mount và sử dụng như bình thường. 
 
 VD
 
 ```
 mkdir -p /home
 mount /dev/mapper/crypthome /home
+```
+
+Hoặc tạo fs mới để sử dụng, vd:
+
+```
+mkfs.ext4 /dev/mapper/microsd
+```
+
+Sau đó mount và sử dụng.
+
+## Close
+
+umount trước.
+
+```
+cryptsetup close microsd
 ```
 
 ## Dùng khi boot
