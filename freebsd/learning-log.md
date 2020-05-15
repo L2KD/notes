@@ -72,3 +72,9 @@ sudo cp /etc/pkg/FreeBSD.conf /usr/local/etc/pkg/repos/FreeBSD.conf
 ```
 
 Sửa lại url là http://pkg0.twn.freebsd.org/ (Taiwan)
+
+## RPI
+
+File image rpi có sẵn 2 users là freebsd và root (pwd giống với un).
+
+SSH vào freebsd user, leo thang bằng `su root`, cài pkg...
