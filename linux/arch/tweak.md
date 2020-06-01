@@ -2,6 +2,16 @@
 
 ## Mirror
 
+Cài package `pacman-contrib`.
+
+Lấy 5 mirror nhanh nhất, theo các quốc gia: Vietnam, Thái, Sing, HongKong, protocol https:
+
+```
+curl -s "https://www.archlinux.org/mirrorlist/?country=VN&country=TH&country=SG&country=HK&protocol=https&use_mirror_status=on" | sed -e 's/^#Server/Server/' -e '/^#/d' | rankmirrors -n 5 -
+```
+
+Lưu vào /etc/pacman.d/mirrorlist
+
 ## sudo
 
 Leo thang đặc quyền bằng password có nguy cơ tiềm ẩn, do X11 cho các application được keylog nhau (install `xkbcat` để test).
