@@ -1,5 +1,7 @@
 # Usual tweak
 
+## Mirror
+
 ## sudo
 
 Leo thang đặc quyền bằng password có nguy cơ tiềm ẩn, do X11 cho các application được keylog nhau (install `xkbcat` để test).
