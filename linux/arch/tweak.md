@@ -25,3 +25,14 @@ Như vậy có các giải pháp:
 ## Limit size của journal
 
 https://wiki.archlinux.org/index.php/Systemd/Journal#Journal_size_limit
+
+## Compress mkinitcpio
+
+```
+# /etc/mkinitcpio.conf
+
+COMPRESSION="xz"
+COMPRESSION_OPTIONS=(-0 -T 0)
+```
+
+Ref: https://vez.mrsk.me/linux-hardening.html
