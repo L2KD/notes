@@ -1,5 +1,13 @@
-Enable u2f for browser:
+```
+touch ~/.config/firejail/firefox-developer-edition.local
+```
 
 ```
-touch file
+# ~/.config/firejail/firefox-developer-edition.local
+
+# Allow dbus (input methods)
+ignore nodbus
+
+# Allow yubikey to work
+ignore nou2f
 ```
