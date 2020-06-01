@@ -6,8 +6,8 @@ firejail --audit firefox
 
 ## Local config
 
-```
-touch ~/.config/firejail/firefox-developer-edition.local
+```bash
+$ touch ~/.config/firejail/firefox-developer-edition.local
 ```
 
 ```
