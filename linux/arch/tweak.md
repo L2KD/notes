@@ -71,6 +71,18 @@ Enable apparmor
 # firecfg
 ```
 
+Lệnh trên sẽ tạo trong /usr/local/bin các sym link để chạy app bằng firejail (với default profile).
+
+VD trước khi chạy firefox trong jail
+
+Truy cập file:///home/admin, ta có quyền vào .ssh/id_rsa...
+
+Thoát FF và chạy lại.
+
+Truy cập file:///home/admin, chỉ có 1 số folder được quyền truy cập.
+
+Tương tự với các trường hợp app khác.
+
 ```
 # echo XXX > /etc/firejail/firejail.users
 ```
