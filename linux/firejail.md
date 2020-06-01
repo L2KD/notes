@@ -1,3 +1,11 @@
+## Audit
+
+```
+firejail --audit firefox
+```
+
+## Local config
+
 ```
 touch ~/.config/firejail/firefox-developer-edition.local
 ```
