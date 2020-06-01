@@ -35,4 +35,44 @@ COMPRESSION="xz"
 COMPRESSION_OPTIONS=(-0 -T 0)
 ```
 
+## Isolation apps
+
+Install `firejail` & `apparmor`
+
+To enable apparmor on boots:
+
+By grub:
+
+Add kernel param `apparmor=1 lsm=lockdown,yama,apparmor`
+
+```
+# /etc/default/grub
+
+GRUB_CMDLINE_LINUX_DEFAULT="loglevel=3 quiet apparmor=1 lsm=lockdown,yama,apparmor"
+```
+
+```
+# /boot/grub/grub.cfg
+
+linux	/vmlinuz-linux root=/dev/mapper/vg0-root rw  loglevel=3 quiet apparmor=1 lsm=lockdown,yama,apparmor
+```
+
+Enable apparmor
+
+```
+# systemctl enable --now apparmor
+```
+
+```
+# apparmor_parser -r /etc/apparmor.d/firejail-default
+```
+
+```
+# firecfg
+```
+
+```
+# echo XXX > /etc/firejail/firejail.users
+```
+
 Ref: https://vez.mrsk.me/linux-hardening.html
