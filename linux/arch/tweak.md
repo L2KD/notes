@@ -73,6 +73,14 @@ Enable apparmor
 
 Lệnh trên sẽ tạo trong /usr/local/bin các sym link để chạy app bằng firejail (với default profile).
 
+Tuy vậy, có một số app không chạy tốt khi bị jailed (vd telegram, dù đã thông dbus nhưng vẫn không gõ được bằng ibus).
+
+Chỉ jail 1 số app:
+
+```
+# ln -s /usr/bin/firejail firefox
+```
+
 VD trước khi chạy firefox trong jail
 
 Truy cập file:///home/admin, ta có quyền vào .ssh/id_rsa...
