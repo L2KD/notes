@@ -47,3 +47,11 @@ Leonard Hofstadter
 > But if we're seeing them out in the open now, it's because they want us to know.
 
 Boris Shcherbina (HBO Chernobyl)
+
+> Good teams don't blame individuals. You can praise individuals, but you take blame as a team.
+>
+> Hopefully at least two people reviewed the commit before it was put into production. Someone set up the post-launch smoke-tests/api-test-suits. Someone built the CI/CD-system. Etc etc.
+>
+> My point is, it is rarely a single individuals fault when something at this scale goes down.
+
+cvik@HN
