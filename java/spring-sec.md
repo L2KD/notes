@@ -69,6 +69,8 @@ public class OAuth2ResourceServer extends WebSecurityConfigurerAdapter {
         ;
 ```
 
-Annotation `@EnableWebSecurity` sẽ kích hoạt SPring sec. Class này phải được extend class `WebSecurityConfigurerAdapter`. Lưu ý, phiên bản Spring Sec 5 trở về sau có sự thay đổi này do Spring đã bỏ Authentication Server ra khỏi framework.
+Annotation `@EnableWebSecurity` sẽ kích hoạt SPring sec. Class này phải được extend class `WebSecurityConfigurerAdapter`. Lưu ý, phiên bản Spring Sec 5 trở về sau có sự thay đổi này do Spring đã bỏ Authentication Server ra khỏi framework. Chỉ còn Auth client và Resource Server.
 
 ## Keycloak
+
+Keycloak viết sẵn
