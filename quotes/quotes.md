@@ -55,3 +55,7 @@ Boris Shcherbina (HBO Chernobyl)
 > My point is, it is rarely a single individuals fault when something at this scale goes down.
 
 cvik@HN
+
+> Buying tools: Start by buying the absolute cheapest tools you can find. Upgrade the ones you use a lot. If you wind up using some tool for a job, buy the very best you can afford.
+
+Kevin Kelly 62th of his 68 Bits of Unsolicited Advice
