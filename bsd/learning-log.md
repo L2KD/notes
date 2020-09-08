@@ -39,3 +39,7 @@ Lệnh trên list ra các pool mà hệ thống đã import.
     zfs mount <tên pool>
 
 Lệnh tren sẽ mount các fs vào đung mountpoint.
+
+    zfs set mountpoint=/myspecialfolder mypool
+
+Lệnh trên đơn giản quá, nhìn hiểu rồi.
