@@ -86,3 +86,24 @@ Leo thang
 - NTP. Enable service & sync on startup.
 - Firewall.
 - Instal shell
+
+## Port collections
+
+Sau khi cài OS, nếu có tùy chọn cài port col thì cài thêm. Còn không thì cài vào sau bằng cách:
+
+To download a compressed snapshot of the Ports Collection into /var/db/portsnap:
+
+    # portsnap fetch
+
+When running Portsnap for the first time, extract the snapshot into /usr/ports:
+
+    # portsnap extract
+
+After the first use of Portsnap has been completed as shown above, /usr/ports can be updated as needed by running:
+
+    # portsnap fetch
+    # portsnap update
+
+When using fetch, the extract or the update operation may be run consecutively, like so:
+
+    # portsnap fetch update`
