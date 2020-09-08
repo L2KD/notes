@@ -44,4 +44,10 @@ Lệnh tren sẽ mount các fs vào đung mountpoint.
 
 Lệnh trên đơn giản quá, nhìn hiểu rồi.
 
+Ngoài ra còn zpool cache. File này nằm ở `/boot/zfs/zpool.cache`. Một khi import pool, nó sẽ mount vào mount point và ghi lại file cache. Khi hệ thống ở mode RO, nó không có quyền ghi vào file này, dẫn đến lần boot kế tiếp không mount được.
+
 https://forums.FreeBSD.org/threads/how-to-mount-a-zfs-partition.66603/post-393889
+
+Single user read only escape:
+
+Boot vào single user mode, sau đó mount lại `/` bằng `mount -urw /`, khi này sẽ có quyền write.
