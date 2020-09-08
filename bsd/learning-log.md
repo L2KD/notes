@@ -66,3 +66,9 @@ Trong grub.cfg, thêm entry
 Việc này nó sẽ chain load cái boot loader grub, thẩy qua cho thằng boot loader mà nó tìm thấy trong cái disk msdos3 kìa.
 
 Ngoài ra còn có thể boot trực tiếp từ grub, mà chưa thành công.
+
+## su
+
+Thêm người dùng vào group wheel
+
+    pw usermod sysadmin -G wheel
