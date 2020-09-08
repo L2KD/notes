@@ -1,6 +1,7 @@
 mount:
 
     mount -t ext2fs -o rw /dev/ada0s2 /mnt
+    mount -t ufs -o rw /dev/ada0s3b /mnt
 
 Có 3 phân vùng
 
