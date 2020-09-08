@@ -77,3 +77,12 @@ Leo thang
 
     su -
     Nhập pwd của root
+
+## Sau khi cài xong
+
+- pkg update, pkg upgrade
+- Add người dùng vào group wheel.
+- Cài sudo, chỉnh visudo thêm wheel vào sudo.
+- NTP. Enable service & sync on startup.
+- Firewall.
+- Instal shell
