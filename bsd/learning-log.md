@@ -43,3 +43,5 @@ Lệnh tren sẽ mount các fs vào đung mountpoint.
     zfs set mountpoint=/myspecialfolder mypool
 
 Lệnh trên đơn giản quá, nhìn hiểu rồi.
+
+https://forums.FreeBSD.org/threads/how-to-mount-a-zfs-partition.66603/post-393889
