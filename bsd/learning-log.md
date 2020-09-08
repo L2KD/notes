@@ -1,4 +1,4 @@
-mount:
+## mount:
 
     mount -t ext2fs -o rw /dev/ada0s2 /mnt
     mount -t ufs -o rw /dev/ada0s3b /mnt
@@ -48,6 +48,21 @@ Ngoài ra còn zpool cache. File này nằm ở `/boot/zfs/zpool.cache`. Một k
 
 https://forums.FreeBSD.org/threads/how-to-mount-a-zfs-partition.66603/post-393889
 
-Single user read only escape:
+## Single user read only escape:
 
 Boot vào single user mode, sau đó mount lại `/` bằng `mount -urw /`, khi này sẽ có quyền write.
+
+## Boot loader
+
+Bản thân freebsd có boot loader riêng của nó (`/boot`). Để tránh mất các boot loader cho các os khác, tôi dùng grub2 tạm.
+
+Trong grub.cfg, thêm entry
+
+    menuentry "BSD" {
+        set root="hd0,msdos3"
+        chainloader +1
+    }
+
+Việc này nó sẽ chain load cái boot loader grub, thẩy qua cho thằng boot loader mà nó tìm thấy trong cái disk msdos3 kìa.
+
+Ngoài ra còn có thể boot trực tiếp từ grub, mà chưa thành công.
