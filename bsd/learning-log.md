@@ -30,4 +30,12 @@ Sau khi mount xong, lấy thêm thông tin như mountpoint, canmount...
     zroot  mountpoint  /           local
     zroot  canmount    on          default
 
-Thông thường, 1 hệ thống sẽ mount fs thông qua file `/etc/fstab`, hoặc manually bằng command. Tuy vậy, đối với zfs thì
+Thông thường, 1 hệ thống sẽ mount fs thông qua file `/etc/fstab`, hoặc manually bằng command. Tuy vậy, đối với zfs thì lại không dùng `/etc/fstab`, mà chính fs nó theo dõi việc mount này tự thân nó. Vậy nên `-R` option trên để ép hệ thống nhận ra fs được access qua path khác với cái path được thiết lập trong zfs.
+
+    zfs list
+
+Lệnh trên list ra các pool mà hệ thống đã import.
+
+    zfs mount <tên pool>
+
+Lệnh tren sẽ mount các fs vào đung mountpoint.
