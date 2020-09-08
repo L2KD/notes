@@ -108,3 +108,7 @@ After the first use of Portsnap has been completed as shown above, /usr/ports ca
 When using fetch, the extract or the update operation may be run consecutively, like so:
 
     # portsnap fetch update`
+
+## Remove user
+
+    # rmuser
