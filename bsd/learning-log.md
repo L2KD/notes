@@ -85,7 +85,8 @@ Leo thang
 - Cài sudo, chỉnh visudo thêm wheel vào sudo.
 - NTP. Enable service & sync on startup.
 - Firewall.
-- Instal shell
+- Instal shell.
+- Install X system (follow official doc).
 
 ## Port collections
 
