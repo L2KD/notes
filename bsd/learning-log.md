@@ -72,3 +72,8 @@ Ngoài ra còn có thể boot trực tiếp từ grub, mà chưa thành công.
 Thêm người dùng vào group wheel
 
     pw usermod sysadmin -G wheel
+
+Leo thang
+
+    su -
+    Nhập pwd của root
