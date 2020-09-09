@@ -132,24 +132,30 @@ Một vài port cần phải có src của kernel để có thể cài đặt đ
 
     The minor versions should be ignored to fetch from the above URL. For ex: if it is 10.2-RELEASE-p1, just use: 10.2-RELEASE
 
-## Install xorg & xfce
+## Install `xorg` & `xfce`
 
-- Install xorg from pkg.
-- Install xfce.
-- Create ~/.xinitrc & ~/.xsession
-- /etc/rc.conf
-  clear_tmp_enable="YES"
-  sendmail_enable="NONE"
-  hostname="LLED-BSD"
-  wlans_iwn0="wlan0"
-  ifconfig_wlan0="WPA DHCP"
-  sshd_enable="YES"
-  ntpd_enable="YES"
-  ntpd_sync_on_start="YES"
-  zfs_enable="YES" # Set dumpdev to "AUTO" to enable crash dumps, "NO" to disable
-  dumpdev="AUTO"
-  slim_enable="YES"
-  dbus_enable="YES"
-  hald_enable="YES"
-  xdm_enable="YES"
-  kld_list="/boot/modules/i915kms.ko"
+- Install `xorg` from pkg.
+- Install `xfce`.
+- Create `~/.xinitrc` & `~/.xsession`
+- `/etc/rc.conf`
+
+        clear_tmp_enable="YES"
+        sendmail_enable="NONE"
+        hostname="LLED-BSD"
+        wlans_iwn0="wlan0"
+        ifconfig_wlan0="WPA DHCP"
+        sshd_enable="YES"
+        ntpd_enable="YES"
+        ntpd_sync_on_start="YES"
+        zfs_enable="YES" # Set dumpdev to "AUTO" to enable crash dumps, "NO" to disable
+        dumpdev="AUTO"
+        slim_enable="YES"
+        dbus_enable="YES"
+        hald_enable="YES"
+        xdm_enable="YES"
+        kld_list="/boot/modules/i915kms.ko"
+
+- Install intel driver (from port `/graphics/drm-kmod`)
+- Add this line to /boot/loader.conf to enable vt(4):
+
+        kern.vty=vt
