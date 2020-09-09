@@ -109,6 +109,25 @@ When using fetch, the extract or the update operation may be run consecutively, 
 
     # portsnap fetch update`
 
+Để cài port
+
+    $ cd /usr/port/<tên port>
+    # make install
+
 ## Remove user
 
     # rmuser
+
+## Install kernel source
+
+Một vài port cần phải có src của kernel để có thể cài đặt được. Kernel source có thể được cài lúc cài OS (bsdinstall), hoặc nếu không thì cài sau bằng:
+
+    fetch ftp://ftp.freebsd.org/pub/FreeBSD/releases/amd64/10.2-RELEASE/src.txz
+
+    tar -C / -xzvf src.txz
+
+    10.2-RELEASE MUST be replaced with correct version of your OS.
+
+    One can find version using command: freebsd-version -k
+
+    The minor versions should be ignored to fetch from the above URL. For ex: if it is 10.2-RELEASE-p1, just use: 10.2-RELEASE
