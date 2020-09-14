@@ -159,3 +159,5 @@ Một vài port cần phải có src của kernel để có thể cài đặt đ
 - Add this line to /boot/loader.conf to enable vt(4):
 
         kern.vty=vt
+
+# Yubikey
