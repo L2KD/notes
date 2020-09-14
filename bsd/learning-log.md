@@ -161,3 +161,5 @@ Một vài port cần phải có src của kernel để có thể cài đặt đ
         kern.vty=vt
 
 # Yubikey
+
+Install yubikey-manager-qt-1.0.1_2
