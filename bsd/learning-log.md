@@ -162,4 +162,13 @@ Một vài port cần phải có src của kernel để có thể cài đặt đ
 
 # Yubikey
 
-Install yubikey-manager-qt-1.0.1_2
+To enable gpg card functionalities.
+
+- Install `yubikey-manager-qt`.
+- Enable `pcscd` service.
+
+GPG import/export
+
+- gpg --export -a --output public_gpg.txt <key>
+- On the freebsd machine:
+- gpg --import public_gpg.txt
