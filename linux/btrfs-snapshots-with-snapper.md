@@ -61,6 +61,11 @@ Lý do dùng: Vì nó có 1 số cấu hình thuận tiện hơn cho việc back
 - Automatic timeline snapshots - tự động backup mỗi giờ, lưu lại 10 hourly backups. Mỗi ngày sẽ tự clean up. Giữ lại 10 daily, 10 monthly and 10 yearly. Có thể tắt nó bằng config.
 - Bỏ qua 1 số directories để tránh việc phiền hà khi backup: `/var/log`, tránh việc mất log khi system crash + rollback, `/tmp`, `/boot`, `/home`...
 
-## Pacman hooks
+## Plugins
 
 Hook snapshot khi system thực hiện các pacman transactions.
+
+- `snap-pac`. This is a set of pacman hooks and script that causes snapper to auto‐matically take a pre and post snapshot before and after pacman transactions, similar to how YaST does with OpenSuse. This provides a simple way to undo changes to a system after a pacman transaction.
+
+        Install it
+        # cp /etc/snap-pac/root.conf.example /etc/snap-pac/root.conf
