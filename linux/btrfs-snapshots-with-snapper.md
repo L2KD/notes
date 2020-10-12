@@ -69,3 +69,5 @@ Hook snapshot khi system thực hiện các pacman transactions.
 
         Install it
         # cp /etc/snap-pac/root.conf.example /etc/snap-pac/root.conf
+
+- Backup to external drive. Not tested yet.
