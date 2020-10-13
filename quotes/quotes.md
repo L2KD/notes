@@ -59,3 +59,11 @@ cvik@HN
 > Buying tools: Start by buying the absolute cheapest tools you can find. Upgrade the ones you use a lot. If you wind up using some tool for a job, buy the very best you can afford.
 
 Kevin Kelly 62th of his 68 Bits of Unsolicited Advice
+
+> i'll never forget my programming teacher who was like a senior dev at IBM and decided he was done writing missile guidance software
+> 
+> when he was telling us this he said "i just woke up one morning and it struck me that i was a murderer. so i quit."
+
+https://twitter.com/flakealso/status/1314718594601639936
+
+So, if you're highly paid for doing a job with an unethical project, would you take it?
