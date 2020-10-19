@@ -70,4 +70,12 @@ Hook snapshot khi system thực hiện các pacman transactions.
         Install it
         # cp /etc/snap-pac/root.conf.example /etc/snap-pac/root.conf
 
+  Result after pacman transaction:
+
+        # snapper -c root list
+           # | Type   | Pre # | Date                            | User | Cleanup  | Description     | Userdata
+        -----+--------+-------+---------------------------------+------+----------+-----------------+---------
+        170  | pre    |       | Mon 19 Oct 2020 11:06:12 AM +07 | root | number   | pacman -S conky |
+        171  | post   |   170 | Mon 19 Oct 2020 11:06:13 AM +07 | root | number   | conky           |
+
 - Backup to external drive. Not tested yet.
