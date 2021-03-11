@@ -172,3 +172,23 @@ GPG import/export
 - gpg --export -a --output public_gpg.txt <key>
 - On the freebsd machine:
 - gpg --import public_gpg.txt
+
+## VPN Cisco
+
+Cài port tên vpnc 
+
+    cd /usr/port/security/vpnc
+    sudo make install
+    
+Tạo file tên `/usr/local/etc/vpnc/mekong.conf` có nội dung 
+
+    IPSec gateway x.x.x.x
+    IPSec ID vpn
+    IPSec secret 123456
+    Xauth username u
+    Xauth password p
+    Domain ""
+
+Chạy `sudo vpnc mekong`. 
+
+Disconnect chạy vpnc-disconnect.
