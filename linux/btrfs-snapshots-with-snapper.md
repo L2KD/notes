@@ -61,6 +61,14 @@ Lý do dùng: Vì nó có 1 số cấu hình thuận tiện hơn cho việc back
 - Automatic timeline snapshots - tự động backup mỗi giờ, lưu lại 10 hourly backups. Mỗi ngày sẽ tự clean up. Giữ lại 10 daily, 10 monthly and 10 yearly. Có thể tắt nó bằng config.
 - Bỏ qua 1 số directories để tránh việc phiền hà khi backup: `/var/log`, tránh việc mất log khi system crash + rollback, `/tmp`, `/boot`, `/home`...
 
+Xóa snapshot 1 và 1101 
+    
+    snapper -c root delete 1 1101
+
+Xóa một snapshot từ 1 tới 1101
+
+    snapper -c root delete 1-1101
+
 ## Plugins
 
 Hook snapshot khi system thực hiện các pacman transactions.
