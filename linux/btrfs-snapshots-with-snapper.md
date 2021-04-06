@@ -68,6 +68,11 @@ Xóa snapshot 1 và 1101
 Xóa một snapshot từ 1 tới 1101
 
     snapper -c root delete 1-1101
+    
+Kiểm tra các thay đổi giữa 2 snapshot:
+
+    snapper status 1..2
+   
 
 ## Plugins
 
