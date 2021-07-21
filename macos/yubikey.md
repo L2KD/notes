@@ -2,6 +2,8 @@ Everything of 2FA feature should work out-of-the-box.
 
 ## Configuration for enabling GPG agent to SSH
 
+_This was tested OK on macOS 11.4 Big Sur_
+
 Install GPGSuite from https://gpgtools.org/gpgsuite.html
 
 Install other prequisites
