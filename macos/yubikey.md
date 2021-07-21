@@ -32,6 +32,23 @@ Add the following command to your shell `rc` (e.g `.zshrc`)
     
 Everything should work as expected now.
 
+## Config PAM 
+
+_Tested on BigSur_
+
+
+0. In YubiKey Manager, click Applications > PIV
+0. Click Setup for macOS
+0. Click Setup for macOS. If you chose Protect with PIN when setting the Management Key, enter your PIN in the prompt. If you set a custom Management Key and did not protect with PIN, enter the Management Key in the prompt.
+0. Click OK.
+0. Remove your YubiKey and plug it into the USB port
+0. In the SmartCard Pairing macOS prompt, click Pair. Note: If this prompt doesn't appear, see the Troubleshooting and Additional Topics section below.
+0. In the password prompt, enter the password for the user account listed in the User Name field and click Pair
+0. In the SmartCard Pairing prompt, enter the PIN for your YubiKey (refer to the Setting a new PIN section above) and click OK
+0. In the "login" keychain prompt, enter your keychain password (typically the password for the logged in user account) and click OK
+
+To test the configuration, lock your Mac (Ctrl+Command+Q), and make sure the password field reads PIN when your YubiKey is inserted. Try unlocking your session with your YubiKey by entering your PIN.
+
 ---
 
 DrDUH has more config to use GUI app, didn't test yet, since I was able to do SSH with the above config.
