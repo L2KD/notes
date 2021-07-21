@@ -49,6 +49,10 @@ _Tested on BigSur_
 
 To test the configuration, lock your Mac (Ctrl+Command+Q), and make sure the password field reads PIN when your YubiKey is inserted. Try unlocking your session with your YubiKey by entering your PIN.
 
+Or try to sudo a command, a PIN entry should appear.
+
+Further read: https://support.yubico.com/hc/en-us/articles/360016649059
+
 ---
 
 DrDUH has more config to use GUI app, didn't test yet, since I was able to do SSH with the above config.
