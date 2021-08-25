@@ -9,6 +9,14 @@ Chạy `ssh-add -L` sẽ list các key hiện tại. Nhưng sẽ báo lỗi conn
 1. Chèn vào script bashrc để tắt ssh-agent, bật gpg-agent với option là ssh-support.
 2. Đổi lại biến môi trường để gpg-agent khởi chạy mặc định chịu xài ssh.
 
+Thêm config vào `.zshrc`, hoặc nếu zshrc được restore từ dotfiles thì đã có config.
+
+    export GPG_TTY="$(tty)"
+    export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
+    gpgconf --launch gpg-agent
+
+*Lưu ý*: GPG agent lúc hoạt động sẽ yêu cầu mở khóa GPG, nếu sử dụng smartcard phải có pinentry, nếu dùng pinentry của GTK2 thì phải cài thêm gói `gtk2`.
+
 Cách 2:
 
 Tạo thêm file
@@ -30,12 +38,6 @@ Check lại bằng
 ```
 
 Như vậy file trên đã ok. 
-
-Thêm config vào `.zshrc`, hoặc nếu zshrc được restore từ dotfiles thì đã có config.
-
-    export GPG_TTY="$(tty)"
-    export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
-    gpgconf --launch gpg-agent
 
 Reboot máy.
 
