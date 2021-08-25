@@ -13,6 +13,7 @@ Log:
 - `libu2f-host`: Enable chromium browser connectivity with the physic key.
 - `yubico-pam yubikey-manager yubikey-manager-qt`: PAM để login, cái ykman để dùng các application được hỗ trợ (vd totp gen, smartcard...).
 - `yubikey-personalization yubikey-personalization-gui`: GUI để customize lại key, ghi config vào key.
+- Để xài pinentry gtk nhằm mở khóa GPG (để dùng các sub key để ssh chẳng hạn), cần cài thêm `gtk2`.
 
 Service này cần chạy để OS biết và nói chuyện với yubikey: `pcscd`.
 
