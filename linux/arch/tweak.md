@@ -1,5 +1,9 @@
 # Usual tweak
 
+## Restore configuration
+
+See this repo: https://github.com/voldedore/dotfiles.git
+
 ## Mirror
 
 Cài package `pacman-contrib`.
@@ -21,6 +25,10 @@ Như vậy có các giải pháp:
 1. Dùng yubikey, config PAM để leo thang.
 2. Chuyển tty khi cần leo thang.
 3. Xóa khả năng leo thang của non-root user.
+
+## gpg-agent to SSH-ing with yubikey
+
+See: https://github.com/voldedore/notes/blob/master/linux/gpg-agent.md
 
 ## Limit size của journal
 
