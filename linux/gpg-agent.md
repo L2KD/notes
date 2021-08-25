@@ -31,7 +31,7 @@ Check lại bằng
 
 Như vậy file trên đã ok. 
 
-Thêm config vào `.zshrc`: 
+Thêm config vào `.zshrc`, hoặc nếu zshrc được restore từ dotfiles thì đã có config.
 
     export GPG_TTY="$(tty)"
     export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
