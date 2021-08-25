@@ -242,6 +242,8 @@ This is based on [Installation guide](https://wiki.archlinux.org/index.php?title
         # systemctl start systemd-networkd
         
 After installation, some suggestions to continue: https://wiki.archlinux.org/index.php?title=General_recommendations
+
+My personal tweaks: https://github.com/voldedore/notes/blob/master/linux/arch/tweak.md
     
 ## Other (maybe useful) commands
 
