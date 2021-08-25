@@ -29,7 +29,15 @@ Check lại bằng
 /run/user/1000
 ```
 
-Như vậy file trên đã ok. Reboot máy.
+Như vậy file trên đã ok. 
+
+Thêm config vào `.zshrc`: 
+
+    export GPG_TTY="$(tty)"
+    export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
+    gpgconf --launch gpg-agent
+
+Reboot máy.
 
 Chạy
 
