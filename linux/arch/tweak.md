@@ -36,7 +36,7 @@ Cài đặt `snapper` và `snap-pac` (cần có `cronie`, enable service).
 
 Tạo các subvolume dành riêng cho những vùng không cần thiết, như `/tmp`, `/var/log`.
 
-Xem thêm tại: 
+Xem thêm tại: https://github.com/voldedore/notes/linux/btrfs-practices.md
 
 ## Limit size của journal
 
