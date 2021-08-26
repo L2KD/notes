@@ -28,7 +28,7 @@ Tạo các subvolume dành riêng cho những vùng không cần thiết, như `
 
 Xem thêm tại: https://github.com/voldedore/notes/blob/master/linux/btrfs-practices.md
 
-## # GPG keys
+### GPG keys
 
 Import your public keys to use your yubikey
 

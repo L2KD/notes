@@ -1,6 +1,6 @@
 # Learning log
 
-FreeBSD là unix-like (giống với linux).
+FreeBSD là unix-like (giống với linux). 
 
 kqueue vs epoll
 
