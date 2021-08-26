@@ -1,10 +1,42 @@
 # Usual tweak
 
-## Restore configuration
+## Recommendation
+
+### Restore configuration
 
 See this repo: https://github.com/voldedore/dotfiles.git
 
-## Mirror
+### sudo
+
+Leo thang đặc quyền bằng password có nguy cơ tiềm ẩn, do X11 cho các application được keylog nhau (install `xkbcat` để test).
+
+Như vậy có các giải pháp:
+
+1. Dùng yubikey, config PAM để leo thang. Xem https://github.com/voldedore/notes/blob/master/linux/sudo-use-with-yubikey.md
+2. Chuyển tty khi cần leo thang.
+3. Xóa khả năng leo thang của non-root user.
+
+### gpg-agent to SSH-ing with yubikey
+
+See: https://github.com/voldedore/notes/blob/master/linux/gpg-agent.md
+
+### Snapshot với btrfs
+
+Cài đặt `snapper` và `snap-pac` (cần có `cronie`, enable service).
+
+Tạo các subvolume dành riêng cho những vùng không cần thiết, như `/tmp`, `/var/log`.
+
+Xem thêm tại: https://github.com/voldedore/notes/linux/btrfs-practices.md
+
+### GPG keys
+
+Import your public keys to use your yubikey
+
+See this https://github.com/voldedore/notes/privacy-sec/gpg.md
+
+## Optional
+
+### Mirror
 
 Cài package `pacman-contrib`.
 
@@ -16,33 +48,11 @@ curl -s "https://www.archlinux.org/mirrorlist/?country=VN&country=TH&country=SG&
 
 Lưu vào /etc/pacman.d/mirrorlist
 
-## sudo
-
-Leo thang đặc quyền bằng password có nguy cơ tiềm ẩn, do X11 cho các application được keylog nhau (install `xkbcat` để test).
-
-Như vậy có các giải pháp:
-
-1. Dùng yubikey, config PAM để leo thang. Xem https://github.com/voldedore/notes/blob/master/linux/sudo-use-with-yubikey.md
-2. Chuyển tty khi cần leo thang.
-3. Xóa khả năng leo thang của non-root user.
-
-## gpg-agent to SSH-ing with yubikey
-
-See: https://github.com/voldedore/notes/blob/master/linux/gpg-agent.md
-
-## Snapshot với btrfs
-
-Cài đặt `snapper` và `snap-pac` (cần có `cronie`, enable service).
-
-Tạo các subvolume dành riêng cho những vùng không cần thiết, như `/tmp`, `/var/log`.
-
-Xem thêm tại: https://github.com/voldedore/notes/linux/btrfs-practices.md
-
-## Limit size của journal
+### Limit size của journal
 
 https://wiki.archlinux.org/index.php/Systemd/Journal#Journal_size_limit
 
-## Compress mkinitcpio
+### Compress mkinitcpio
 
 ```
 # /etc/mkinitcpio.conf
@@ -51,17 +61,11 @@ COMPRESSION="xz"
 COMPRESSION_OPTIONS=(-0 -T 0)
 ```
 
-## Fix network interface name
+### Fix network interface name
 
 Vì các lý do trời thần nào đó mà network interface của máy có khi nó là enp2s0 có khi nó thành enp2s69, nên các config khác phụ thuộc vào interface name sẽ bị rối loạn lên hết. Để cố định lại, xem https://github.com/voldedore/notes/blob/master/linux/rename-network-interface.md
 
-## GPG keys
-
-Import your public keys to use your yubikey
-
-See this https://github.com/voldedore/notes/privacy-sec/gpg.md
-
-## Isolation apps
+### Isolation apps
 
 Install `firejail` & `apparmor`
 
