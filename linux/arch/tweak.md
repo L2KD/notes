@@ -49,7 +49,9 @@ Vì các lý do trời thần nào đó mà network interface của máy có khi
 
 ## GPG keys
 
-Import your public keys from a yubikey
+Import your public keys to use your yubikey
+
+See this 
 
 
 
