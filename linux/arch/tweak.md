@@ -26,13 +26,13 @@ Cài đặt `snapper` và `snap-pac` (cần có `cronie`, enable service).
 
 Tạo các subvolume dành riêng cho những vùng không cần thiết, như `/tmp`, `/var/log`.
 
-Xem thêm tại: https://github.com/voldedore/notes/linux/btrfs-practices.md
+Xem thêm tại: https://github.com/voldedore/notes/blob/master/linux/btrfs-practices.md
 
-### GPG keys
+## # GPG keys
 
 Import your public keys to use your yubikey
 
-See this https://github.com/voldedore/notes/privacy-sec/gpg.md
+See this https://github.com/voldedore/notes/blob/master/privacy-sec/gpg.md
 
 ## Optional
 
