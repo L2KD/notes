@@ -51,9 +51,7 @@ Vì các lý do trời thần nào đó mà network interface của máy có khi
 
 Import your public keys to use your yubikey
 
-See this 
-
-
+See this https://github.com/voldedore/notes/privacy-sec/gpg.md
 
 ## Isolation apps
 
