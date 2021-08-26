@@ -30,6 +30,14 @@ Như vậy có các giải pháp:
 
 See: https://github.com/voldedore/notes/blob/master/linux/gpg-agent.md
 
+## Snapshot với btrfs
+
+Cài đặt `snapper` và `snap-pac` (cần có `cronie`, enable service).
+
+Tạo các subvolume dành riêng cho những vùng không cần thiết, như `/tmp`, `/var/log`.
+
+Xem thêm tại: 
+
 ## Limit size của journal
 
 https://wiki.archlinux.org/index.php/Systemd/Journal#Journal_size_limit
