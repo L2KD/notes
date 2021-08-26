@@ -55,6 +55,14 @@ COMPRESSION_OPTIONS=(-0 -T 0)
 
 Vì các lý do trời thần nào đó mà network interface của máy có khi nó là enp2s0 có khi nó thành enp2s69, nên các config khác phụ thuộc vào interface name sẽ bị rối loạn lên hết. Để cố định lại, xem https://github.com/voldedore/notes/blob/master/linux/rename-network-interface.md
 
+## GPG keys
+
+Import your public keys to use your yubikey
+
+See this 
+
+
+
 ## Isolation apps
 
 Install `firejail` & `apparmor`
