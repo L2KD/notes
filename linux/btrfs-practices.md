@@ -26,3 +26,8 @@
 - Reboot.
 - Finally, delete the original content of `@/tmp` by mounting the `@` to `/mnt` then purge `/mnt/tmp`.
 
+      # mkdir -p /mnt/rootbtr
+      # mount -t btrfs -o subvol=/ /dev/mapper/arch-root /mnt/rootbtr
+	  # cd /mnt/rootbtr/var/log
+	  # rm -rf *
+	  

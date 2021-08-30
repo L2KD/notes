@@ -45,8 +45,13 @@ Khi này các file bên trong `/.snapshots` được thể hiện như một câ
 
 Để xóa 1 snapshot
 
-    # btrfs subvolume delete /.snapshots/20201012
-    Delete subvolume (no-commit): '/.snapshots/20201012'
+      # btrfs subvolume delete /.snapshots/20201012
+      Delete subvolume (no-commit): '/.snapshots/20201012'
+
+To mount a subvolume `/` of a disk located in `/dev/mapper/arch-root/` to `/mnt/rootbtr`:
+
+      # mkdir -p /mnt/rootbtr
+      # mount -t btrfs -o subvol=/ /dev/mapper/arch-root /mnt/rootbtr
 
 ## Snapper
 
