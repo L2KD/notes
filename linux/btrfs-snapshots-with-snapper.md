@@ -45,13 +45,13 @@ Khi này các file bên trong `/.snapshots` được thể hiện như một câ
 
 Để xóa 1 snapshot
 
-      # btrfs subvolume delete /.snapshots/20201012
-      Delete subvolume (no-commit): '/.snapshots/20201012'
+    # btrfs subvolume delete /.snapshots/20201012
+    Delete subvolume (no-commit): '/.snapshots/20201012'
 
 To mount a subvolume `/` of a disk located in `/dev/mapper/arch-root/` to `/mnt/rootbtr`:
 
-      # mkdir -p /mnt/rootbtr
-      # mount -t btrfs -o subvol=/ /dev/mapper/arch-root /mnt/rootbtr
+    # mkdir -p /mnt/rootbtr
+    # mount -t btrfs -o subvol=/ /dev/mapper/arch-root /mnt/rootbtr
 
 ## Snapper
 
@@ -68,15 +68,15 @@ Lý do dùng: Vì nó có 1 số cấu hình thuận tiện hơn cho việc back
 
 Xóa snapshot 1 và 1101 
     
-    snapper -c root delete 1 1101
+    # snapper -c root delete 1 1101
 
 Xóa một snapshot từ 1 tới 1101
 
-    snapper -c root delete 1-1101
+    # snapper -c root delete 1-1101
     
 Kiểm tra các thay đổi giữa 2 snapshot:
 
-    snapper status 1..2
+    # snapper status 1..2
    
 
 ## Plugins
