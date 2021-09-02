@@ -160,7 +160,7 @@ Một vài port cần phải có src của kernel để có thể cài đặt đ
 
         kern.vty=vt
 
-# Yubikey
+## Yubikey
 
 To enable gpg card functionalities.
 
