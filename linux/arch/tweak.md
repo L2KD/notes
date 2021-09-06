@@ -34,6 +34,14 @@ Import your public keys to use your yubikey
 
 See this https://github.com/voldedore/notes/blob/master/privacy-sec/gpg.md
 
+### Fonts
+
+- For the polybar normally functioning, install the `font-awesome` package.
+
+### Sound
+
+- `alsa-utils`, `pulseaudio-alsa`.
+
 ## Optional
 
 ### Mirror
