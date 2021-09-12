@@ -25,3 +25,5 @@ Useful plugins:
 5. VU meter.
 6. GTK3 Header.
 7. Quick search.
+
+For more info, view the screenshot in this directory.
