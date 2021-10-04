@@ -1,7 +1,26 @@
-Man pages: https://man.openbsd.org/
+## Man pages
+ 
+https://man.openbsd.org/
+
+## sudo
 
 OpenBSD từ 5.8 không còn dùng sudo, mà được cài đặt sẵn `doas`.
 
-rcctl status service-name
+## Run services
 
-Sau khi cài xong OpenBSD, nếu không có X, thì phải enable và start xenodm lên. (Lúc cài có package nhưng quên enable): https://www.openbsd.org/faq/faq11.html#ConfigX
+    rcctl status service-name
+
+## X
+
+Sau khi cài xong OpenBSD, nếu không có X, thì phải enable và start `xenodm` lên. (Lúc cài có package nhưng quên enable): https://www.openbsd.org/faq/faq11.html#ConfigX
+
+## user add to group
+
+Add user vào group wsrc sẽ cấp quyền ghi vào /usr/src (nơi chứa src của BSD hoặc ports).
+
+    $ ls -alh /usr
+
+    # user mod -G wsrc exampleuser
+
+    ## Check lai 
+    # groups exampleuser 
