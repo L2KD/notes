@@ -27,6 +27,12 @@ Add user vào group wsrc sẽ cấp quyền ghi vào /usr/src (nơi chứa src c
 
 ## port tree
 
+Có 2 cách: 1 là bằng mirror, tải 1 file nén về và giải nén vào (src|ports), 2) là bằng cvs (1 kiểu versioning).
+
+### Để tránh việc leo thang đặc quyền, thêm user vào group `wsrc`.
+
+### Giải nén file vào từ mirror:
+
 Sau khi thêm user vào wsrc group để write vào /usr/src, tạo các folder: `/usr/ports`.
 
     # cd /usr
