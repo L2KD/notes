@@ -99,3 +99,15 @@ Chọn lại server và tag cho đúng với nhu cầu. Xem thêm: https://www.o
 
 
 Only 11 packages? And 77MB of RAM.
+
+
+Xem /etc/X11/xenodm/ có rất nhiều config, Xsession, Xresources...
+Funny
+
+Nhìn đoạn cuối.
+
+https://aliquote.org/post/welcome-openbsd/
+
+https://www.openbsdhandbook.com/x_window_system/
+
+https://why-openbsd.rocks/fact/xenodm/
