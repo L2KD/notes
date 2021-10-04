@@ -69,3 +69,32 @@ Chọn lại server và tag cho đúng với nhu cầu. Xem thêm: https://www.o
     $ cvs -qd anoncvs@<server>:/cvs checkout -r<TAG> -P ports
 
     $ cvs -qd anoncvs@anoncvs.ca.openbsd.org:/cvs checkout -rOPENBSD_6_9 -P ports
+
+## Funny
+
+    ➜  ~ neofetch 
+                                        _    admin@OPENBSD_VB.my.domain 
+                                        (_)   -------------------------- 
+                |    .                      OS: OpenBSD 6.9 i386 
+            .   |L  /|   .          _       Host: innotek GmbH VirtualBox 
+        _ . |\ _| \--+._/| .       (_)      Uptime: 1 hour, 38 mins 
+        / ||\| Y J  )   / |/| ./             Packages: 15 (pkg_info) 
+        J  |)'( |        ` F`.'/        _     Shell: zsh 5.8 
+    -<|  F         __     .-<        (_)    Terminal: /dev/ttyp2 
+        | /       .-'. `.  /-. L___           CPU: Intel i5-2410M (1) @ 2.286GHz 
+        J \      <    \  | | O\|.-'  _        Memory: 77MiB / 1023MiB 
+    _J \  .-    \/ O | | \  |F    (_)
+    '-F  -<_.     \   .-'  `-' L__                                   
+    __J  _   _.     >-'  )._.   |-'                                   
+    `-|.'   /_.          \_|   F
+    /.-   .                _.<
+    /'    /.'             .'  `\
+    /L  /'   |/      _.-'-\
+    /'J       ___.---'\|
+    |\  .--' V  | `. `
+    |/`. `-.     `._)
+        / .-.\
+        \ (  `\
+        `.\
+
+Only 11 packages? And 77MB of RAM.
