@@ -27,4 +27,18 @@ Add user vào group wsrc sẽ cấp quyền ghi vào /usr/src (nơi chứa src c
 
 ## port tree
 
-Sau khi thêm user vào wsrc group để write vào /usr/src, tạo các folder: /usr/src/ports.
+Sau khi thêm user vào wsrc group để write vào /usr/src, tạo các folder: `/usr/ports`.
+
+    # cd /usr
+    # mkdir -p   xenocara ports
+    # chgrp wsrc xenocara ports
+    # chmod 775  xenocara ports
+
+Tải file ports.tar.gz từ mirrors về và giải nén vào /usr/ports
+
+    $ cd /tmp
+    $ ftp https://cdn.openbsd.org/pub/OpenBSD/$(uname -r)/{ports.tar.gz,SHA256.sig}
+    $ signify -Cp /etc/signify/openbsd-$(uname -r | cut -c 1,3)-base.pub -x SHA256.sig ports.tar.gz
+
+    $ cd /usr
+    $ tar xzf /tmp/ports.tar.gz
