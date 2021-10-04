@@ -24,3 +24,7 @@ Add user vào group wsrc sẽ cấp quyền ghi vào /usr/src (nơi chứa src c
 
     ## Check lai 
     # groups exampleuser 
+
+## port tree
+
+Sau khi thêm user vào wsrc group để write vào /usr/src, tạo các folder: /usr/src/ports.
