@@ -6,6 +6,16 @@ https://man.openbsd.org/
 
 OpenBSD từ 5.8 không còn dùng sudo, mà được cài đặt sẵn `doas`. Mặc dù lúc mới cài xong chạy doas thì nó nói it is not enabled... ơ kìa?
 
+Tạo thêm file: `/etc/doas.conf`
+
+    permit :wheel
+
+Doas: 
+
+    $ doas pkg_check
+
+OK.
+
 ## Run services
 
     rcctl status service-name
