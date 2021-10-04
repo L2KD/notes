@@ -18,7 +18,13 @@ Sau khi cài xong OpenBSD, nếu không có X, thì phải enable và start `xen
 
     # user mod -G <group-name> <user>
 
-Add user vào group wsrc sẽ cấp quyền ghi vào /usr/src (nơi chứa src của BSD hoặc ports).
+## port tree
+
+Có 2 cách: 1) là bằng mirror, tải 1 file nén về và giải nén vào (src|ports), 2) là bằng cvs (1 kiểu versioning).
+
+Để tránh việc leo thang đặc quyền, thêm user vào group `wsrc`.
+
+Add user vào group `wsrc` sẽ cấp quyền ghi vào `/usr/src` (nơi chứa src của BSD) hoặc `/usr/ports` (ports).
 
     $ ls -alh /usr
 
@@ -26,12 +32,6 @@ Add user vào group wsrc sẽ cấp quyền ghi vào /usr/src (nơi chứa src c
 
     ## Check lai 
     # groups exampleuser 
-
-## port tree
-
-Có 2 cách: 1 là bằng mirror, tải 1 file nén về và giải nén vào (src|ports), 2) là bằng cvs (1 kiểu versioning).
-
-### Để tránh việc leo thang đặc quyền, thêm user vào group `wsrc`.
 
 ### Giải nén file vào từ mirror:
 
