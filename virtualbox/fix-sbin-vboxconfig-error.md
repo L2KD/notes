@@ -1,6 +1,7 @@
 After installing/updating vbox new version, you may get the following issue
 
 > the support driver is not installed...
+> 
 > Run sudo /sbin/vboxconfig
 
 ## But why?
@@ -31,11 +32,11 @@ This error occurs because virtualbox tries to install required drivers and modul
       Install Script  : No
       Validated By    : Signature
 
-When virtualbox installs modules from `/lib/modules/5.14.8-arch1-1`
+That shows current installed kernel is `5.13.4-arch1-1` and virtualbox installs modules from `/lib/modules/5.14.8-arch1-1`
 
-      ls -alh /lib/modules/
+      $ ls -alh /lib/modules/
       
-      ls -alh /lib/modules/5.14.8-arch1-1/extramodules/
+      $ ls -alh /lib/modules/5.14.8-arch1-1/extramodules/
       total 244K
       drwxr-xr-x 1 root root   90 Oct  4 17:58 .
       drwxr-xr-x 1 root root  494 Oct  4 18:01 ..
@@ -48,6 +49,8 @@ When virtualbox installs modules from `/lib/modules/5.14.8-arch1-1`
 E.g if using `linux`, update it:
 
     # pacman -S linux linux-firmware
+
+If using other kernel, update it accordingly (and dkms)...
 
 Reboot, then reconfig the vbox driver
 
