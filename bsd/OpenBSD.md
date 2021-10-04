@@ -4,7 +4,7 @@ https://man.openbsd.org/
 
 ## sudo
 
-OpenBSD từ 5.8 không còn dùng sudo, mà được cài đặt sẵn `doas`.
+OpenBSD từ 5.8 không còn dùng sudo, mà được cài đặt sẵn `doas`. Mặc dù lúc mới cài xong chạy doas thì nó nói it is not enabled... ơ kìa?
 
 ## Run services
 
@@ -15,6 +15,8 @@ OpenBSD từ 5.8 không còn dùng sudo, mà được cài đặt sẵn `doas`.
 Sau khi cài xong OpenBSD, nếu không có X, thì phải enable và start `xenodm` lên. (Lúc cài có package nhưng quên enable): https://www.openbsd.org/faq/faq11.html#ConfigX
 
 ## user add to group
+
+    # user mod -G <group-name> <user>
 
 Add user vào group wsrc sẽ cấp quyền ghi vào /usr/src (nơi chứa src của BSD hoặc ports).
 
@@ -48,3 +50,12 @@ Tải file ports.tar.gz từ mirrors về và giải nén vào /usr/ports
 
     $ cd /usr
     $ tar xzf /tmp/ports.tar.gz
+
+### CVS 
+
+Chọn lại server và tag cho đúng với nhu cầu. Xem thêm: https://www.openbsd.org/anoncvs.html
+
+    $ cd /usr
+    $ cvs -qd anoncvs@<server>:/cvs checkout -r<TAG> -P ports
+
+    $ cvs -qd anoncvs@anoncvs.ca.openbsd.org:/cvs checkout -rOPENBSD_6_9 -P ports
