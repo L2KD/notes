@@ -111,3 +111,7 @@ https://aliquote.org/post/welcome-openbsd/
 https://www.openbsdhandbook.com/x_window_system/
 
 https://why-openbsd.rocks/fact/xenodm/
+
+https://www.c0ffee.net/blog/openbsd-on-a-laptop/
+
+https://why-openbsd.rocks/fact/afterboot/
