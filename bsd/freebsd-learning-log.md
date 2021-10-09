@@ -132,3 +132,8 @@ Config lại Mod1 thành Mod4 (Super), sao cho tùy nhu cầu.
 
 Mặc định dwm sẽ dùng app launcher là `dmenu`, terminal là `st`. `st` có sẵn khi cài FreeBSD, còn dmenu nếu chưa có thì cài thêm.
 
+Xong mỗi lần config xong sẽ `make`, rồi cp binary chồng lên cái có sẵn.
+
+    # cp dwm /usr/local/bin
+
+
