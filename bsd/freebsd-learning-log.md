@@ -134,6 +134,18 @@ Mặc định dwm sẽ dùng app launcher là `dmenu`, terminal là `st`. `st` c
 
 Xong mỗi lần config xong sẽ `make`, rồi cp binary chồng lên cái có sẵn.
 
-    # cp dwm /usr/local/bin
+    # cp -f dwm /usr/local/bin
 
+Hoặc chạy lệnh
 
+    # make clean install
+
+### Status bar
+
+Ở arch, chúng ta có polybar, i3status... ở FreeBSD, chúng ta có những thứ trên. Nhưng để xài chung với dwm, thử dùng slstatus.
+
+Cũng 1 dạng với những app suckless khác, khi cần config, phải config từ source.
+
+Clone source về. Thay đổi mkfile để chọn đúng path của inc và lib. Thêm `-lkvm` vào LDFLAGS để có thể truy cập vào những thứ liên quan tới hardware thông qua kernel.
+
+Edit lại các component trong Makefile cho phù hợp với nhu cầu.
