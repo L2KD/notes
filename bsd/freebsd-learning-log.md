@@ -149,3 +149,10 @@ Cũng 1 dạng với những app suckless khác, khi cần config, phải config
 Clone source về. Thay đổi mkfile để chọn đúng path của inc và lib. Thêm `-lkvm` vào LDFLAGS để có thể truy cập vào những thứ liên quan tới hardware thông qua kernel.
 
 Edit lại các component trong Makefile cho phù hợp với nhu cầu.
+
+
+
+qt5
+fcitx-qt5
+zh-fcitx
+fcitx-config tool
