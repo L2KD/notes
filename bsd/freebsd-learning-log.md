@@ -155,8 +155,9 @@ Edit lại các component trong Makefile cho phù hợp với nhu cầu.
 
 Cai cac packge sau
 
-- qt5
 - zh-fcitx
 - zh-fcitx-configtool
 - fcitx-unikey
 - Init may cai environment variable trong ~/.xsession
+- generate ra machine-id bang dbbus-uuidgen /usr/lib/dbug/machine-id
+
