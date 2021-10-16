@@ -151,8 +151,12 @@ Clone source về. Thay đổi mkfile để chọn đúng path của inc và lib
 Edit lại các component trong Makefile cho phù hợp với nhu cầu.
 
 
+## Go tieng viet trong freebsd
 
-qt5
-fcitx-qt5
-zh-fcitx
-fcitx-config tool
+Cai cac packge sau
+
+- qt5
+- zh-fcitx
+- zh-fcitx-configtool
+- fcitx-unikey
+- Init may cai environment variable trong ~/.xsession
