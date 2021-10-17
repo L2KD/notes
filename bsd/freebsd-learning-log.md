@@ -160,4 +160,14 @@ Cai cac packge sau
 - fcitx-unikey
 - Init may cai environment variable trong ~/.xsession
 - generate ra machine-id bang dbbus-uuidgen /usr/lib/dbug/machine-id
+- qt5ct ??
 
+~/.xsession
+
+GTK_IM_MODULE=xim
+GTK3_IM_MODULE=xim // need to test
+QT_IM_MODULE=fcitx
+QT4_IM_MODULE=xim
+XMODIFIERS=@im=fcitx
+LC_CTYPE=en_US.UTF-8
+QT_QPA_PLATFORMTHEME=qt5ct
