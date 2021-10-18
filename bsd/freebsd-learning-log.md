@@ -151,13 +151,15 @@ Clone source về. Thay đổi mkfile để chọn đúng path của inc và lib
 Edit lại các component trong Makefile cho phù hợp với nhu cầu.
 
 
-## Go tieng viet trong freebsd
+### Go tieng viet trong freebsd
 
 Cai cac packge sau
 
 - zh-fcitx
 - zh-fcitx-configtool
 - fcitx-unikey
+- fcitx-qt5
+- fcitx-gtk
 - Init may cai environment variable trong ~/.xsession
 - generate ra machine-id bang dbbus-uuidgen /usr/lib/dbug/machine-id
 - qt5ct ??
@@ -165,9 +167,13 @@ Cai cac packge sau
 ~/.xsession
 
 GTK_IM_MODULE=xim
-GTK3_IM_MODULE=xim // need to test
 QT_IM_MODULE=fcitx
-QT4_IM_MODULE=xim
 XMODIFIERS=@im=fcitx
 LC_CTYPE=en_US.UTF-8
 QT_QPA_PLATFORMTHEME=qt5ct
+
+// your dm run
+
+### Next
+
+How to keep ports up-to-date? 
