@@ -21,3 +21,23 @@ And file `52-multi-monitors.conf`
 
 This will extend a rotated monitor on the right of main screen.
 
+## Tear free graphic
+
+File `/etc/X11/xorg.conf.d/20-intel.conf`
+
+    Section "Device"
+    Identifier "Intel Graphics"
+    Driver "intel"
+    Option "TearFree" "true"
+    EndSection
+
+## Remake touchpad on Dell laptop (enable tapping, and tap map left, right, middle = 1 finger, 2 fingers, 3 fingers)
+
+    Section "InputClass"
+        Identifier "SynPS/2 Synaptics TouchPad"
+        Driver "libinput"
+        MatchIsTouchpad "on"
+        Option "Tapping" "on"
+        Option "TappingButtonMap" "lrm"
+    EndSection
+    
