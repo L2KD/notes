@@ -43,3 +43,11 @@ https://kubernetes.io/docs/concepts/cluster-administration/networking/#how-to-im
 Đại ý là có 4 loại networking trong k8s. Cái ta đang quan tâm là Pod-to-Pod.
 
 Every Pod gets its own IP address. This means you do not need to explicitly create links between Pods and you almost never need to deal with mapping container ports to host ports. This creates a clean, backwards-compatible model where Pods can be treated much like VMs or physical hosts from the perspectives of port allocation, naming, service discovery, load balancing, application configuration, and migration.
+
+Chắc sẽ chọn Calico (hoặc Flannel).
+
+Nhưng lúc init chúng ta đã quên set pod network cidr
+
+https://stackoverflow.com/questions/60940447/is-there-a-way-to-assign-pod-network-cidr-in-kubeadm-after-initialization
+
+Xử lý theo SO.
