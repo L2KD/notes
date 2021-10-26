@@ -40,4 +40,6 @@ Làm theo https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/
 
 https://kubernetes.io/docs/concepts/cluster-administration/networking/#how-to-implement-the-kubernetes-networking-model
 
-Đại ý là có 4 loại networking trong k8s.
+Đại ý là có 4 loại networking trong k8s. Cái ta đang quan tâm là Pod-to-Pod.
+
+Every Pod gets its own IP address. This means you do not need to explicitly create links between Pods and you almost never need to deal with mapping container ports to host ports. This creates a clean, backwards-compatible model where Pods can be treated much like VMs or physical hosts from the perspectives of port allocation, naming, service discovery, load balancing, application configuration, and migration.
