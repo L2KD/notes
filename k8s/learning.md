@@ -2,6 +2,8 @@
 
 ## Cài đặt k8s bằng kubeadm (kubernetes.io)
 
+### Cài kubeadm
+
 Làm theo [https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-kubeadm/](https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-kubeadm/)
 
 - Apt get update
@@ -11,5 +13,10 @@ Làm theo [https://kubernetes.io/docs/setup/production-environment/tools/kubeadm
 - Insstall kubeadm, kubelet...
 - Load modules (bridge trafic)
 - cgroup config [https://stackoverflow.com/a/68722458/3844992](https://stackoverflow.com/a/68722458/3844992)
+
+### Init cluster
+
+Làm theo https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/create-cluster-kubeadm/#pod-network
+
 - kubeadm init (Nếu như bị lỗi ở phase nào thì fixx, rồi init lại với arg là --skip-phases=...), các phases (workflow): https://kubernetes.io/docs/reference/setup-tools/kubeadm/kubeadm-init/#init-workflow. Còn không là phải tear down rồi init lại.
-- 
+- Installing a Pod network add-on
