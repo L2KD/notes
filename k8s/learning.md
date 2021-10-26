@@ -1,5 +1,7 @@
 # K8s
 
+Note này được ghi lại từ 1 VPS Ubuntu 2004. Đã tắt swap (swapoff -a và bỏ record trong fstab).
+
 ## Cài đặt k8s bằng kubeadm (kubernetes.io)
 
 ### Cài kubeadm
@@ -19,4 +21,23 @@ Làm theo [https://kubernetes.io/docs/setup/production-environment/tools/kubeadm
 Làm theo https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/create-cluster-kubeadm/#pod-network
 
 - kubeadm init (Nếu như bị lỗi ở phase nào thì fixx, rồi init lại với arg là --skip-phases=...), các phases (workflow): https://kubernetes.io/docs/reference/setup-tools/kubeadm/kubeadm-init/#init-workflow. Còn không là phải tear down rồi init lại.
-- Installing a Pod network add-on
+- Tới bước trên rồi thì cluster đã được init (đương nhiên rồi vì nếu nó không được thì sao lại báo successfully haha). Nhưng cần phải cài pod network. You can install only one Pod network per cluster. Mỗi cluster cần cài 1 pod network.
+- Chạy lệnh 
+
+      $ kubectl get pods --all-namespaces
+        NAMESPACE     NAME                                 READY   STATUS    RESTARTS   AGE
+        kube-system   coredns-78fcd69978-4k98q             0/1     Pending   0          19m
+        kube-system   coredns-78fcd69978-bkrn9             0/1     Pending   0          19m
+        kube-system   etcd-ubuntu2004                      1/1     Running   0          24m
+        kube-system   kube-apiserver-ubuntu2004            1/1     Running   0          24m
+        kube-system   kube-controller-manager-ubuntu2004   1/1     Running   0          24m
+        kube-system   kube-proxy-knjmt                     1/1     Running   0          19m
+        kube-system   kube-scheduler-ubuntu2004            1/1     Running   0          24m
+
+    Cho thấy CoreDNS đã có, nhưng chưa được chạy, cần cài pod network add-on.
+
+### Installing a Pod network add-on.
+
+https://kubernetes.io/docs/concepts/cluster-administration/networking/#how-to-implement-the-kubernetes-networking-model
+
+Đại ý là có 4 loại networking trong k8s.
