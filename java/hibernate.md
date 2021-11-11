@@ -4,20 +4,24 @@ Sử dụng enum trong hibernate
 
 Ví dụ có enum sau:
 
-    public enum Tuyen {
-        TUYEN1,
-        TUYEN2,
-        TUYEN3,
-        TUYEN4
-    }
+```java
+public enum Tuyen {
+    TUYEN1,
+    TUYEN2,
+    TUYEN3,
+    TUYEN4
+}
+```
 
 Và class
 
-    @Entity
-    public class DonVi {
-        private Tuyen tuyen;
-        ...
-    }
+```java
+@Entity
+public class DonVi {
+    private Tuyen tuyen;
+    ...
+}
+```
 
 Khi này trong DB sẽ lưu dạng 
 
@@ -41,63 +45,67 @@ Thì các file data để init cũng phải có dạng
 
 Thêm converter
 
-    @Converter
-    public class TuyenAttributeConverter implements AttributeConverter<Tuyen, Integer> {
-        @Override
-        public Integer convertToDatabaseColumn(Tuyen attribute) {
-            if (attribute == null)
+```java
+@Converter
+public class TuyenAttributeConverter implements AttributeConverter<Tuyen, Integer> {
+    @Override
+    public Integer convertToDatabaseColumn(Tuyen attribute) {
+        if (attribute == null)
+        return null;
+
+    switch (attribute) {
+    case TUYEN1:
+        return 1;
+
+    case TUYEN2:
+        return 2;
+
+    case TUYEN3:
+        return 3;
+
+    case TUYEN4:
+        return 4;
+
+    default:
+        throw new IllegalArgumentException(attribute + " not supported.");
+    }
+    }
+
+    @Override
+    public Tuyen convertToEntityAttribute(Integer dbData) {
+        if (dbData == null)
             return null;
 
-        switch (attribute) {
-        case TUYEN1:
-            return 1;
+        switch (dbData) {
+        case 1:
+            return Tuyen.TUYEN1;
 
-        case TUYEN2:
-            return 2;
+        case 2:
+            return Tuyen.TUYEN2;
 
-        case TUYEN3:
-            return 3;
+        case 3:
+            return Tuyen.TUYEN3;
 
-        case TUYEN4:
-            return 4;
+        case 4:
+            return Tuyen.TUYEN4;
 
         default:
-            throw new IllegalArgumentException(attribute + " not supported.");
-        }
-        }
-
-        @Override
-        public Tuyen convertToEntityAttribute(Integer dbData) {
-            if (dbData == null)
-                return null;
-
-            switch (dbData) {
-            case 1:
-                return Tuyen.TUYEN1;
-
-            case 2:
-                return Tuyen.TUYEN2;
-
-            case 3:
-                return Tuyen.TUYEN3;
-
-            case 4:
-                return Tuyen.TUYEN4;
-
-            default:
-                throw new IllegalArgumentException(dbData + " not supported.");
-            }
+            throw new IllegalArgumentException(dbData + " not supported.");
         }
     }
+}
+```
 
 Class DonVi:
 
-    @Entity
-    public class DonVi {
-        @Enumerated(EnumType.ORDINAL)
-        @Convert(converter = TuyenAttributeConverter.class)
-        private Tuyen tuyen;
-    }
+```java
+@Entity
+public class DonVi {
+    @Enumerated(EnumType.ORDINAL)
+    @Convert(converter = TuyenAttributeConverter.class)
+    private Tuyen tuyen;
+}
+```
     
 Khi này DB sẽ có dạng sau:
 
@@ -120,3 +128,5 @@ Init data:
     ma_dv;ten_dv;tuyen
     0001;Don vi 1;1
     0002;Don vi 2;2
+    
+Đọc thêm: https://thorben-janssen.com/hibernate-enum-mappings/
