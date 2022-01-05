@@ -130,3 +130,62 @@ Init data:
     0002;Don vi 2;2
     
 Đọc thêm: https://thorben-janssen.com/hibernate-enum-mappings/
+
+## Cách viết câu select count, group by bằng hibernate, jpa
+
+Đoạn này viết gấp, xem ý tưởng thôi nhé
+
+Cách 1:
+
+        CriteriaBuilder cb = em.getCriteriaBuilder();
+        CriteriaQuery<Tuple> q = cb.createTupleQuery();
+        Root<DoiTuong> r = q.from(DoiTuong.class);
+        q.multiselect(r.get("phuongXaNlv.id"), cb.count(r));
+        r.join("phuongXaNlv", JoinType.INNER);
+        q.groupBy(r.get("phuongXaNlv"));
+
+        TypedQuery<Tuple> t = em.createQuery(q);
+        List<Tuple> resultList = t.getResultList();
+
+        for(Tuple tuple : resultList){
+            logger.info(tuple.get(0).toString() );
+        }
+        
+Đoạn trên tương đương với
+
+    select count(dt.id), px.ten
+    from doi_tuong dt
+    inner join phuong_xa px on px.id = dt.phuong_xa_noio_id
+    where noi_dieu_tri_id in (307, 413)
+    and phuong_xa_noio_id in (
+        select p.id
+        from phuong_xa p
+        where p.quan_huyen_id = 815
+    )
+    group by px.te
+
+Cách 2:
+
+    @Repository
+    public interface DoiTuongRepository extends JpaRepository<DoiTuong, Long>, JpaSpecificationExecutor<DoiTuong> {
+        Integer countAllByNoiDieuTri_IdIn(List<Long> ids);
+     }
+     
+ Cách 3:
+ 
+    public class BaoCaoF0TheoPhuongXa {
+        private String phuongXa;
+        private Long soLuong;
+    // Getter, setter, constructors
+    }
+
+ 
+     @Query("SELECT new vn.vnpt.domain.BaoCaoF0TheoPhuongXa(px.ten, COUNT(dt))" +
+    " FROM DoiTuong dt " +
+    " inner join PhuongXa px on px.id = dt.phuongXaNoiO.id" +
+    " where dt.noiDieuTri.id in (:noiDtTaiNhaIds)" +
+    " and dt.phuongXaNoiO.id in (:idCrit )" +
+    " group by px.ten")
+    List<BaoCaoF0TheoPhuongXa> baoCaoF0TheoPhuongXa(List<Long> noiDtTaiNhaIds, List<Long> idCrit);
+
+Xem thêm tại: https://stackoverflow.com/a/36329166
