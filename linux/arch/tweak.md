@@ -42,6 +42,8 @@ See this https://github.com/voldedore/notes/blob/master/privacy-sec/gpg.md
 
 - `alsa-utils`, `pulseaudio-alsa`.
 
+### VIM
+
 ## Optional
 
 ### Mirror
