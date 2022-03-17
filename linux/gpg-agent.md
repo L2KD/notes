@@ -49,3 +49,7 @@ ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQClY/hhk/B5ViXnsT6J7r0keiSNSjz0fpH49jn48VUq
 ```
 
 Chỗ cardno:xxx là yubikey của ta.
+
+## Troubleshooting
+
+Có thể sẽ phải tắt các thứ của DE như xfce4-session, hoặc GNOME keyring... vì các tools này có khi tài lanh start các ssh-agent/gpg-agent của chúng thay vì dùng mặc định.
