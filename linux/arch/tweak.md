@@ -44,6 +44,8 @@ See this https://github.com/voldedore/notes/blob/master/privacy-sec/gpg.md
 
 ### VIM
 
+Install vundle for plugins
+
 ## Optional
 
 ### Mirror
