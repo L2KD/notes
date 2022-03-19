@@ -46,6 +46,39 @@ See this https://github.com/voldedore/notes/blob/master/privacy-sec/gpg.md
 
 Install vundle for plugins.
 
+### Power management (Deep sleep) S3 instead of S2idle
+
+Add a new kernel parameter on booting with GRUB:
+
+    /etc/default/grub
+
+    GRUB_CMDLINE_LINUX_DEFAULT="... mem_sleep_default=deep"
+
+Then re-gen grub cfg (you might want to backup it first):
+
+    # grub-mkconfig -o /boot/grub/grub.cfg
+
+Reboot
+
+Sleep and check it with
+
+    # systemclt suspend
+
+    # journalctl | grep "PM: suspend" | tail
+
+    Mar 16 17:29:32 TGG000923 kernel: PM: suspend entry (s2idle)
+    Mar 16 19:06:31 TGG000923 kernel: PM: suspend exit
+    Mar 17 07:22:30 TGG000923 kernel: PM: suspend entry (s2idle)
+    Mar 17 08:10:35 TGG000923 kernel: PM: suspend exit
+    Mar 18 18:12:31 TGG000923 kernel: PM: suspend entry (s2idle)
+    Mar 18 19:58:32 TGG000923 kernel: PM: suspend exit
+    Mar 18 21:28:39 TGG000923 kernel: PM: suspend entry (deep)
+    Mar 18 21:28:54 TGG000923 kernel: PM: suspend exit
+    Mar 18 21:29:44 TGG000923 kernel: PM: suspend entry (deep)
+    Mar 19 07:34:06 TGG000923 kernel: PM: suspend exit
+
+The system won't drain electric power while sleeping anymore.
+
 ## Optional
 
 ### Mirror
