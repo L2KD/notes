@@ -22,7 +22,7 @@ See: https://github.com/voldedore/notes/blob/master/linux/gpg-agent.md
 
 ### Snapshot với btrfs
 
-Cài đặt [`snapper`](https://wiki.archlinux.org/title/Snapper) và (`snap-pac`)[https://wiki.archlinux.org/title/Snapper#Tips_and_tricks] (cần có `cronie`, enable service).
+Cài đặt [`snapper`](https://wiki.archlinux.org/title/Snapper) và [`snap-pac`](https://wiki.archlinux.org/title/Snapper#Tips_and_tricks) (cần có `cronie`, enable service).
 
 Tạo các subvolume dành riêng cho những vùng không cần thiết, như `/tmp`, `/var/log`.
 
