@@ -20,6 +20,23 @@ Các output thường gặp: stdout, elastic, mongodb...
 
 ## Elastic
 
-Có các plugin.
+### Beats
+
+Beat là các shipper, để đẩy dữ liệu vào Elastic stack
+
+Các beat tiêu biểu:
+
+- Auditbeat 	Collect your Linux audit framework data and monitor the integrity of your files.
+- Filebeat 	Tails and ships log files
+- Functionbeat 	Read and ships events from serverless infrastructure.
+- Heartbeat 	Ping remote services for availability
+- Metricbeat 	Fetches sets of metrics from the operating system and services
+- Packetbeat 	Monitors the network and applications by sniffing packets
+- Winlogbeat 	Fetches and ships Windows Event logs
+- Osquerybeat 	Runs Osquery and manages interraction with it.
+
+## Filebeat
+
+
 
 Fleet
