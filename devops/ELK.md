@@ -37,6 +37,15 @@ Các beat tiêu biểu:
 
 ## Filebeat
 
+Filebeat là tool để nó tail và send file log lên logstash. Cài filebeat vào máy cần gom log:
 
+```bash
+curl -L -O https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-8.3.1-linux-x86_64.tar.gz
+tar xzvf filebeat-8.3.1-linux-x86_64.tar.gz
+```
+
+Để gom log, hoặc dùng module có sẵn, hoặc cấu hình bằng tay.
+
+Xem các modules có sẵn:
 
 Fleet
