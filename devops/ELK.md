@@ -20,6 +20,10 @@ Các output thường gặp: stdout, elastic, mongodb...
 
 ## Elastic
 
+### Elastic agent
+
+Khi cài elastic agent, nó sẽ cài các thứ như filebeat và metricbeat. Sau đó cấu hình như systemd service và enable lên.
+
 ### Beats
 
 Beat là các shipper, để đẩy dữ liệu vào Elastic stack
