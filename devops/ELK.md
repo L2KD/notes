@@ -46,7 +46,7 @@ tar xzvf filebeat-8.3.1-linux-x86_64.tar.gz
 
 Để gom log, hoặc dùng module có sẵn, hoặc cấu hình bằng tay.
 
-Xem các modules có sẵn:
+### Xem các modules có sẵn:
 
 ```
 ./filebeat modules list
@@ -56,5 +56,9 @@ Xem các modules có sẵn:
 ./filebeat modules enable mongodb
 Enabled mongodb
 ```
+
+### Manually
+
+
 
 Fleet
