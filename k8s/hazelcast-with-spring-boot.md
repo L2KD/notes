@@ -23,3 +23,5 @@ Deployment thêm service account là hazelcast.
 OK.
 
 Test nhanh: join được
+
+Read: https://docs.hazelcast.com/hazelcast/5.1/cluster-performance/best-practices
