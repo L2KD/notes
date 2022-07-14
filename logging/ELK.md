@@ -61,6 +61,30 @@ tar xzvf filebeat-8.3.1-linux-x86_64.tar.gz
 Enabled mongodb
 ```
 
+Sau khi enable mongo. Vào chỉnh sửa
+
+    modules.d/mongo.yml
+
+Chỉnh lại các thứ:
+
+    - module: mongodb
+    # All logs
+    log:
+        enabled: true
+
+        # Set custom paths for the log files. If left empty,
+        # Filebeat will choose the paths depending on your OS.
+        #var.paths:
+        var.paths: ["/var/log/mongodb/mongod.log"]
+
+Setup
+
+    ./filebeat setup -e
+
+Run
+
+    sudo ./filebeat -e --strict.perms=false
+
 ### Manually
 
 Sau khi tải và giải nén filebeat. Xem yml của nó.
