@@ -55,7 +55,7 @@ Tạo ClusterRoleBinding cho account vừa tạo (ClusterRole view).
     namespace: default
 
 
-Deployment thêm service account là hazelcast.
+Deployment thêm service account là hazelcast, thêm port cho container 5701
 
 OK.
 
