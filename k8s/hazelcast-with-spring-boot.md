@@ -14,9 +14,45 @@ Hazelcast.xml chỗ `<network><join>` chỉnh TCPIP false, Multicast false, Kube
 
 Cấu hình service, thêm port 5701 cho deployment (8080 có sẵn để chạy spring boot app).
 
+    apiVersion: v1
+    kind: Service
+    metadata:
+        name: svc-name
+        namespace: ns
+    spec:
+        ports:
+        - name: web
+            port: 8080
+            protocol: TCP
+            targetPort: 8080
+        - name: hazelcast
+            port: 5701
+            protocol: TCP
+            targetPort: 5701
+
 Tạo ServiceAccount cho hazelcast (để các member nó dùng được Kubernetes API).
 
+    apiVersion: v1
+    kind: ServiceAccount
+    metadata:
+        name: default
+        namespace: default
+
 Tạo ClusterRoleBinding cho account vừa tạo (ClusterRole view).
+
+    apiVersion: rbac.authorization.k8s.io/v1
+    kind: ClusterRoleBinding
+    metadata:
+    name: default-cluster
+    roleRef:
+    apiGroup: rbac.authorization.k8s.io
+    kind: ClusterRole
+    name: view
+    subjects:
+    - kind: ServiceAccount
+    name: default
+    namespace: default
+
 
 Deployment thêm service account là hazelcast.
 
