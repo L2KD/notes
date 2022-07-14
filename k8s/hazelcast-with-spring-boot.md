@@ -9,7 +9,7 @@ File `hazelcast.xml` được lưu dạng `ConfigMap`, nhét vào kiểu volume,
 Hazelcast.xml chỗ `<network><join>` chỉnh TCPIP false, Multicast false, Kubernetes true 
 
     <namespace>namespace của app</namespace>
-    <name></name>
+    <service-name>tên service</service-name>
 
 
 Cấu hình service, thêm port 5701 cho deployment (8080 có sẵn để chạy spring boot app).
