@@ -8,9 +8,10 @@ File `hazelcast.xml` được lưu dạng `ConfigMap`, nhét vào kiểu volume,
 
 Hazelcast.xml chỗ `<network><join>` chỉnh TCPIP false, Multicast false, Kubernetes true 
 
-    <namespace>namespace của app</namespace>
-    <service-name>tên service</service-name>
-
+    <kubernetes enabled="true">
+        <namespace>namespace của app</namespace>
+        <service-name>tên service</service-name>
+    </kubernetes>
 
 Cấu hình service, thêm port 5701 cho deployment (8080 có sẵn để chạy spring boot app).
 
@@ -43,7 +44,7 @@ Tạo ClusterRoleBinding cho account vừa tạo (ClusterRole view).
     apiVersion: rbac.authorization.k8s.io/v1
     kind: ClusterRoleBinding
     metadata:
-    name: default-cluster
+        name: default-cluster
     roleRef:
     apiGroup: rbac.authorization.k8s.io
     kind: ClusterRole
