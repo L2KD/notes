@@ -36,7 +36,7 @@ Tạo ServiceAccount cho hazelcast (để các member nó dùng được Kuberne
     apiVersion: v1
     kind: ServiceAccount
     metadata:
-        name: default
+        name: hazelcast
         namespace: default
 
 Tạo ClusterRoleBinding cho account vừa tạo (ClusterRole view).
@@ -46,13 +46,13 @@ Tạo ClusterRoleBinding cho account vừa tạo (ClusterRole view).
     metadata:
         name: default-cluster
     roleRef:
-    apiGroup: rbac.authorization.k8s.io
-    kind: ClusterRole
-    name: view
+        apiGroup: rbac.authorization.k8s.io
+        kind: ClusterRole
+        name: view
     subjects:
     - kind: ServiceAccount
-    name: default
-    namespace: default
+        name: hazelcast
+        namespace: default
 
 
 Deployment thêm service account là hazelcast, thêm port cho container 5701
