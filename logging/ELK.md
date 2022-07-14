@@ -67,6 +67,12 @@ Sau khi tải và giải nén filebeat. Xem yml của nó.
 
 Config output
 
+    - type: filestream
+    id: mongodb-dump
+    enabled: true
+    paths:
+        - "/home/admin/dump-*.log"
 
+Type filestream, trước đây là `log`. Nó sẽ upload file này lên ES hoặc Logstash.
 
 Fleet
