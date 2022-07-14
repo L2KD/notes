@@ -218,8 +218,10 @@ Trên kibana, thêm mới index
 - Mappings fiels
     - @timestamp Date
     - mongodb Object
-        - log Keyword
-
+        - log Object
+            - component Keyword
+            - context Keyword
+            - id Long
 
 Run
 
