@@ -63,6 +63,10 @@ Enabled mongodb
 
 ### Manually
 
+Sau khi tải và giải nén filebeat. Xem yml của nó.
+
+Config output
+
 
 
 Fleet
