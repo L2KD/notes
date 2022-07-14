@@ -62,3 +62,5 @@ OK.
 Test nhanh: join được
 
 Read: https://docs.hazelcast.com/hazelcast/5.1/cluster-performance/best-practices
+
+https://github.com/hazelcast/hazelcast-code-samples/blob/master/hazelcast-integration/kubernetes/samples/springboot-k8s-hello-world/pom.xml
