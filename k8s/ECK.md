@@ -25,3 +25,5 @@ https://www.elastic.co/guide/en/cloud-on-k8s/current/index.html (2.3)
 7. Truy cập https://\<node-ip\>:5601; đăng nhập bằng tk tìm được ở bước trên.
 8. Cài Standalone Elastic Agent (Fleet managed bị điểm yếu hiện tại là chỉ hỗ trợ cùng namespace, nên không cấu hình theo fleet được). Xem https://github.com/elastic/cloud-on-k8s/blob/main/config/recipes/elastic-agent/system-integration.yaml
 9. Sau khi cài xong, mỗi Node sẽ có 1 Pod để làm Agent.
+10. Cài Filebeat, with autodiscover by K8s API để lấy hết pod logs (lấy theo namespace thôi): xem https://raw.githubusercontent.com/elastic/cloud-on-k8s/2.3/config/recipes/beats/filebeat_autodiscover_by_metadata.yaml
+11. Xem bên trên: Tạo ServiceAccount, Role... trước để có access vào K8s API.
