@@ -39,4 +39,16 @@ containers:
         protocol: TCP
 ```
 
+prom-operator helm values
+
+```
+    serviceMonitorNamespaceSelector: {}
+    serviceMonitorSelector:
+      matchExpressions:
+        - key: app
+          operator: Exists
+    serviceMonitorSelectorNilUsesHelmValues: false
+```
+
 Service
+
