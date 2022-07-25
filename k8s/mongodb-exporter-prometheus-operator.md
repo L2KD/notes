@@ -129,3 +129,21 @@ ServiceMonitor JVM exporter (spring actuator)
       matchLabels:
         app: label-of-service
 ```
+
+```
+- args:
+        - --kafka.server=127.0.0.1:9092
+        - --zookeeper.server=zookeeper.kafka-office:2181
+        - --kafka.version=2.6.0
+        - --verbosity=1
+        image: danielqsj/kafka-exporter
+        imagePullPolicy: IfNotPresent
+        name: kafka-exporter
+        ports:
+        - containerPort: 9308
+          name: metrics
+          protocol: TCP
+        resources: {}
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+```
