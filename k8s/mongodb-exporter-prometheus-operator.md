@@ -69,11 +69,17 @@ tcp        0      0 :::9216                 :::*                    LISTEN
 
 Như vậy là đã có exporter.
 
-Service: Theem label vao cho service
+Service: Theem label vao cho service, và port cho metrics vừa rồi
 
   labels:
     app: mongodb-office
+  
+  - port: 9216
+    protocol: TCP
+    targetPort: 9216
+    name: metrics
 
+Lucs này, nếu có Service NodePort, truy cập vào \<node-ip\>:port/metrics sẽ có được đủ data của mongo exporter.
 
 ServiceMonitor JVM exporter (spring actuator)
 
