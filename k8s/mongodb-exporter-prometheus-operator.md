@@ -54,3 +54,15 @@ Service: Theem label vao cho service
 
   labels:
     app: mongodb-office
+
+
+ServiceMonitor JVM exporter (spring actuator)
+
+```
+  namespaceSelector:
+    matchNames:
+    - applications-office
+  selector:
+    matchLabels:
+      app: svc-docman
+```
