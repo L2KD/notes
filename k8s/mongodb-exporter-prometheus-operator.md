@@ -57,6 +57,17 @@ containers:
         protocol: TCP
 ```
 
+Lúc này, Truy cập vào shell sẽ có 
+
+```
+/opt/cvallance/mongo-k8s-sidecar # netstat -tuln
+Active Internet connections (only servers)
+Proto Recv-Q Send-Q Local Address           Foreign Address         State       
+tcp        0      0 0.0.0.0:27017           0.0.0.0:*               LISTEN      
+tcp        0      0 :::9216                 :::*                    LISTEN 
+```
+
+Như vậy là đã có exporter.
 
 Service: Theem label vao cho service
 
