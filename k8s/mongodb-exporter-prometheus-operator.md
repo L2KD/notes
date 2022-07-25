@@ -18,3 +18,25 @@ Các thành phần cần thiết để chạy được các exporter và để p
 
 Như vậy, với mongodb được cài tay vào (viết vanilla yaml) thì cần cài thêm mongodb_exporter dưới dạng sidecar. 
 
+```
+containers:
+- args:
+    - --collect-all
+    env:
+    - name: MONGODB_URI
+      value: 
+    image: percona/mongodb_exporter:0.33
+    name: mongo-exporter
+    ports:
+    - containerPort: 9216
+        name: metrics
+        protocol: TCP
+- image: mongo:4.0.5
+    imagePullPolicy: IfNotPresent
+    name: mongo
+    ports:
+    - containerPort: 27017
+        protocol: TCP
+```
+
+Service
