@@ -50,5 +50,7 @@ prom-operator helm values
     serviceMonitorSelectorNilUsesHelmValues: false
 ```
 
-Service
+Service: Theem label vao cho service
 
+  labels:
+    app: mongodb-office
