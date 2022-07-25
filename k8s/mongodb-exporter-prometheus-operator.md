@@ -112,10 +112,20 @@ Truy cập vào Prometheus Target sẽ thấy thêm cho mongodb
 ServiceMonitor JVM exporter (spring actuator)
 
 ```
-  namespaceSelector:
-    matchNames:
-    - applications-office
-  selector:
-    matchLabels:
-      app: svc-docman
+  metadata:
+    labels:
+      app: svc-name
+  spec:
+    endpoints:
+    - interval: 30s
+      path: /actuator/prometheus
+      port: web
+      scrapeTimeout: 10s
+    jobLabel: actuator
+    namespaceSelector:
+      matchNames:
+      - ns-to-match
+    selector:
+      matchLabels:
+        app: label-of-service
 ```
