@@ -81,6 +81,34 @@ Service: Theem label vao cho service, và port cho metrics vừa rồi
 
 Lucs này, nếu có Service NodePort, truy cập vào \<node-ip\>:port/metrics sẽ có được đủ data của mongo exporter.
 
+ServiceMonitor (Mongo exporter)
+
+```
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: mongodb-tgg
+  namespace: mongodb-tgg
+  labels:
+    app: mongodb-sm
+spec:
+  endpoints:
+  - interval: 30s
+    port: metrics
+    scrapeTimeout: 10s
+  jobLabel: mongodb
+  namespaceSelector:
+    matchNames:
+    - mongodb-tgg
+  selector:
+    matchExpressions:
+    - key: app
+      operator: Exists
+```
+
+Truy cập vào Prometheus Target sẽ thấy thêm cho mongodb
+
+
 ServiceMonitor JVM exporter (spring actuator)
 
 ```
