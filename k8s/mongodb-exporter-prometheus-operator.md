@@ -147,12 +147,3 @@ ServiceMonitor JVM exporter (spring actuator)
         terminationMessagePath: /dev/termination-log
         terminationMessagePolicy: File
 ```
-
-NFS + Security context + PVC VD như kafka
-
-Thêm 
-
-    securityContext:
-      runAsUser: 0
-
-Vào initContainer
