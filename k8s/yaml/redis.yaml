@@ -1,0 +1,52 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: redis-cache
+  labels:
+    app: redis-cache
+  annotations:
+spec:
+  selector:
+    matchLabels:
+      app: redis-cache
+      tier: redisCache
+  template:
+    metadata:
+      labels:
+        app: redis-cache
+        tier: redisCache
+    spec:
+      containers:
+        - name: redis
+          image: 'bitnami/redis:latest'
+          ports:
+            - containerPort: 6379
+              protocol: TCP
+          env:
+            - name: ALLOW_EMPTY_PASSWORD
+              value: 'yes'
+          resources:
+            limits:
+              cpu: '1'
+              memory: 4Gi
+            requests:
+              cpu: '1'
+              memory: 4Gi
+          imagePullPolicy: IfNotPresent
+      restartPolicy: Always
+
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: redis-cache
+  labels:
+    app: redis-cache
+spec:
+  ports:
+    - protocol: TCP
+      port: 6379
+      targetPort: 6379
+  selector:
+    app: redis-cache
+    tier: redisCache
