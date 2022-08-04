@@ -13,7 +13,10 @@ db.createUser(
 {
 user: "admin",
 pwd: "YourHardToGuessPassword",
-roles: [ { role: "root", db: "admin" } ]
+roles: [
+        { role: "root", db: "admin"
+        }
+    ]
 }
 )
 ```
