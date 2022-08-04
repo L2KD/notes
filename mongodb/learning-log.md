@@ -4,9 +4,11 @@ Collections
 
 Quick comparison to RDB: Collection là Table
 
-## Create user
+## Built-in roles
 
 Roles: `read`, `write`, `readWrite`, `dbAdmin`, `userAdmin`, `root`.
+
+## Create user
 
 ```
 db.createUser(
@@ -19,4 +21,20 @@ roles: [
     ]
 }
 )
+```
+
+## Update user
+
+```
+db.runCommand( {
+    updateUser : "admin",
+    roles : [ { role : "root", db : "admin" } ]
+ } )
+
+```
+
+## Get user
+
+```
+db.getUser("admin")
 ```
