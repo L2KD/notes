@@ -79,3 +79,15 @@
     ```
     kubectl config use-context dev
     ```
+
+    From now on, every kubectl command will try to control the `dev` cluster with `dev` user.
+
+0. Try it
+
+    ```
+    kubectl get svc
+    ```
+
+    Pamm, fail...
+
+0. On rancher, login to your cluster, then click Download Kubeconfig file. Copy to `$HOME/.kube/config`, adapt your choice.
