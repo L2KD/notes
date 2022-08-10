@@ -1,4 +1,3 @@
-
 ## Log
 
 0. Cài đặt kubectl vào máy dùng điều khiển cluster.
@@ -75,3 +74,8 @@
 
     ```
 
+0. Sử dụng context
+
+    ```
+    kubectl config use-context dev
+    ```
