@@ -10,4 +10,9 @@ JWT được sử dụng vào các case sau:
 - Authorization (Phân quyền).
 - Info exchange (trao đổi dữ liệu).
 
+JWT có 3 phần, được encode bằng base64, ngăn cách bằng dấu chấm (`.`).
+
+0. Header: Chứa thông tin: Loại token và Giải thuật dùng để mã hóa nội dung token.
+0. Payload (1 loạt các Claims): Chứa các thứ liên quan đến sec, ví dụ như định danh user và các quyền mà user có.
+
 ## OIDC (OpenID Connect) spec
