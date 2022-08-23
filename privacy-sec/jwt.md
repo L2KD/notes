@@ -30,7 +30,8 @@ Claim là những thông tin về đối tượng đang được nhắc đến. 
 
 Có 2 loại claims:
 
-0. Có sẵn.
+0. Có sẵn. Xem thêm: https://auth0.com/docs/secure/tokens/json-web-tokens/json-web-token-claims.
+    Loại này Optional. Khuyên nên dùng một cách interoperability giữa các app.
 0. Custom.
 
 ## OIDC (OpenID Connect) spec
