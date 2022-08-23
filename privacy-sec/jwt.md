@@ -14,5 +14,6 @@ JWT có 3 phần, được encode bằng base64, ngăn cách bằng dấu chấm
 
 0. Header: Chứa thông tin: Loại token và Giải thuật dùng để mã hóa nội dung token.
 0. Payload (1 loạt các Claims): Chứa các thứ liên quan đến sec, ví dụ như định danh user và các quyền mà user có.
+0. Signature: Để biết được token nhận được có valid hay không (có bị thay đổi nội dung không). Trước khi dùng (và lưu) jwt, cần validate sign của token.
 
 ## OIDC (OpenID Connect) spec
